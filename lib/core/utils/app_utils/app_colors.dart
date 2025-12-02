@@ -9,6 +9,11 @@ abstract class AppColors {
   static const Color grey = Color(0xFF707070);
   static const Color greyBottomNavbar = Color(0xFFB8B8B8);
 
+  //+================================
+  static const Color homeBottomNavBarBg = Colors.white10;
+  static const Color selectedColor = Color(0xffA38C7C);
+  static const Color unSelectedColor = secondary;
+
   //+================ Text Color================
   static const Color textBrawn = Color(0xFF5D4D42);
 

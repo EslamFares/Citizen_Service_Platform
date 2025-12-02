@@ -47,6 +47,11 @@ abstract class AppTextStyles {
     fontWeight: FontWeight.w600,
     color: AppColors.brown,
   );
+  static TextStyle font13w600SelectedColor = TextStyle(
+    fontSize: 13.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.selectedColor,
+  );
   //$==================14================
   static TextStyle font14W700White = TextStyle(
     fontSize: 14.sp,

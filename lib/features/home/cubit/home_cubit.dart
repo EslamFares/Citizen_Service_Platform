@@ -1,3 +1,5 @@
+import 'package:citizen_service_platform/features/home/data/dummy_data/dunmmy_services_model.dart';
+import 'package:citizen_service_platform/features/home/data/model/home_model.dart';
 import 'package:citizen_service_platform/features/login/data/model/user_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -28,6 +30,7 @@ class HomeCubit extends Cubit<HomeState> {
   }
 
   //======================================================
+  ServicesModel servicesModel = dummyServicesModel;
   Future<void> go() async {
     emit(HomeLoading());
     try {

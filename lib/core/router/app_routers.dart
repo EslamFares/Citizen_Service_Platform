@@ -1,5 +1,6 @@
 import 'package:citizen_service_platform/features/home/presentation/screens/home_screen.dart';
 import 'package:citizen_service_platform/features/login/presentation/screens/login_screen.dart';
+import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/splash/data/model/app_version_model.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/splash_screen.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/update_app_screen.dart';
@@ -39,6 +40,10 @@ abstract class AppRouters {
       GoRoute(
         path: AppRoutersName.homeScreen,
         builder: (context, state) => HomeScreen(),
+      ),
+      GoRoute(
+        path: AppRoutersName.mainBottomNavScreen,
+        builder: (context, state) => MainBottomNavScreen(),
       ),
     ],
   );

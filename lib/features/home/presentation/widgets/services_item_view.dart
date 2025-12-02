@@ -5,53 +5,33 @@ import 'package:citizen_service_platform/core/utils/app_utils/app_colors.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/core/utils/log/logger.dart';
+import 'package:citizen_service_platform/features/home/presentation/widgets/blur_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:glassmorphism/glassmorphism.dart';
 
 class ServicesItemView extends StatelessWidget {
   final String? title;
   final String? image;
-  final int index;
+  final int? id;
   final void Function()? onTap;
   const ServicesItemView({
     super.key,
     required this.title,
     required this.image,
     this.onTap,
-    required this.index,
+    required this.id,
   });
 
   @override
   Widget build(BuildContext context) {
-    return GlassmorphicContainer(
+    logPro.error("image: $image");
+    return BlurContainer(
       width: 350,
       height: 350,
       borderRadius: 16.r,
-      blur: 20,
-      alignment: Alignment.center,
-      border: 1.h,
-
-      linearGradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Color(0xFFFFFFFF).withValues(alpha: 0.1),
-          Color(0xFFFFFFFF)..withValues(alpha: 0.05),
-        ],
-        stops: [0.1, 1],
-      ),
-      borderGradient: LinearGradient(
-        begin: Alignment.topLeft,
-        end: Alignment.bottomRight,
-        colors: [
-          Color(0xFFE5DACE).withValues(alpha: .5),
-          Color((0xFFE5DACE)).withValues(alpha: 1),
-        ],
-      ),
       child: AppButtonClick(
         onPressed: () {
-          logPro.error("service index: $index");
+          logPro.error("service index: $id");
           onTap?.call();
         },
         child: Column(
@@ -66,6 +46,7 @@ class ServicesItemView extends StatelessWidget {
                 color: AppColors.brownLight,
                 borderRadius: BorderRadius.circular(12.r),
               ),
+              //todo  TODO: come here imag enot load
               child: AppImage(
                 image ?? Assets.iconsIcon,
                 width: 24.h,

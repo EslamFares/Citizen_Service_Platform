@@ -23,7 +23,9 @@ class LoginButton extends StatelessWidget {
           current.isChange,
       listener: (context, state) {
         if (state.isSuccess) {
-          GoRouter.of(context).pushReplacement(AppRoutersName.homeScreen);
+          GoRouter.of(
+            context,
+          ).pushReplacement(AppRoutersName.mainBottomNavScreen);
         } else if (state.isError) {
           AppToast.toast(state.errorMessage ?? "error");
         }

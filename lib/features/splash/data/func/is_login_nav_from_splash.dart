@@ -9,7 +9,7 @@ void isLoginNavFromSplash(BuildContext context) async {
   bool isLogin = token != null && token.isNotEmpty;
   if (context.mounted) {
     if (isLogin) {
-      context.go(AppRoutersName.homeScreen);
+      context.go(AppRoutersName.mainBottomNavScreen);
     } else {
       context.go(AppRoutersName.loginScreen);
     }
