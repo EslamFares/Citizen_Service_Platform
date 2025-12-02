@@ -1,0 +1,78 @@
+// DO NOT EDIT. This is code generated via package:easy_localization/generate.dart
+
+// ignore_for_file: constant_identifier_names
+
+abstract class  LocaleKeys {
+  static const home = 'home';
+  static const pleaseEnterPhoneNumber = 'pleaseEnterPhoneNumber';
+  static const pleaseEnterYourPhoneNumber = 'pleaseEnterYourPhoneNumber';
+  static const passwordsDoNotMatch = 'passwordsDoNotMatch';
+  static const pleaseEnterValidPasswordAtLeast = 'pleaseEnterValidPasswordAtLeast';
+  static const pleaseEnterYourPassword = 'pleaseEnterYourPassword';
+  static const PleaseEnterAValidEmail = 'PleaseEnterAValidEmail';
+  static const emailIsRequired = 'emailIsRequired';
+  static const required = 'required';
+  static const error = 'error';
+  static const timeout = 'timeout';
+  static const sendTimeout = 'sendTimeout';
+  static const receiveTimeout = 'receiveTimeout';
+  static const badCertificate = 'badCertificate';
+  static const canceled = 'canceled';
+  static const connectionError = 'connectionError';
+  static const errorTypeUnknown = 'errorTypeUnknown';
+  static const badRequest = 'badRequest';
+  static const unAuthorized = 'unAuthorized';
+  static const forbidden = 'forbidden';
+  static const notFound = 'notFound';
+  static const conflict = 'conflict';
+  static const unprocessableEntity = 'unprocessableEntity';
+  static const gatewayTimeout = 'gatewayTimeout';
+  static const badResponseUnknown = 'badResponseUnknown';
+  static const errorOccurred = 'errorOccurred';
+  static const internalServerError = 'internalServerError';
+  static const checkEmailPasswordLogin = 'checkEmailPasswordLogin';
+  static const connectionCheck = 'connectionCheck';
+  static const connectionSuccess = 'connectionSuccess';
+  static const welcome = 'welcome';
+  static const noDataAtTheMoment = 'noDataAtTheMoment';
+  static const login = 'login';
+  static const noInternetConnection = 'noInternetConnection';
+  static const newVersionAvailable = 'newVersionAvailable';
+  static const cannotOpenLink = 'cannotOpenLink';
+  static const downloadLastVersion = 'downloadLastVersion';
+  static const lastVersion = 'lastVersion';
+  static const loginAgain = 'loginAgain';
+  static const anErrorOccurred = 'anErrorOccurred';
+  static const lightTheme = 'lightTheme';
+  static const darkTheme = 'darkTheme';
+  static const enterDate = 'enterDate';
+  static const confirm = 'confirm';
+  static const all = 'all';
+  static const search = 'search';
+  static const readMore = 'readMore';
+  static const readLess = 'readLess';
+  static const date = 'date';
+  static const connection_error = 'connection_error';
+  static const setting = 'setting';
+  static const changeLanguage = 'changeLanguage';
+  static const language = 'language';
+  static const serviceUnavailable = 'serviceUnavailable';
+  static const pleaseSelectAtLeastOneImage = 'pleaseSelectAtLeastOneImage';
+  static const maxmiumFivePhotosAllowed = 'maxmiumFivePhotosAllowed';
+  static const more = 'more';
+  static const less = 'less';
+  static const sar = 'sar';
+  static const atLeaset = 'atLeaset';
+  static const characters = 'characters';
+  static const noLinkAvaliableForDownLoading = 'noLinkAvaliableForDownLoading';
+  static const savedSuccessfully = 'savedSuccessfully';
+  static const duringDownload = 'duringDownload';
+  static const openLoacationService = 'openLoacationService';
+  static const openLoacationPermission = 'openLoacationPermission';
+  static const pleaseAuthenticateToLogin = 'pleaseAuthenticateToLogin';
+  static const enterCorrectNumber = 'enterCorrectNumber';
+  static const confirmVerificationCode = 'confirmVerificationCode';
+  static const resend = 'resend';
+  static const sentSuccessfully = 'sentSuccessfully';
+
+}

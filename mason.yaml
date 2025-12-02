@@ -1,0 +1,28 @@
+# Register bricks which can be consumed via the Mason CLI.
+# Run "mason get" to install all registered bricks.
+# To learn more, visit https://docs.brickhub.dev.
+bricks:
+
+  #*--------- Github ----------------------------
+  feature:
+    git:
+      url: https://github.com/EslamFares/fares_helper_mason.git
+      path: bricks/feature
+  featureEnumState:
+    git:
+      url: https://github.com/EslamFares/fares_helper_mason.git
+      path: bricks/featureEnumState
+  featureMultiEnumState:
+    git:
+      url: https://github.com/EslamFares/fares_helper_mason.git
+      path: bricks/featureMultiEnumState
+
+  #*--------- Use ----------------------------
+#!| get(first)                        | make(last)                        |
+# | mason get feature                 | mason make feature                |
+# | mason get featureEnumState        | mason make featureEnumState       |
+# | mason get featureMultiEnumState   | mason make featureMultiEnumState  |
+
+#*--------- Error Path ----------------------------
+#! error path
+# mason cache clear
