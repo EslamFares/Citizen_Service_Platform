@@ -6,6 +6,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
 
+import '../presentation/widgets/language_section/app_lang_enum.dart';
+
 part 'app_global_state.dart';
 
 //app global cubit
@@ -30,7 +32,7 @@ class AppGlobalCubit extends Cubit<AppGlobalState> {
   }
 
   //!================================
-  String langCode = "en";
+  String langCode = AppLocalesConst.defaultLangCode;
   void changeLanguage(String languageCode) {
     langCode = languageCode;
     SharedPrefsHelper.setString(AppConst.kLangCode, languageCode);
@@ -38,7 +40,9 @@ class AppGlobalCubit extends Cubit<AppGlobalState> {
   }
 
   Future<void> getLanguage() async {
-    langCode = SharedPrefsHelper.getString(AppConst.kLangCode) ?? "en";
+    langCode =
+        SharedPrefsHelper.getString(AppConst.kLangCode) ??
+        AppLocalesConst.defaultLangCode;
     emit(ChangLanguageState());
   }
 

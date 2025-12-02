@@ -1,6 +1,17 @@
 import 'package:flutter/material.dart';
 
-List<Locale> appSupportedLocales = [Locale('en', 'US'), Locale('ar', 'EG')];
+abstract class AppLocalesConst {
+  static List<Locale> appSupportedLocales = [
+    Locale('en', 'US'),
+    Locale('ar', 'EG'),
+  ];
+  static String appSupportedLocalesPath = "assets/translations";
+  //*------------------ default -----------------*/
+
+  static AppLanguageCodeEnum get defaultLocaleEnum => AppLanguageCodeEnum.ar;
+  static Locale defaultLocale = defaultLocaleEnum.getLocale();
+  static String defaultLangCode = defaultLocaleEnum.getLangCode();
+}
 
 enum AppLanguageCodeEnum {
   en,

@@ -39,11 +39,11 @@ void main() async {
 
   runApp(
     EasyLocalization(
-      supportedLocales: appSupportedLocales,
-      path: 'assets/translations',
-      fallbackLocale: const Locale('ar', 'EG'), //defult
+      supportedLocales: AppLocalesConst.appSupportedLocales,
+      path: AppLocalesConst.appSupportedLocalesPath,
+      fallbackLocale: AppLocalesConst.defaultLocale, //default
       saveLocale: true,
-      startLocale: const Locale('ar', 'EG'),
+      startLocale: AppLocalesConst.defaultLocale,
       child: const MyApp(),
     ),
   );

@@ -51,6 +51,9 @@ class MyApp extends StatelessWidget {
                       : ThemeMode.dark, // appSettingCubit.themeMode,
                   localizationsDelegates: context.localizationDelegates,
                   supportedLocales: context.supportedLocales,
+
+                  // 3. Set the current locale from EasyLocalization context
+                  // locale: context.locale,
                   locale: AppLanguageCodeEnum.getLangByCode(
                     appSettingCubit.langCode,
                   ).getLocale(),
