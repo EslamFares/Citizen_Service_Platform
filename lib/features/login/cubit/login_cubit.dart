@@ -41,9 +41,8 @@ class LoginCubit extends Cubit<LoginState> {
             state.copyWith(status: LoginStatus.error, errorMessage: errorMsg),
           );
         },
-        (user) {
-          UserHelper.setUser(user);
-
+        (user) async {
+          await UserHelper.setUser(user);
           emit(state.copyWith(status: LoginStatus.success, userModel: user));
         },
       );

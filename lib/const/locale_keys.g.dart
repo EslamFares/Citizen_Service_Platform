@@ -74,5 +74,8 @@ abstract class  LocaleKeys {
   static const confirmVerificationCode = 'confirmVerificationCode';
   static const resend = 'resend';
   static const sentSuccessfully = 'sentSuccessfully';
+  static const hello = 'hello';
+  static const services = 'services';
+  static const license = 'license';
 
 }

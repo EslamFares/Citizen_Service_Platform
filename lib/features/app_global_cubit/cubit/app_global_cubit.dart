@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:citizen_service_platform/core/cash/shared_prefs_helper.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_consts.dart';
+import 'package:citizen_service_platform/features/login/data/model/user_helper.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:internet_connection_checker_plus/internet_connection_checker_plus.dart';
@@ -29,6 +30,7 @@ class AppGlobalCubit extends Cubit<AppGlobalState> {
   void init() {
     getLanguage();
     getTheme();
+    UserHelper.getUserModel();
   }
 
   //!================================

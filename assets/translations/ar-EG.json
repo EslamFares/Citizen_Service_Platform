@@ -69,5 +69,8 @@
   "enterCorrectNumber": "الرجاء ادخال رقم صحيح",
   "confirmVerificationCode": "تأكيد رمز التحقق",
   "resend": "اعادة ارسال",
-  "sentSuccessfully": "تم الارسال  بنجاح"
+  "sentSuccessfully": "تم الارسال  بنجاح",
+  "hello": "أهلا",
+  "services": "الخدمات",
+  "license": "الترخيص"
 }

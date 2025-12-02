@@ -9,7 +9,7 @@ class SplashRepo {
   SplashRepo(this.api);
   //=====================
   Future<dynamic> getAppVersionApi() async {
-    await Future.delayed(const Duration(milliseconds: 500));
+    await Future.delayed(const Duration(milliseconds: 100));
     // var res = await api.get(path: ApiConsts.getLastAppVersion, useAuth: false);
     var res = UpdateAppModel(
       androidFullVersion: "1.0.0+1",

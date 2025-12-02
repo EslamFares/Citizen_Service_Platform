@@ -3,10 +3,16 @@ import 'package:flutter/material.dart';
 abstract class AppColors {
   static const Color primaryColor = Color(0xFFD5742E);
   static const Color secondary = Color(0xff556B76);
+  static const Color brown = Color(0xffA38C7C);
+  static Color brownLight = Color(0xffE5C7AA).withValues(alpha: .15);
 
   static const Color grey = Color(0xFF707070);
   static const Color greyBottomNavbar = Color(0xFFB8B8B8);
 
+  //+================ Text Color================
+  static const Color textBrawn = Color(0xFF5D4D42);
+
+  //+================================
   static const Color strockColor = Color(0xFFDCE2E5);
   static const Color buttonColorLigth = Color(0xffDFEBEA);
   static const Color borderColor = Color(0xFFE4E4E4);

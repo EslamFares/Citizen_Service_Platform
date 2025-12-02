@@ -69,6 +69,8 @@
   "enterCorrectNumber": "Please enter correct number",
   "confirmVerificationCode": "Confirm verification code",
   "resend": "Resend",
-  "sentSuccessfully": "Sent successfully"
-
+  "sentSuccessfully": "Sent successfully",
+  "hello": "Hello",
+  "services": "Services",
+  "license": "License"
 }

@@ -48,7 +48,7 @@ class UserModelData {
   final String? fullName;
   final String? phoneNumber;
   final String? token;
-  final String? expiresOn;
+  final String? location;
 
   UserModelData({
     this.message,
@@ -58,7 +58,7 @@ class UserModelData {
     this.fullName,
     this.phoneNumber,
     this.token,
-    this.expiresOn,
+    this.location,
   });
 
   UserModelData copyWith({
@@ -69,7 +69,7 @@ class UserModelData {
     String? fullName,
     String? phoneNumber,
     String? token,
-    String? expiresOn,
+    String? location,
   }) => UserModelData(
     message: message ?? this.message,
     isAuthenticated: isAuthenticated ?? this.isAuthenticated,
@@ -78,7 +78,7 @@ class UserModelData {
     fullName: fullName ?? this.fullName,
     phoneNumber: phoneNumber ?? this.phoneNumber,
     token: token ?? this.token,
-    expiresOn: expiresOn ?? this.expiresOn,
+    location: location ?? this.location,
   );
 
   factory UserModelData.fromRawJson(String str) =>
@@ -94,7 +94,7 @@ class UserModelData {
     fullName: json["fullName"],
     phoneNumber: json["phoneNumber"],
     token: json["token"],
-    expiresOn: json["expiresOn"],
+    location: json["location"],
   );
 
   Map<String, dynamic> toJson() => {
@@ -105,6 +105,6 @@ class UserModelData {
     "fullName": fullName,
     "phoneNumber": phoneNumber,
     "token": token,
-    "expiresOn": expiresOn,
+    "location": location,
   };
 }

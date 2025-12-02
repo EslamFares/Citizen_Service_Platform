@@ -20,13 +20,14 @@ class LoginRepo {
       Map<String, dynamic> resJsonApi = UserModel(
         data: UserModelData(
           token: "tokenxjvdjgkjhdlkjd",
-          fullName: "fullName",
-          phoneNumber: "phoneNumber",
-          imagePath: "imagePath",
-          userId: "userId",
-          message: "message",
+          fullName: "اسلام فارس",
+          phoneNumber: "01063735601",
+          imagePath:
+              "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
+          userId: "101020365453132",
+          message: "success",
           isAuthenticated: true,
-          expiresOn: "email",
+          location: "محافظة البحيرة",
         ),
       ).toJson();
       UserModel userModel = UserModel.fromJson(resJsonApi);

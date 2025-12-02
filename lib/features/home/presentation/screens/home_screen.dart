@@ -1,14 +1,13 @@
+import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
-import 'package:citizen_service_platform/core/router/app_routers_name.dart';
-import 'package:citizen_service_platform/core/shared/funcs/check_lang.dart';
-import 'package:citizen_service_platform/core/shared_widgets/app_show_dialog.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
-import 'package:citizen_service_platform/core/utils/log/logger.dart';
-import 'package:citizen_service_platform/features/login/data/model/user_helper.dart';
+import 'package:citizen_service_platform/features/home/presentation/widgets/home_app_bar.dart';
+import 'package:citizen_service_platform/features/home/presentation/widgets/services_item_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:go_router/go_router.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../../core/dependency_injection/get_it_setup.dart';
 import '../../cubit/home_cubit.dart';
@@ -19,29 +18,9 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    logPro.error("isRtl = ${isRtl(context)}");
     return BlocProvider(
-      create: (context) => HomeCubit(getIt<HomeRepo>()),
+      create: (context) => HomeCubit(getIt<HomeRepo>())..init(),
       child: Scaffold(
-        appBar: AppBar(
-          title: Text(LocaleKeys.welcome.tr()),
-          actions: [
-            IconButton(
-              onPressed: () {
-                iosShowDialog(
-                  context: context,
-                  title: "logout",
-                  subTitle: "are you sure",
-                  onConfirm: () {
-                    UserHelper.clear();
-                    context.go(AppRoutersName.loginScreen);
-                  },
-                );
-              },
-              icon: const Icon(Icons.logout, color: Colors.red),
-            ),
-          ],
-        ),
         body: BlocConsumer<HomeCubit, HomeState>(
           listener: (context, state) {
             if (state is HomeSuccess) {}
@@ -49,13 +28,72 @@ class HomeScreen extends StatelessWidget {
           builder: (context, state) {
             // ignore: unused_local_variable
             final cubit = HomeCubit.get(context);
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                context.width.gapW,
-
-                Container(color: Colors.red, child: Text(LocaleKeys.home.tr())),
-              ],
+            return SizedBox(
+              width: context.width,
+              height: context.height,
+              child: Stack(
+                children: [
+                  Positioned.fill(
+                    child: Image.asset(
+                      Assets.imgHomeBg,
+                      // width: context.width,
+                      // height: context.height,
+                      fit: BoxFit.fill,
+                    ),
+                  ),
+                  Positioned.fill(
+                    child: Padding(
+                      padding: EdgeInsets.only(
+                        left: 24.w,
+                        right: 24.w,
+                        top: 70.h,
+                      ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          HomeAppBar(),
+                          30.h.gapH,
+                          Text(
+                            LocaleKeys.services.tr(),
+                            style: AppTextStyles.font18w700Black,
+                          ),
+                          10.h.gapH,
+                          Expanded(
+                            child: SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  70.h.gapH,
+                                  GridView.builder(
+                                    physics:
+                                        const NeverScrollableScrollPhysics(),
+                                    // physics: const BouncingScrollPhysics(),
+                                    shrinkWrap: true,
+                                    itemCount: 20,
+                                    gridDelegate:
+                                        SliverGridDelegateWithFixedCrossAxisCount(
+                                          crossAxisCount: 3,
+                                          crossAxisSpacing: 13.h,
+                                          mainAxisSpacing: 16.h,
+                                          childAspectRatio: 1,
+                                          mainAxisExtent: 100.h,
+                                        ),
+                                    itemBuilder: (context, index) =>
+                                        ServicesItemView(
+                                          image: null,
+                                          title: "test title $index",
+                                          index: index,
+                                        ),
+                                  ),
+                                ],
+                              ),
+                            ),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ],
+              ),
             );
           },
         ),
