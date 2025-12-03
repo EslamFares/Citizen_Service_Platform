@@ -3,10 +3,14 @@ import 'package:citizen_service_platform/features/login/presentation/screens/log
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/screens/my_requests_screen.dart';
+import 'package:citizen_service_platform/features/sign_up/cubit/sign_up_cubit.dart';
+import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_password_screen.dart';
+import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:citizen_service_platform/features/splash/data/model/app_version_model.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/splash_screen.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/update_app_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_routers_name.dart';
@@ -16,8 +20,8 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 abstract class AppRouters {
   static final router = GoRouter(
-    // initialLocation: AppRoutersName.loginScreen,
-    initialLocation: AppRoutersName.init,
+    initialLocation: AppRoutersName.signUpScreen,
+    // initialLocation: AppRoutersName.init,
     navigatorKey: navigatorKey,
     routes: [
       //~======= dafault ex ==================
@@ -55,6 +59,22 @@ abstract class AppRouters {
       GoRoute(
         path: AppRoutersName.menuScreen,
         builder: (context, state) => MenuScreen(),
+      ),
+      GoRoute(
+        path: AppRoutersName.signUpScreen,
+        builder: (context, state) => SignUpScreen(),
+      ),
+      GoRoute(
+        path: AppRoutersName.signUpPasswordScreen,
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! SignUpCubit) {
+            navException("SignUpCubit");
+          }
+          return BlocProvider.value(
+            value: state.extra as SignUpCubit,
+            child: SignUpPasswordScreen(),
+          );
+        },
       ),
     ],
   );

@@ -95,5 +95,16 @@
   "logout": "Logout",
   "areYouSure": "Are you sure",
   "cancel": "Cancel",
-  "ok": "OK"
+  "ok": "OK",
+  "createAccount": "Create Account",
+  "phoneNumber": "Phone Number",
+  "governorate": "Governorate",
+  "address": "Address",
+  "name": "Name",
+  "pleaseEnterCorrectPhoneNumber": "Please enter correct phone number",
+  "pleaseEnterPhoneNumberEg": "Please enter phone number",
+  "enterPassword": "Enter Password",
+  "confirmPassword": "Confirm Password",
+  "agreeTo": "Agree to",
+  "termsPrivacy": "Terms & Conditions and Privacy Policy"
 }

@@ -9,7 +9,7 @@ class TextFormTitle extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: EdgeInsets.only(bottom: 8.h, top: 20.h),
+      padding: EdgeInsets.only(top: 15.h),
       child: Text(title, style: AppTextStyles.font14W700),
     );
   }

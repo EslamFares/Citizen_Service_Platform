@@ -16,6 +16,16 @@ abstract class AppValidator {
     }
   }
 
+  static String? egPhone(String? value) {
+    if (value == null || value.isEmpty) {
+      return "pleaseEnterPhoneNumberEg".tr();
+    } else if (!AppRegex.isEgPhoneNum(value)) {
+      return "pleaseEnterCorrectPhoneNumber".tr();
+    } else {
+      return null;
+    }
+  }
+
   static String? id(String? value) {
     if (value == null || value.isEmpty) {
       return "required".tr();

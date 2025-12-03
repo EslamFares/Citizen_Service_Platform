@@ -100,5 +100,16 @@ abstract class  LocaleKeys {
   static const areYouSure = 'areYouSure';
   static const cancel = 'cancel';
   static const ok = 'ok';
+  static const createAccount = 'createAccount';
+  static const phoneNumber = 'phoneNumber';
+  static const governorate = 'governorate';
+  static const address = 'address';
+  static const name = 'name';
+  static const pleaseEnterCorrectPhoneNumber = 'pleaseEnterCorrectPhoneNumber';
+  static const pleaseEnterPhoneNumberEg = 'pleaseEnterPhoneNumberEg';
+  static const enterPassword = 'enterPassword';
+  static const confirmPassword = 'confirmPassword';
+  static const agreeTo = 'agreeTo';
+  static const termsPrivacy = 'termsPrivacy';
 
 }

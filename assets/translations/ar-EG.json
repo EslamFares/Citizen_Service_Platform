@@ -95,5 +95,16 @@
   "logout": "تسجيل الخروج",
   "areYouSure": "هل انت متاكد",
   "cancel": "الغاء",
-  "ok": "حسنا"
+  "ok": "حسنا",
+  "createAccount": "انشاء حساب",
+  "phoneNumber": "رقم الهاتف",
+  "governorate": "المحافظة",
+  "address": "العنوان",
+  "name": "الاسم",
+  "pleaseEnterCorrectPhoneNumber": "الرجاء ادخال رقم هاتف صحيح",
+  "pleaseEnterPhoneNumberEg": "الرجاء ادخال رقم هاتف ",
+  "enterPassword": "ادخال كلمة المرور",
+  "confirmPassword": "تأكيد كلمة المرور",
+  "agreeTo": "الموافقة على",
+  "termsPrivacy": "الشروط والاحكام وسياسة الخصوصية"
 }

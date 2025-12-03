@@ -6,5 +6,7 @@ abstract class AppRoutersName {
   static const String updateAppScreen = '/updateAppScreen';
   static const String mainBottomNavScreen = '/mainBottomNavScreen';
   static const String myRequestsScreen = '/myRequestsScreen';
-  static const String menuScreen = '/menuScreenma';
+  static const String menuScreen = '/menuScreen';
+  static const String signUpScreen = '/signUpScreen';
+  static const String signUpPasswordScreen = '/SignUpPasswordScreen';
 }

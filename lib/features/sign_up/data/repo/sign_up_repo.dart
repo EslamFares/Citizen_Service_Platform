@@ -1,16 +1,21 @@
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
 import 'package:citizen_service_platform/features/login/data/model/login_model.dart';
+import 'package:citizen_service_platform/features/login/data/repo/login_repo.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/network/api/api_consumer.dart';
 
-class LoginRepo {
+class SignUpRepo {
   final ApiConsumer api;
-  LoginRepo(this.api);
+  SignUpRepo(this.api);
   //=====================
-  Future<Either<String, UserModel>> login({
+  Future<Either<String, UserModel>> signUp({
     required int nationalId,
     required String password,
+    required String name,
+    required String phoneNumber,
+    required String governorate,
+    required String address,
   }) async {
     try {
       // final res = await api.get(path: 'users');
@@ -25,17 +30,3 @@ class LoginRepo {
     }
   }
 }
-
-UserModel dummyUserModel = UserModel(
-  data: UserModelData(
-    token: "tokenxjvdjgkjhdlkjd",
-    fullName: "اسلام فارس",
-    phoneNumber: "01063735601",
-    imagePath:
-        "https://images.unsplash.com/photo-1599566150163-29194dcaad36?q=80&w=687&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D",
-    userId: "101020365453132",
-    message: "success",
-    isAuthenticated: true,
-    location: "محافظة البحيرة",
-  ),
-);

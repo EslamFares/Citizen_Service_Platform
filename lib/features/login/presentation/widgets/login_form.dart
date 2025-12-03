@@ -6,40 +6,45 @@ import 'package:citizen_service_platform/features/login/cubit/login_cubit.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/text_form_title.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    LoginCubit loginCubit = LoginCubit.get(context);
-    return Form(
-      key: loginCubit.formKey,
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(
-            LocaleKeys.login.tr(),
-            style: AppTextStyles.font20w700PrimaryColor,
-          ),
+    return BlocBuilder<LoginCubit, LoginState>(
+      builder: (context, state) {
+        LoginCubit loginCubit = LoginCubit.get(context);
+        return Form(
+          key: loginCubit.formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                LocaleKeys.login.tr(),
+                style: AppTextStyles.font20w700PrimaryColor,
+              ),
 
-          TextFormTitle(LocaleKeys.nationalId.tr()),
-          GlobalTextForm(
-            controller: loginCubit.nationalId,
-            maxLengthLetter: 14,
-            maxLengthLetterShowNum: false,
-            hintText: "0" * 14,
-            validate: AppValidator.isNumInt,
+              TextFormTitle(LocaleKeys.nationalId.tr()),
+              GlobalTextForm(
+                controller: loginCubit.nationalId,
+                maxLengthLetter: 14,
+                maxLengthLetterShowNum: false,
+                hintText: "0" * 14,
+                validate: AppValidator.isNumInt,
+              ),
+              TextFormTitle(LocaleKeys.password.tr()),
+              GlobalTextForm(
+                controller: loginCubit.passwordController,
+                hintText: "*" * 8,
+                isPassShowSuffix: true,
+                validate: (value) => AppValidator.password(value),
+              ),
+            ],
           ),
-          TextFormTitle(LocaleKeys.password.tr()),
-          GlobalTextForm(
-            controller: loginCubit.passwordController,
-            hintText: "*" * 8,
-            isPassShowSuffix: true,
-            validate: (value) => AppValidator.password(value),
-          ),
-        ],
-      ),
+        );
+      },
     );
   }
 }
