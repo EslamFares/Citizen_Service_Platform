@@ -19,7 +19,7 @@ class MyRequestsListView extends StatelessWidget {
     return BlocBuilder<MyRequestsCubit, MyRequestsState>(
       builder: (context, state) {
         MyRequestsCubit cubit = MyRequestsCubit.get(context);
-        List<RequestsItem> requestsList = cubit.requestsModel.data ?? [];
+        List<RequestsItem> requestsList = cubit.requestsModel?.data ?? [];
         return Padding(
           padding: EdgeInsets.only(
             left: AppSizes.sPaddingHorizontalWidth,

@@ -71,6 +71,7 @@ flutter_assets:
     - assets/icons/
     - assets/img/
     - assets/svg/
+    - assets/gif/
   output_path: lib/const/
   filename: assets.dart
   field_prefix: null
@@ -94,6 +95,7 @@ flutter:
     - assets/icons/requests/
     - assets/icons/bottom_nav/
     - assets/svg/
+    - assets/gif/
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images
   # For details regarding adding assets from package dependencies, see

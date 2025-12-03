@@ -1,6 +1,7 @@
 import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_colors.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/features/home/presentation/widgets/blur_container.dart';
@@ -9,13 +10,6 @@ import 'package:citizen_service_platform/features/main_bottom_nav/presentation/w
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
-
-double get mainBottomNavHight =>
-    (
-        //MediaQuery.of(context).padding.bottom
-        25 + kBottomNavigationBarHeight)
-        .h;
 
 class MyMainBottomNavigationBar extends StatelessWidget {
   const MyMainBottomNavigationBar({super.key});
@@ -33,7 +27,7 @@ class MyMainBottomNavigationBar extends StatelessWidget {
           ),
           child: BlurContainer(
             width: context.width,
-            height: mainBottomNavHight,
+            height: AppSizes.mainBottomNavHight,
             borderRadius: 1.1,
             child: BottomNavigationBar(
               elevation: 0,

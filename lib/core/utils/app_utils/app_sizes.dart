@@ -2,6 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppSizes {
+static  double get mainBottomNavHight =>
+      (
+          //MediaQuery.of(context).padding.bottom
+          25 + kBottomNavigationBarHeight)
+          .h;
   static double get sPaddingHorizontalWidth => 24.w;
   static EdgeInsets get sPaddingH =>
       EdgeInsets.symmetric(horizontal: AppSizes.sPaddingHorizontalWidth);

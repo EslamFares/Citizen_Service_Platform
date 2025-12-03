@@ -2,6 +2,10 @@
 class Assets {
   Assets._();
   
+  /// Assets for gifLoad
+  /// assets/gif/load.gif
+  static const String gifLoad = "assets/gif/load.gif";
+
   /// Assets for iconsBottomNavHome
   /// assets/icons/bottom_nav/home.png
   static const String iconsBottomNavHome = "assets/icons/bottom_nav/home.png";
