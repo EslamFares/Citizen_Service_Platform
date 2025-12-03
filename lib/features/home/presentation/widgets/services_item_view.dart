@@ -24,7 +24,6 @@ class ServicesItemView extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    logPro.error("image: $image");
     return BlurContainer(
       width: 350,
       height: 350,

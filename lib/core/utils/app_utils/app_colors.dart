@@ -5,6 +5,10 @@ abstract class AppColors {
   static const Color secondary = Color(0xff556B76);
   static const Color brown = Color(0xffA38C7C);
   static Color brownLight = Color(0xffE5C7AA).withValues(alpha: .15);
+  static Color requestStatusBg = Color(0xffFFF1C9);
+  static Color requestStatusText = Color(0xff9D8526);
+  static Color requestStatusGrayLight = Color(0xff9F9F9F);
+  static Color requestStatusGray = Color(0xff7E7E7E);
 
   static const Color grey = Color(0xFF707070);
   static const Color greyBottomNavbar = Color(0xFFB8B8B8);
@@ -20,7 +24,7 @@ abstract class AppColors {
   //+================================
   static const Color strockColor = Color(0xFFDCE2E5);
   static const Color buttonColorLigth = Color(0xffDFEBEA);
-  static const Color borderColor = Color(0xFFE4E4E4);
+  static const Color borderBrawnLight = Color(0xFFE5D7CA);
   //+================ loading Color================
   static const Color loading = Color(0xffEBEBF4);
   static const Color loadingGraySplsh = Color(0xffD4D8D9);

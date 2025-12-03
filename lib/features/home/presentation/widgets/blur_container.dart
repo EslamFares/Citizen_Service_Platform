@@ -7,6 +7,7 @@ class BlurContainer extends StatelessWidget {
   final double width;
   final double height;
   final double borderRadius;
+  final double blur;
 
   const BlurContainer({
     super.key,
@@ -14,6 +15,7 @@ class BlurContainer extends StatelessWidget {
     required this.width,
     required this.height,
     required this.borderRadius,
+    this.blur = 20,
   });
 
   @override
@@ -26,7 +28,7 @@ class BlurContainer extends StatelessWidget {
         height: height,
         // is required be >1
         borderRadius: borderRadius > 1 ? borderRadius : 1.1,
-        blur: 20,
+        blur: blur,
         alignment: Alignment.center,
         border: 1.h,
 

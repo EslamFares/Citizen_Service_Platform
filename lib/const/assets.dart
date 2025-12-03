@@ -30,6 +30,14 @@ class Assets {
   /// assets/icons/icon.png
   static const String iconsIcon = "assets/icons/icon.png";
 
+  /// Assets for iconsRequestsCheck
+  /// assets/icons/requests/check.png
+  static const String iconsRequestsCheck = "assets/icons/requests/check.png";
+
+  /// Assets for iconsRequestsTime
+  /// assets/icons/requests/time.png
+  static const String iconsRequestsTime = "assets/icons/requests/time.png";
+
   /// Assets for imgHomeBg
   /// assets/img/home_bg.png
   static const String imgHomeBg = "assets/img/home_bg.png";
@@ -38,49 +46,53 @@ class Assets {
   /// assets/img/login_bg.png
   static const String imgLoginBg = "assets/img/login_bg.png";
 
+  /// Assets for imgRequsetsBg
+  /// assets/img/requsets_bg.png
+  static const String imgRequsetsBg = "assets/img/requsets_bg.png";
+
   /// Assets for imgServices1
-  /// assets/img/Services/1.png
-  static const String imgServices1 = "assets/img/Services/1.png";
+  /// assets/img/services/1.png
+  static const String imgServices1 = "assets/img/services/1.png";
 
   /// Assets for imgServices10
-  /// assets/img/Services/10.png
-  static const String imgServices10 = "assets/img/Services/10.png";
+  /// assets/img/services/10.png
+  static const String imgServices10 = "assets/img/services/10.png";
 
   /// Assets for imgServices11
-  /// assets/img/Services/11.png
-  static const String imgServices11 = "assets/img/Services/11.png";
+  /// assets/img/services/11.png
+  static const String imgServices11 = "assets/img/services/11.png";
 
   /// Assets for imgServices2
-  /// assets/img/Services/2.png
-  static const String imgServices2 = "assets/img/Services/2.png";
+  /// assets/img/services/2.png
+  static const String imgServices2 = "assets/img/services/2.png";
 
   /// Assets for imgServices3
-  /// assets/img/Services/3.png
-  static const String imgServices3 = "assets/img/Services/3.png";
+  /// assets/img/services/3.png
+  static const String imgServices3 = "assets/img/services/3.png";
 
   /// Assets for imgServices4
-  /// assets/img/Services/4.png
-  static const String imgServices4 = "assets/img/Services/4.png";
+  /// assets/img/services/4.png
+  static const String imgServices4 = "assets/img/services/4.png";
 
   /// Assets for imgServices5
-  /// assets/img/Services/5.png
-  static const String imgServices5 = "assets/img/Services/5.png";
+  /// assets/img/services/5.png
+  static const String imgServices5 = "assets/img/services/5.png";
 
   /// Assets for imgServices6
-  /// assets/img/Services/6.png
-  static const String imgServices6 = "assets/img/Services/6.png";
+  /// assets/img/services/6.png
+  static const String imgServices6 = "assets/img/services/6.png";
 
   /// Assets for imgServices7
-  /// assets/img/Services/7.png
-  static const String imgServices7 = "assets/img/Services/7.png";
+  /// assets/img/services/7.png
+  static const String imgServices7 = "assets/img/services/7.png";
 
   /// Assets for imgServices8
-  /// assets/img/Services/8.png
-  static const String imgServices8 = "assets/img/Services/8.png";
+  /// assets/img/services/8.png
+  static const String imgServices8 = "assets/img/services/8.png";
 
   /// Assets for imgServices9
-  /// assets/img/Services/9.png
-  static const String imgServices9 = "assets/img/Services/9.png";
+  /// assets/img/services/9.png
+  static const String imgServices9 = "assets/img/services/9.png";
 
   /// Assets for imgWolf
   /// assets/img/wolf.jpeg

@@ -72,5 +72,10 @@
   "sentSuccessfully": "تم الارسال  بنجاح",
   "hello": "أهلا",
   "services": "الخدمات",
-  "license": "الترخيص"
+  "license": "الترخيص",
+  "myRequests": "طلباتى",
+  "menu": "القائمة",
+  "currentRequests": "طلبات جارية",
+  "underReview": "جاري المراجعة",
+  "requestCompleted": "تم الطلب"
 }

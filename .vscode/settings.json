@@ -12,5 +12,9 @@
         "titleBar.inactiveBackground": "#ff650099",
         "titleBar.inactiveForeground": "#15202b99"
     },
-    "peacock.color": "#FF6500"
+    "peacock.color": "#FF6500",
+    "flutterTools.displayGetxContextMenu": false,
+    "flutterTools.displayMobxContextMenu": false,
+    "flutterTools.displayRiverpodContextMenu": false,
+    "flutterTools.displayModularContextMenu": false
 }

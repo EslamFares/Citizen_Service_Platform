@@ -1,5 +1,6 @@
 import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/features/home/data/model/home_model.dart';
@@ -43,7 +44,7 @@ class HomeScreen extends StatelessWidget {
                 right: 0,
                 bottom: mainBottomNavHight,
                 child: Padding(
-                  padding: EdgeInsets.only(left: 24.w, right: 24.w, top: 70.h),
+                  padding: AppSizes.sPaddingStackT70,
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [

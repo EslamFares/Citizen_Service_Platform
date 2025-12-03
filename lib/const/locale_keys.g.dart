@@ -77,5 +77,10 @@ abstract class  LocaleKeys {
   static const hello = 'hello';
   static const services = 'services';
   static const license = 'license';
+  static const myRequests = 'myRequests';
+  static const menu = 'menu';
+  static const currentRequests = 'currentRequests';
+  static const underReview = 'underReview';
+  static const requestCompleted = 'requestCompleted';
 
 }

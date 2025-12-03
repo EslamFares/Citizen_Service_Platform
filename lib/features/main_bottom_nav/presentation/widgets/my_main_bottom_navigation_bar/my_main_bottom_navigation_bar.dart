@@ -56,12 +56,12 @@ class MyMainBottomNavigationBar extends StatelessWidget {
                 ),
                 myMainBottomNavItem(
                   imgPath: Assets.iconsBottomNavMyRequests,
-                  text: LocaleKeys.home.tr(),
+                  text: LocaleKeys.myRequests.tr(),
                   isSelected: cubit.selectedIndex == 1,
                 ),
                 myMainBottomNavItem(
                   imgPath: Assets.iconsBottomNavMenu,
-                  text: LocaleKeys.home.tr(),
+                  text: LocaleKeys.menu.tr(),
                   isSelected: cubit.selectedIndex == 2,
                 ),
               ],

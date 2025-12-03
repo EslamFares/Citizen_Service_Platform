@@ -72,5 +72,10 @@
   "sentSuccessfully": "Sent successfully",
   "hello": "Hello",
   "services": "Services",
-  "license": "License"
+  "license": "License",
+  "myRequests": "My Requests",
+  "menu": "Menu",
+  "currentRequests": "Current Requests",
+  "underReview": "Under Review",
+  "requestCompleted": "Request Completed"
 }

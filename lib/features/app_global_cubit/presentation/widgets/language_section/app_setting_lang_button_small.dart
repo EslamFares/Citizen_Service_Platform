@@ -41,7 +41,7 @@ class AppSettingLangButtonSmall extends StatelessWidget {
         decoration: BoxDecoration(
           color: AppColors.buttonColorLigth,
           borderRadius: BorderRadius.circular(50.r),
-          border: Border.all(color: AppColors.borderColor, width: 1.5.w),
+          border: Border.all(color: AppColors.primaryColor, width: 1.5.w),
         ),
         child: Row(
           children: [

@@ -4,7 +4,28 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'app_colors.dart';
 
 abstract class AppTextStyles {
+  //$==================10================
+  static TextStyle font10w700RequestStatusText = TextStyle(
+    fontSize: 10.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.requestStatusText,
+  );
   //$==================12================
+  static TextStyle font12w500RequestStatusGrayLight = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.requestStatusGrayLight,
+  );
+  static TextStyle font12w500RequestStatusGray = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w500,
+    color: AppColors.requestStatusGray,
+  );
+  static TextStyle font12w700RequestStatusText = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w700,
+    color: AppColors.requestStatusText,
+  );
   static TextStyle font12W700GreyMed = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w700,
@@ -23,6 +44,11 @@ abstract class AppTextStyles {
   static TextStyle font12w500Black = TextStyle(
     fontSize: 12.sp,
     fontWeight: FontWeight.w500,
+    color: AppColors.black,
+  );
+  static TextStyle font12w600Black = TextStyle(
+    fontSize: 12.sp,
+    fontWeight: FontWeight.w600,
     color: AppColors.black,
   );
   static TextStyle font12w700BTextBrawn = TextStyle(
