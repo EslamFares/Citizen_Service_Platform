@@ -1,5 +1,6 @@
 import 'package:citizen_service_platform/features/home/presentation/screens/home_screen.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/widgets/my_main_bottom_navigation_bar/my_main_bottom_navigation_bar.dart';
+import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/screens/my_requests_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,8 +34,4 @@ class MainBottomNavScreen extends StatelessWidget {
   }
 }
 
-List<Widget> screens = [
-  HomeScreen(),
-  MyRequestsScreen(),
-  Center(child: Text("3")),
-];
+List<Widget> screens = [HomeScreen(), MyRequestsScreen(), MenuScreen()];

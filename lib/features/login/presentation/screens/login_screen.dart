@@ -32,7 +32,7 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               children: [
                 Padding(
-                  padding: EdgeInsets.only(top: 50.h, bottom: 50.h),
+                  padding: EdgeInsets.only(top: 80.h, bottom: 50.h),
                   child: AppIconName(),
                 ),
 

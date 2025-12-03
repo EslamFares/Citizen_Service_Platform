@@ -5,6 +5,8 @@ import 'package:citizen_service_platform/features/login/cubit/login_cubit.dart';
 import 'package:citizen_service_platform/features/login/data/repo/login_repo.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/cubit/main_bottom_nav_cubit.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/data/repo/main_bottom_nav_repo.dart';
+import 'package:citizen_service_platform/features/menu/cubit/menu_cubit.dart';
+import 'package:citizen_service_platform/features/menu/data/repo/menu_repo.dart';
 import 'package:citizen_service_platform/features/my_requests/cubit/my_requests_cubit.dart';
 import 'package:citizen_service_platform/features/my_requests/data/repo/my_requests_repo.dart';
 import 'package:citizen_service_platform/features/splash/cubit/splash_cubit.dart';
@@ -25,6 +27,7 @@ Future<void> setupGetIt() async {
     MainBottomNavRepo(getIt<ApiService>()),
   );
   getIt.registerSingleton<MyRequestsRepo>(MyRequestsRepo(getIt<ApiService>()));
+  getIt.registerSingleton<MenuRepo>(MenuRepo(getIt<ApiService>()));
   //^----------------- Cubits ---------------------------------
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepo>()));
   getIt.registerFactory<SplashCubit>(() => SplashCubit(getIt<SplashRepo>()));
@@ -35,6 +38,7 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<MyRequestsCubit>(
     () => MyRequestsCubit(getIt<MyRequestsRepo>()),
   );
+  getIt.registerFactory<MenuCubit>(() => MenuCubit(getIt<MenuRepo>()));
   //=========home=============================================
   //registerFactory ==> for more than once use
   // getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));

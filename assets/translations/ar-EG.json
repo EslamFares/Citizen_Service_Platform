@@ -91,5 +91,9 @@
   "fingerprint": "البصمة ",
   "operationCancelled": "تم الغاء العملية",
   "youCanLoginWithCredentials": "يمكنك تسجيل الدخول باستخدام البيانات الشخصية",
-  "loginFailed": "فشل تسجيل الدخول"
+  "loginFailed": "فشل تسجيل الدخول",
+  "logout": "تسجيل الخروج",
+  "areYouSure": "هل انت متاكد",
+  "cancel": "الغاء",
+  "ok": "حسنا"
 }

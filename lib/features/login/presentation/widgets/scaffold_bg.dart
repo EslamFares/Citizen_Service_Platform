@@ -5,13 +5,16 @@ import 'package:flutter/material.dart';
 
 class ScaffoldBg extends StatelessWidget {
   final Widget body;
-
-  final void Function()? onPressedAppBarLeading;
+  final String? bg;
+  final bool safeAreaTop;
+  final bool safeAreaBottom;
 
   const ScaffoldBg({
     super.key,
     required this.body,
-    this.onPressedAppBarLeading,
+    this.bg,
+    this.safeAreaTop = false,
+    this.safeAreaBottom = false,
   });
 
   @override
@@ -27,13 +30,15 @@ class ScaffoldBg extends StatelessWidget {
           children: [
             Positioned.fill(
               child: Image.asset(
-                Assets.imgLoginBg,
+                bg ?? Assets.imgLoginBg,
                 fit: BoxFit.fill,
                 width: context.width,
                 height: context.height,
               ),
             ),
             SafeArea(
+              top: safeAreaTop,
+              bottom: safeAreaBottom,
               child: Scaffold(
                 //stop keyboard from overlapping
                 // resizeToAvoidBottomInset: false,

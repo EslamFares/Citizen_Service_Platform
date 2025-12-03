@@ -91,5 +91,9 @@
   "fingerprint": "Fingerprint",
   "operationCancelled": "Operation cancelled",
   "youCanLoginWithCredentials": "You can login with credentials",
-  "loginFailed": "Login failed"
+  "loginFailed": "Login failed",
+  "logout": "Logout",
+  "areYouSure": "Are you sure",
+  "cancel": "Cancel",
+  "ok": "OK"
 }

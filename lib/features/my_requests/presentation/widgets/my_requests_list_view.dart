@@ -21,11 +21,7 @@ class MyRequestsListView extends StatelessWidget {
         MyRequestsCubit cubit = MyRequestsCubit.get(context);
         List<RequestsItem> requestsList = cubit.requestsModel?.data ?? [];
         return Padding(
-          padding: EdgeInsets.only(
-            left: AppSizes.sPaddingHorizontalWidth,
-            right: AppSizes.sPaddingHorizontalWidth,
-            // top: 70.h,
-          ),
+          padding: AppSizes.sPaddingH,
           child: SingleChildScrollView(
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,

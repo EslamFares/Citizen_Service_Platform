@@ -96,5 +96,9 @@ abstract class  LocaleKeys {
   static const operationCancelled = 'operationCancelled';
   static const youCanLoginWithCredentials = 'youCanLoginWithCredentials';
   static const loginFailed = 'loginFailed';
+  static const logout = 'logout';
+  static const areYouSure = 'areYouSure';
+  static const cancel = 'cancel';
+  static const ok = 'ok';
 
 }

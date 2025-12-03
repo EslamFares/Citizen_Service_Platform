@@ -1,14 +1,11 @@
 import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
-import 'package:citizen_service_platform/core/router/app_routers_name.dart';
-import 'package:citizen_service_platform/core/shared_widgets/app_show_dialog.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/features/home/presentation/widgets/home_app_bar_action_button.dart';
 import 'package:citizen_service_platform/features/login/data/model/user_helper.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class HomeAppBar extends StatelessWidget {
   const HomeAppBar({super.key});
@@ -49,17 +46,7 @@ class HomeAppBar extends StatelessWidget {
           children: [
             HomeAppBarActionButton(
               imgPath: Assets.iconsHomeNotification,
-              onPressed: () {
-                iosShowDialog(
-                  context: context,
-                  title: "logout",
-                  subTitle: "are you sure",
-                  onConfirm: () {
-                    UserHelper.clear();
-                    context.go(AppRoutersName.loginScreen);
-                  },
-                );
-              },
+              onPressed: () {},
             ),
             HomeAppBarActionButton(
               imgPath: Assets.iconsHomeSearch,
