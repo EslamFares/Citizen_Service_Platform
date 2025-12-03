@@ -20,8 +20,8 @@ final GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
 abstract class AppRouters {
   static final router = GoRouter(
-    initialLocation: AppRoutersName.signUpScreen,
-    // initialLocation: AppRoutersName.init,
+    // initialLocation: AppRoutersName.signUpScreen,
+    initialLocation: AppRoutersName.init,
     navigatorKey: navigatorKey,
     routes: [
       //~======= dafault ex ==================
