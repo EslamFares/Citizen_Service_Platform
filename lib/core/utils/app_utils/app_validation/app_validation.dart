@@ -70,9 +70,11 @@ abstract class AppValidator {
     }
   }
 
-  static String? isNumInt(String? value) {
+  static String? isNumInt(String? value, {int length = 14}) {
     if (value == null || value.isEmpty) {
       return "required".tr();
+    } else if (value.length != length) {
+      return "enterCorrectNum".tr();
     } else if (!isInteger(value)) {
       return "enterCorrectNum".tr();
     } else {
@@ -112,7 +114,7 @@ abstract class AppValidator {
     return urlRegExp.hasMatch(link);
   }
 
-  static String? password(String? value, {int passwordLength = 6}) {
+  static String? password(String? value, {int passwordLength = 8}) {
     if (value == null || value.isEmpty) {
       return "pleaseEnterYourPassword".tr();
     } else if (value.length < passwordLength) {

@@ -1,6 +1,11 @@
+import 'package:citizen_service_platform/const/locale_keys.g.dart';
+import 'package:citizen_service_platform/core/cash/secure_storage_helper.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_consts.dart';
+import 'package:citizen_service_platform/core/utils/extentions/string_extensions.dart';
 import 'package:citizen_service_platform/core/utils/log/logger.dart';
-import 'package:citizen_service_platform/features/login/data/model/login_model.dart';
-import 'package:citizen_service_platform/features/login/data/model/user_helper.dart';
+import 'package:citizen_service_platform/features/login/data/funcs/ask_biometric_auth.dart';
+import 'package:citizen_service_platform/features/login/data/funcs/save_user_data_after_login.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -11,8 +16,7 @@ part 'login_state.dart';
 class LoginCubit extends Cubit<LoginState> {
   final LoginRepo _loginRepo;
 
-  LoginCubit(this._loginRepo)
-    : super(const LoginState(status: LoginStatus.initial));
+  LoginCubit(this._loginRepo) : super(LoginInitial());
   static LoginCubit get(BuildContext context) => BlocProvider.of(context);
   //===========================================
   @override
@@ -22,41 +26,66 @@ class LoginCubit extends Cubit<LoginState> {
 
   //===========================================
   final formKey = GlobalKey<FormState>();
-  TextEditingController emailController = TextEditingController();
+  TextEditingController nationalId = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   //===========================================
   Future<void> init() async {}
 
   //===========================================
-  Future<void> login() async {
-    emit(state.copyWith(status: LoginStatus.loading));
+  Future<void> loginWithBiometric() async {
+    emit(LoginWithBiometricLoading());
+    bool isAuth = await askBiometricAuth();
+    if (!isAuth) {
+      emit(LoginWithBiometricError(LocaleKeys.operationCancelled.tr()));
+      return;
+    }
+    int? nationalId = await SecureStorageHelper.readInt(AppConst.kNationalId);
+    String? password = await SecureStorageHelper.read(AppConst.kPassword);
+    if (nationalId == null || password.isNullOrEmpty) {
+      emit(
+        LoginWithBiometricError(
+          "${LocaleKeys.loginFailed.tr()}. ${LocaleKeys.youCanLoginWithCredentials.tr()}",
+        ),
+      );
+      return;
+    } else {
+      await login(nationalId: nationalId, password: password!);
+    }
+  }
+
+  //===========================================
+  Future<void> login({
+    required int nationalId,
+    required String password,
+  }) async {
+    emit(LoginLoading());
     try {
       final res = await _loginRepo.login(
-        email: emailController.text,
-        password: passwordController.text,
+        nationalId: nationalId,
+        password: password,
       );
       res.fold(
         (errorMsg) {
-          emit(
-            state.copyWith(status: LoginStatus.error, errorMessage: errorMsg),
-          );
+          emit(LoginError(errorMsg));
         },
         (user) async {
-          await UserHelper.setUser(user);
-          emit(state.copyWith(status: LoginStatus.success, userModel: user));
+          await saveUserDataAfterLogin(
+            userModel: user,
+            nationalId: nationalId,
+            password: password,
+          );
+          emit(LoginSuccess());
         },
       );
     } catch (e) {
       logger.e("Error login $e");
-      emit(
-        state.copyWith(status: LoginStatus.error, errorMessage: e.toString()),
-      );
+      emit(LoginError(LocaleKeys.anErrorOccurred.tr()));
     }
   }
 
   @override
   Future<void> close() {
-    emailController.dispose();
+    nationalId.dispose();
     passwordController.dispose();
     return super.close();
   }

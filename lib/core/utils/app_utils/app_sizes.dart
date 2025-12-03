@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 abstract class AppSizes {
-static  double get mainBottomNavHight =>
+  static Duration get durDummyLoading => Duration(milliseconds: 300);
+  static double get mainBottomNavHight =>
       (
           //MediaQuery.of(context).padding.bottom
           25 + kBottomNavigationBarHeight)

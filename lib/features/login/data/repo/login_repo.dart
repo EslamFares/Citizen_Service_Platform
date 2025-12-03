@@ -9,7 +9,7 @@ class LoginRepo {
   LoginRepo(this.api);
   //=====================
   Future<Either<String, UserModel>> login({
-    required String email,
+    required int nationalId,
     required String password,
   }) async {
     try {

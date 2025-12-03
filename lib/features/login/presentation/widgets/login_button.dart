@@ -17,28 +17,37 @@ class LoginButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocConsumer<LoginCubit, LoginState>(
       buildWhen: (previous, current) =>
-          current.isLoading ||
-          current.isSuccess ||
-          current.isError ||
-          current.isChange,
+          current is LoginLoading ||
+          current is LoginSuccess ||
+          current is LoginError,
       listener: (context, state) {
-        if (state.isSuccess) {
+        if (state is LoginSuccess) {
           GoRouter.of(
             context,
           ).pushReplacement(AppRoutersName.mainBottomNavScreen);
-        } else if (state.isError) {
-          AppToast.toast(state.errorMessage ?? "error");
+        } else if (state is LoginError) {
+          AppToast.toastError(state.errorMessage);
+        }
+        if (state is LoginWithBiometricError) {
+          AppToast.toastificationShow(
+            state.errorMessage,
+            leadingIcon: Icons.fingerprint,
+          );
         }
       },
       builder: (context, state) {
-        LoginCubit loginCubit = LoginCubit.get(context);
+        LoginCubit cubit = LoginCubit.get(context);
         return AppButton(
-          isLoading: state.isLoading,
+          isLoading:
+              state is LoginLoading || state is LoginWithBiometricLoading,
           // isActive: state.isActive,
           background: AppColors.primaryColor,
           onPressed: () {
-            if (loginCubit.formKey.currentState!.validate()) {
-              LoginCubit.get(context).login();
+            if (cubit.formKey.currentState!.validate()) {
+              cubit.login(
+                nationalId: int.parse(cubit.nationalId.text),
+                password: cubit.passwordController.text,
+              );
             }
           },
           text: LocaleKeys.login.tr(),

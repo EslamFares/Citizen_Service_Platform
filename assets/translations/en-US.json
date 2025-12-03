@@ -77,5 +77,19 @@
   "menu": "Menu",
   "currentRequests": "Current Requests",
   "underReview": "Under Review",
-  "requestCompleted": "Request Completed"
+  "requestCompleted": "Request Completed",
+  "beheiraGovPlatform": "Beheira Governorate Services Platform",
+  "nationalId": "National ID",
+  "createNewAccount": "Create New Account",
+  "password": "Password",
+  "enterCorrectNum": "Please enter correct number",
+  "forgetPassword": "Forget Password",
+  "enterYourEmail": "Enter Your Email",
+  "send": "Send",
+  "resetPassword": "Reset Password",
+  "enterNewPassword": "Enter New Password",
+  "fingerprint": "Fingerprint",
+  "operationCancelled": "Operation cancelled",
+  "youCanLoginWithCredentials": "You can login with credentials",
+  "loginFailed": "Login failed"
 }

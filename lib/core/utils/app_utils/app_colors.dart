@@ -37,7 +37,7 @@ abstract class AppColors {
   static const Color amber = Color(0xFFFFC107);
   static Color textFormfillcolor = const Color(0xFFFDFDFD);
   static Color bodercolorTextFormDisable = Colors.grey.withValues(alpha: .5);
-  static Color bodercolorTextFormEnable = Colors.grey.withValues(alpha: .5);
+  static Color bodercolorTextFormEnable = Color(0xffE5DACE);
   static Color bodercolorTextFormFoucs = primaryColor;
   static Color bodercolorTextFormFoucErrors = primaryColor;
   //==================Color================

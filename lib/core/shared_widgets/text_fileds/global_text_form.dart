@@ -22,6 +22,7 @@ class GlobalTextForm extends StatefulWidget {
   final bool? isReadOnly;
   final TextInputType? keyBordType;
   final int? maxLengthLetter;
+  final bool maxLengthLetterShowNum;
   final int? maxLines;
   final Function(String)? onchange;
   final Function(String)? onFieldSubmitted;
@@ -72,6 +73,7 @@ class GlobalTextForm extends StatefulWidget {
     this.isReadOnly,
     this.keyBordType,
     this.maxLengthLetter,
+    this.maxLengthLetterShowNum = true,
     this.maxLines,
     this.enabledBorderColor,
     this.labelStyle,
@@ -153,6 +155,9 @@ class _GlobalTextFormState extends State<GlobalTextForm> {
         decoration: InputDecoration(
           fillColor: widget.fillColor ?? AppColors.textFormfillcolor,
           filled: true, //fillColor != null ? true : false,
+          helperStyle: widget.maxLengthLetterShowNum == false
+              ? TextStyle(fontSize: 0)
+              : null,
           prefixIcon: widget.icon,
           suffixIcon: widget.isPassShowSuffix
               ? IconButton(

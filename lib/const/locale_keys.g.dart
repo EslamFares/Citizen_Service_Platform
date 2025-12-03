@@ -82,5 +82,19 @@ abstract class  LocaleKeys {
   static const currentRequests = 'currentRequests';
   static const underReview = 'underReview';
   static const requestCompleted = 'requestCompleted';
+  static const beheiraGovPlatform = 'beheiraGovPlatform';
+  static const nationalId = 'nationalId';
+  static const createNewAccount = 'createNewAccount';
+  static const password = 'password';
+  static const enterCorrectNum = 'enterCorrectNum';
+  static const forgetPassword = 'forgetPassword';
+  static const enterYourEmail = 'enterYourEmail';
+  static const send = 'send';
+  static const resetPassword = 'resetPassword';
+  static const enterNewPassword = 'enterNewPassword';
+  static const fingerprint = 'fingerprint';
+  static const operationCancelled = 'operationCancelled';
+  static const youCanLoginWithCredentials = 'youCanLoginWithCredentials';
+  static const loginFailed = 'loginFailed';
 
 }

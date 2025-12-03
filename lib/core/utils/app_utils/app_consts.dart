@@ -7,7 +7,9 @@ abstract class AppConst {
   static const String kUser = 'user';
   static const String kCheckSubscribeToTopicAllFB =
       'kCheckSubscribeToTopicAllFB';
-  static const String phoneSaKey = "+966";
+  static const String kNationalId = "kNationalId";
+  static const String kPassword = "kPassword";
+
   //===============
   static const String fontFamilyCairo = "cairo";
 }

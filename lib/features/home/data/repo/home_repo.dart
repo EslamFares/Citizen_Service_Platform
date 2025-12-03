@@ -1,4 +1,5 @@
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/features/home/data/dummy_data/dunmmy_services_model.dart';
 import 'package:citizen_service_platform/features/home/data/model/home_model.dart';
 import 'package:dartz/dartz.dart';
@@ -13,7 +14,7 @@ class HomeRepo {
     try {
       // final res = await api.get(path: 'users');
       // debugPrint('res: $res');
-      await Future.delayed(const Duration(seconds: 2));
+      await Future.delayed(AppSizes.durDummyLoading);
       ServicesModel servicesModel = dummyServicesModel;
       // throw "error";
       return Right(servicesModel);

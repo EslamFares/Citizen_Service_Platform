@@ -1,9 +1,11 @@
+import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/shared_widgets/text_fileds/global_text_form.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_validation/app_validation.dart';
-import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/features/login/cubit/login_cubit.dart';
+import 'package:citizen_service_platform/features/login/presentation/widgets/text_form_title.dart';
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class LoginForm extends StatelessWidget {
   const LoginForm({super.key});
@@ -14,17 +16,25 @@ class LoginForm extends StatelessWidget {
     return Form(
       key: loginCubit.formKey,
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          gapVertical(50.h),
-          GlobalTextForm(
-            controller: loginCubit.emailController,
-
-            hintText: "mail@mail.com",
-            validate: AppValidator.email,
+          Text(
+            LocaleKeys.login.tr(),
+            style: AppTextStyles.font20w700PrimaryColor,
           ),
+
+          TextFormTitle(LocaleKeys.nationalId.tr()),
+          GlobalTextForm(
+            controller: loginCubit.nationalId,
+            maxLengthLetter: 14,
+            maxLengthLetterShowNum: false,
+            hintText: "0" * 14,
+            validate: AppValidator.isNumInt,
+          ),
+          TextFormTitle(LocaleKeys.password.tr()),
           GlobalTextForm(
             controller: loginCubit.passwordController,
-            hintText: "******",
+            hintText: "*" * 8,
             isPassShowSuffix: true,
             validate: (value) => AppValidator.password(value),
           ),

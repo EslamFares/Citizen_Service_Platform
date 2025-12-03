@@ -19,13 +19,14 @@ class AppButtonBorder extends StatelessWidget {
   final bool useHeight;
   final EdgeInsetsGeometry? margin;
   final EdgeInsetsGeometry? padding;
+  final bool isActive;
+  final Widget? child;
   const AppButtonBorder({
     super.key,
     this.onPressed,
     required this.text,
     this.isLoading = false,
     this.loadingColor,
-    this.background,
     this.borderColor,
     this.borderWidth,
     this.style,
@@ -34,12 +35,16 @@ class AppButtonBorder extends StatelessWidget {
     this.height,
     this.margin,
     this.padding,
+    this.background,
+    this.child,
     this.useHeight = true,
+    this.isActive = true,
   });
 
   @override
   Widget build(BuildContext context) {
     return AppButton(
+      isActive: isActive,
       margin: margin,
       padding: padding,
       isLoading: isLoading,
@@ -47,6 +52,7 @@ class AppButtonBorder extends StatelessWidget {
       loadingColor: loadingColor,
       text: "",
       background: background ?? AppColors.white,
+
       width: width,
       useWidth: useWidth,
       height: height,
@@ -55,14 +61,16 @@ class AppButtonBorder extends StatelessWidget {
         color: borderColor ?? AppColors.strockColor,
         width: borderWidth ?? 1.w,
       ),
-      child: Align(
-        alignment: AlignmentDirectional.center,
-        child: Text(
-          text,
-          textAlign: TextAlign.start,
-          style: style ?? AppTextStyles.font14W600Black,
-        ),
-      ),
+      child:
+          child ??
+          Align(
+            alignment: AlignmentDirectional.center,
+            child: Text(
+              text,
+              textAlign: TextAlign.start,
+              style: style ?? AppTextStyles.font14W600Black,
+            ),
+          ),
     );
   }
 }

@@ -77,5 +77,19 @@
   "menu": "القائمة",
   "currentRequests": "طلبات جارية",
   "underReview": "جاري المراجعة",
-  "requestCompleted": "تم الطلب"
+  "requestCompleted": "تم الطلب",
+  "beheiraGovPlatform": "منصة خدمات محافظة البحيرة",
+  "nationalId": "الرقم القومي",
+  "createNewAccount": "انشاء حساب جديد",
+  "password": "كلمة المرور",
+  "enterCorrectNum": "ادخل رقم صحيح",
+  "forgetPassword": "نسيت كلمة المرور",
+  "enterYourEmail": "ادخل البريد الالكترونى",
+  "send": "ارسال",
+  "resetPassword": "اعادة تعيين كلمة المرور",
+  "enterNewPassword": "ادخل كلمة المرور الجديدة",
+  "fingerprint": "البصمة ",
+  "operationCancelled": "تم الغاء العملية",
+  "youCanLoginWithCredentials": "يمكنك تسجيل الدخول باستخدام البيانات الشخصية",
+  "loginFailed": "فشل تسجيل الدخول"
 }
