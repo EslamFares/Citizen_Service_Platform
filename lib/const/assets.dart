@@ -97,5 +97,9 @@ class Assets {
   /// Assets for imgServices9
   /// assets/img/services/9.png
   static const String imgServices9 = "assets/img/services/9.png";
+
+  /// Assets for imgSplashBg
+  /// assets/img/splash_bg.png
+  static const String imgSplashBg = "assets/img/splash_bg.png";
 }
 

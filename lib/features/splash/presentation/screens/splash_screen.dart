@@ -4,10 +4,8 @@ import 'package:citizen_service_platform/core/dependency_injection/get_it_setup.
 import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_buttons/app_button.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_loader.dart';
-import 'package:citizen_service_platform/core/utils/app_utils/app_colors.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_toast.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
-import 'package:citizen_service_platform/features/splash/data/func/is_login_nav_from_splash.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -28,14 +26,14 @@ class SplashScreen extends StatelessWidget {
         listener: (context, state) {
           SplashCubit cubit = SplashCubit.get(context);
           if (state is SplshGetAppVersionApiSuccess) {
-            if (state.checkIsAppVersionUptodated) {
-              isLoginNavFromSplash(context);
-            } else {
-              context.push(
-                AppRoutersName.updateAppScreen,
-                extra: cubit.appVersionModelApi,
-              );
-            }
+            // if (state.checkIsAppVersionUptodated) {
+            //   isLoginNavFromSplash(context);
+            // } else {
+            //   context.push(
+            //     AppRoutersName.updateAppScreen,
+            //     extra: cubit.appVersionModelApi,
+            //   );
+            // }
           } else if (state is SplshGetAppVersionApiError) {
             AppToast.toastificationShow(
               state.error,
@@ -61,11 +59,7 @@ class SplashScreen extends StatelessWidget {
                 children: [
                   //!------- background
                   Positioned.fill(
-                    child: Container(
-                      width: context.width,
-                      height: context.height,
-                      color: AppColors.primaryColor,
-                    ),
+                    child: Image.asset(Assets.imgSplashBg, fit: BoxFit.fill),
                   ),
                   //!------- logo
                   Center(
