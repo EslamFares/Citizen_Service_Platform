@@ -53,7 +53,6 @@ class RequestsItem extends Equatable {
   final int? code;
   final String? time;
   final String? status;
-  final String? payStatus;
   final bool? payDone;
   const RequestsItem({
     this.id,
@@ -61,7 +60,6 @@ class RequestsItem extends Equatable {
     this.code,
     this.time,
     this.status,
-    this.payStatus,
     this.payDone,
   });
 
@@ -80,7 +78,6 @@ class RequestsItem extends Equatable {
       code: code ?? this.code,
       time: time ?? this.time,
       status: status ?? this.status,
-      payStatus: payStatus ?? this.payStatus,
       payDone: payDone ?? this.payDone,
     );
   }
@@ -92,7 +89,6 @@ class RequestsItem extends Equatable {
       'code': code,
       'time': time,
       'status': status,
-      'payStatus': payStatus,
       'payDone': payDone,
     };
   }
@@ -104,7 +100,6 @@ class RequestsItem extends Equatable {
       code: map['code'] != null ? map['code'] as int : null,
       time: map['time'] != null ? map['time'] as String : null,
       status: map['status'] != null ? map['status'] as String : null,
-      payStatus: map['payStatus'] != null ? map['payStatus'] as String : null,
       payDone: map['payDone'] != null ? map['payDone'] as bool : null,
     );
   }
@@ -119,6 +114,6 @@ class RequestsItem extends Equatable {
 
   @override
   List<Object?> get props {
-    return [id, title, code, time, status, payStatus, payDone];
+    return [id, title, code, time, status, payDone];
   }
 }

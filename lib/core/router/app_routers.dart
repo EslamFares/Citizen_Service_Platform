@@ -9,6 +9,8 @@ import 'package:citizen_service_platform/features/send_service/presentation/scre
 import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_upload_files_screen.dart';
 import 'package:citizen_service_platform/features/service_categories/data/model/service_categories_screen_args.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/screens/service_categories_screen.dart';
+import 'package:citizen_service_platform/features/service_pay/data/model/service_pay_screen_args.dart';
+import 'package:citizen_service_platform/features/service_pay/presentation/screens/service_pay_screen.dart';
 import 'package:citizen_service_platform/features/sign_up/cubit/sign_up_cubit.dart';
 import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_password_screen.dart';
 import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_screen.dart';
@@ -103,6 +105,7 @@ abstract class AppRouters {
           return SendServiceScreen(args: state.extra as SendServiceScreenArgs);
         },
       ),
+
       GoRoute(
         path: AppRoutersName.sendServiceUploadFilesScreen,
         builder: (context, state) {
@@ -113,6 +116,15 @@ abstract class AppRouters {
             value: state.extra as SendServiceCubit,
             child: SendServiceUploadFilesScreen(),
           );
+        },
+      ),
+      GoRoute(
+        path: AppRoutersName.servicePayScreen,
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! ServicePayScreenArgs) {
+            navException("ServicePayScreenArgs");
+          }
+          return ServicePayScreen(args: state.extra as ServicePayScreenArgs);
         },
       ),
     ],

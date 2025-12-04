@@ -120,5 +120,13 @@ abstract class  LocaleKeys {
   static const pleaseAttachDocuments = 'pleaseAttachDocuments';
   static const followUp = 'followUp';
   static const delete = 'delete';
+  static const noAttachDocumentsRequired = 'noAttachDocumentsRequired';
+  static const serviceFees = 'serviceFees';
+  static const egyptianPound = 'egyptianPound';
+  static const requestConfirmedAfterPayment = 'requestConfirmedAfterPayment';
+  static const pay = 'pay';
+  static const later = 'later';
+  static const feesPaid = 'feesPaid';
+  static const feesNotPaid = 'feesNotPaid';
 
 }

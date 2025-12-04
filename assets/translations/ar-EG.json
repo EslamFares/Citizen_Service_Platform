@@ -115,5 +115,13 @@
   "requestService": "طلب الخدمة",
   "pleaseAttachDocuments": "برجاء ارفاق المستندات المطلوبة",
   "followUp": "متابعة",
-  "delete": "حذف"
+  "delete": "حذف",
+  "noAttachDocumentsRequired": "لا يوجد مستندات مطلوبة",
+  "serviceFees": "رسوم الخدمة",
+  "egyptianPound": "جنيه مصري",
+  "requestConfirmedAfterPayment": "سيتم تأكيد الطلب فور دفع رسوم الخدمة",
+  "pay": "دفع",
+  "later": "لاحقًا",
+  "feesPaid": "تم دفع الرسوم",
+  "feesNotPaid": "لم يتم دفع الرسوم"
 }

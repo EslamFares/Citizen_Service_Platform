@@ -50,6 +50,10 @@ class Assets {
   /// assets/icons/requests/check.png
   static const String iconsRequestsCheck = "assets/icons/requests/check.png";
 
+  /// Assets for iconsRequestsNotPay
+  /// assets/icons/requests/not_pay.png
+  static const String iconsRequestsNotPay = "assets/icons/requests/not_pay.png";
+
   /// Assets for iconsRequestsTime
   /// assets/icons/requests/time.png
   static const String iconsRequestsTime = "assets/icons/requests/time.png";
@@ -125,5 +129,9 @@ class Assets {
   /// Assets for imgSplashBg
   /// assets/img/splash_bg.png
   static const String imgSplashBg = "assets/img/splash_bg.png";
+
+  /// Assets for imgVisaPay
+  /// assets/img/visa_pay.png
+  static const String imgVisaPay = "assets/img/visa_pay.png";
 }
 

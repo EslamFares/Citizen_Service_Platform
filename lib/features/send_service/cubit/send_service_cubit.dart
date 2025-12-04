@@ -137,8 +137,8 @@ class SendServiceCubit extends Cubit<SendServiceState> {
   Set<int> unValidatedFiles = {};
   bool isFileValidated(int? id) => !unValidatedFiles.contains(id);
   checkValidateAllFilesDone() {
-    List<FilesRequiredModel> filesRequired =
-        serviceRequirementModel?.filesRequired ?? [];
+    List<ServiceAttachmentType> filesRequired =
+        serviceRequirementModel?.data?.serviceAttachmentTypes ?? [];
     if (filesRequired.isEmpty) {
       return true;
     } else {

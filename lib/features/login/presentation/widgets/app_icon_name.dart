@@ -22,7 +22,7 @@ class AppIconName extends StatelessWidget {
         ),
         Text(
           LocaleKeys.beheiraGovPlatform.tr(),
-          style: AppTextStyles.font14W700,
+          style: AppTextStyles.font14w700,
         ),
       ],
     );

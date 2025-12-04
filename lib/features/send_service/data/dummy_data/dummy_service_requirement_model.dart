@@ -1,20 +1,28 @@
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 
 ServiceRequirementModel dummyServiceRequirementModel = ServiceRequirementModel(
-  id: '1',
-  title: 'اصدار ترخيص بناء',
-  description: serviceDescription,
-  requiredDocuments: requiredDocuments,
-  applicationSteps: applicationSteps,
-  filesRequired: [],
-  //  List.generate(
-  //   requiredDocuments.length,
-  //   (index) => FilesRequiredModel(
-  //     id: index,
-  //     name: requiredDocuments[index],
-  //     type: 'pdf',
-  //   ),
-  // ),
+  isSuccess: true,
+  data: dummyServiceRequirementModelData(),
+);
+ServiceRequirementModelData dummyServiceRequirementModelData() {
+  dummyServiceAttachmentTypesList.shuffle();
+  return ServiceRequirementModelData(
+    id: 1,
+    branchId: 1,
+    categoryId: 1,
+    serviceAmount: 2000,
+    serviceFee: 20,
+    tax: 10,
+    name: 'اصدار ترخيص بناء',
+    description: serviceDescription,
+    applicationSteps: applicationSteps,
+    serviceAttachmentTypes: dummyServiceAttachmentTypesList.take(2).toList(),
+  );
+}
+
+List<ServiceAttachmentType> dummyServiceAttachmentTypesList = List.generate(
+  requiredDocuments.length,
+  (index) => ServiceAttachmentType(id: index, name: requiredDocuments[index]),
 );
 String serviceDescription = """
 تتيح هذه الخدمة للمواطنين والمقيمين تقديم طلب استخراج التراخيص الصادرة بسهولة عبر المنصة سواء كانت تراخيص مهنية، تجارية، أو شخصية. تهدف الخدمة إلى تبسيط الإجراءات تقليل أوقات الانتظار، وتمكين المستفيد من متابعة حالة الطلب بشكل لحظي حتى إصدار الترخيص النهائي.

@@ -1,133 +1,145 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+class ServiceRequirementModel {
+  final bool? isSuccess;
+  final ServiceRequirementModelData? data;
 
-class ServiceRequirementModel extends Equatable {
-  final String? id;
-  final String? title;
-  final String? description;
-  final List<String>? requiredDocuments;
-  final String? applicationSteps;
-  final List<FilesRequiredModel>? filesRequired;
-  const ServiceRequirementModel({
-    this.id,
-    this.title,
-    this.description,
-    this.requiredDocuments,
-    this.applicationSteps,
-    this.filesRequired,
-  });
+  ServiceRequirementModel({this.isSuccess, this.data});
 
   ServiceRequirementModel copyWith({
-    String? id,
-    String? title,
-    String? description,
-    List<String>? requiredDocuments,
-    String? applicationSteps,
-    List<FilesRequiredModel>? filesRequired,
-  }) {
-    return ServiceRequirementModel(
-      id: id ?? this.id,
-      title: title ?? this.title,
-      description: description ?? this.description,
-      requiredDocuments: requiredDocuments ?? this.requiredDocuments,
-      applicationSteps: applicationSteps ?? this.applicationSteps,
-      filesRequired: filesRequired ?? this.filesRequired,
-    );
-  }
+    bool? isSuccess,
+    ServiceRequirementModelData? data,
+  }) => ServiceRequirementModel(
+    isSuccess: isSuccess ?? this.isSuccess,
+    data: data ?? this.data,
+  );
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'title': title,
-      'description': description,
-      'requiredDocuments': requiredDocuments,
-      'applicationSteps': applicationSteps,
-      'filesRequired': filesRequired?.map((x) => x.toMap()).toList(),
-    };
-  }
-
-  factory ServiceRequirementModel.fromMap(Map<String, dynamic> map) {
-    return ServiceRequirementModel(
-      id: map['id'] != null ? map['id'] as String : null,
-      title: map['title'] != null ? map['title'] as String : null,
-      description: map['description'] != null
-          ? map['description'] as String
-          : null,
-      requiredDocuments: map['requiredDocuments'] != null
-          ? List<String>.from((map['requiredDocuments'] as List<String>))
-          : null,
-      applicationSteps: map['applicationSteps'] != null
-          ? map['applicationSteps'] as String
-          : null,
-      filesRequired: map['filesRequired'] != null
-          ? List<FilesRequiredModel>.from(
-              (map['filesRequired'] as List<int>).map<FilesRequiredModel?>(
-                (x) => FilesRequiredModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-    );
-  }
+  factory ServiceRequirementModel.fromJson(String str) =>
+      ServiceRequirementModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ServiceRequirementModel.fromJson(String source) =>
-      ServiceRequirementModel.fromMap(
-        json.decode(source) as Map<String, dynamic>,
+  factory ServiceRequirementModel.fromMap(Map<String, dynamic> json) =>
+      ServiceRequirementModel(
+        isSuccess: json["isSuccess"],
+        data: json["data"] == null
+            ? null
+            : ServiceRequirementModelData.fromMap(json["data"]),
       );
 
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object?> get props {
-    return [
-      id,
-      title,
-      description,
-      requiredDocuments,
-      applicationSteps,
-      filesRequired,
-    ];
-  }
+  Map<String, dynamic> toMap() => {
+    "isSuccess": isSuccess,
+    "data": data?.toMap(),
+  };
 }
 
-class FilesRequiredModel extends Equatable {
+class ServiceRequirementModelData {
   final int? id;
   final String? name;
-  final String? type;
-  const FilesRequiredModel({this.id, this.name, this.type});
+  final String? description;
+  final num? serviceAmount;
+  final num? serviceFee;
+  final num? tax;
+  final String? applicationSteps;
+  final int? branchId;
+  final int? categoryId;
+  final List<ServiceAttachmentType>? serviceAttachmentTypes;
 
-  FilesRequiredModel copyWith({int? id, String? name, String? type}) {
-    return FilesRequiredModel(
-      id: id ?? this.id,
-      name: name ?? this.name,
-      type: type ?? this.type,
-    );
-  }
+  ServiceRequirementModelData({
+    this.id,
+    this.name,
+    this.description,
+    this.serviceAmount,
+    this.serviceFee,
+    this.tax,
+    this.applicationSteps,
+    this.branchId,
+    this.categoryId,
+    this.serviceAttachmentTypes,
+  });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name, 'type': type};
-  }
+  ServiceRequirementModelData copyWith({
+    int? id,
+    String? name,
+    String? description,
+    int? serviceAmount,
+    int? serviceFee,
+    int? tax,
+    String? applicationSteps,
+    int? branchId,
+    int? categoryId,
+    List<ServiceAttachmentType>? serviceAttachmentTypes,
+  }) => ServiceRequirementModelData(
+    id: id ?? this.id,
+    name: name ?? this.name,
+    description: description ?? this.description,
+    serviceAmount: serviceAmount ?? this.serviceAmount,
+    serviceFee: serviceFee ?? this.serviceFee,
+    tax: tax ?? this.tax,
+    applicationSteps: applicationSteps ?? this.applicationSteps,
+    branchId: branchId ?? this.branchId,
+    categoryId: categoryId ?? this.categoryId,
+    serviceAttachmentTypes:
+        serviceAttachmentTypes ?? this.serviceAttachmentTypes,
+  );
 
-  factory FilesRequiredModel.fromMap(Map<String, dynamic> map) {
-    return FilesRequiredModel(
-      id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'] != null ? map['name'] as String : null,
-      type: map['type'] != null ? map['type'] as String : null,
-    );
-  }
+  factory ServiceRequirementModelData.fromJson(String str) =>
+      ServiceRequirementModelData.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory FilesRequiredModel.fromJson(String source) =>
-      FilesRequiredModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ServiceRequirementModelData.fromMap(Map<String, dynamic> json) =>
+      ServiceRequirementModelData(
+        id: json["id"],
+        name: json["name"],
+        description: json["description"],
+        serviceAmount: json["serviceAmount"],
+        serviceFee: json["serviceFee"],
+        tax: json["tax"],
+        applicationSteps: json["applicationSteps"],
+        branchId: json["branchId"],
+        categoryId: json["categoryId"],
+        serviceAttachmentTypes: json["serviceAttachmentTypes"] == null
+            ? []
+            : List<ServiceAttachmentType>.from(
+                json["serviceAttachmentTypes"]!.map(
+                  (x) => ServiceAttachmentType.fromMap(x),
+                ),
+              ),
+      );
 
-  @override
-  bool get stringify => true;
+  Map<String, dynamic> toMap() => {
+    "id": id,
+    "name": name,
+    "description": description,
+    "serviceAmount": serviceAmount,
+    "serviceFee": serviceFee,
+    "tax": tax,
+    "applicationSteps": applicationSteps,
+    "branchId": branchId,
+    "categoryId": categoryId,
+    "serviceAttachmentTypes": serviceAttachmentTypes == null
+        ? []
+        : List<dynamic>.from(serviceAttachmentTypes!.map((x) => x.toMap())),
+  };
+}
 
-  @override
-  List<Object?> get props => [id, name, type];
+class ServiceAttachmentType {
+  final int? id;
+  final String? name;
+
+  ServiceAttachmentType({this.id, this.name});
+
+  ServiceAttachmentType copyWith({int? id, String? name}) =>
+      ServiceAttachmentType(id: id ?? this.id, name: name ?? this.name);
+
+  factory ServiceAttachmentType.fromJson(String str) =>
+      ServiceAttachmentType.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ServiceAttachmentType.fromMap(Map<String, dynamic> json) =>
+      ServiceAttachmentType(id: json["id"], name: json["name"]);
+
+  Map<String, dynamic> toMap() => {"id": id, "name": name};
 }

@@ -1,19 +1,22 @@
 import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
+import 'package:citizen_service_platform/core/router/app_routers_name.dart';
+import 'package:citizen_service_platform/core/shared_widgets/app_error/app_error.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_show_dialog.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_toast.dart';
-import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/scaffold_bg.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_button_blur.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_upload_file_button.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/widgets/app_bar_trans.dart';
+import 'package:citizen_service_platform/features/service_pay/data/model/service_pay_screen_args.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class SendServiceUploadFilesScreen extends StatelessWidget {
   const SendServiceUploadFilesScreen({super.key});
@@ -38,7 +41,7 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
                     padding: EdgeInsets.only(top: 12.h, bottom: 24.h),
                     child: Text(
                       LocaleKeys.pleaseAttachDocuments.tr(),
-                      style: AppTextStyles.font14W700,
+                      style: AppTextStyles.font14w700,
                     ),
                   ),
                   Expanded(
@@ -46,8 +49,17 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
                       listener: (context, state) {},
                       builder: (context, state) {
                         SendServiceCubit cubit = SendServiceCubit.get(context);
-                        List<FilesRequiredModel> filesRequired =
-                            cubit.serviceRequirementModel?.filesRequired ?? [];
+                        List<ServiceAttachmentType> filesRequired =
+                            cubit
+                                .serviceRequirementModel
+                                ?.data
+                                ?.serviceAttachmentTypes ??
+                            [];
+                        if (filesRequired.isEmpty) {
+                          return AppError(
+                            text: LocaleKeys.noAttachDocumentsRequired.tr(),
+                          );
+                        }
                         return SingleChildScrollView(
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -94,8 +106,18 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
             title: LocaleKeys.followUp.tr(),
             onPressed: () {
               bool isValid = cubit.checkValidateAllFilesDone();
-              if (isValid) {
-                logPro.s(" isValid");
+              if (isValid && cubit.serviceRequirementModel?.data?.id != null) {
+                context.push(
+                  AppRoutersName.servicePayScreen,
+                  extra: ServicePayScreenArgs(
+                    serviceTax: cubit.serviceRequirementModel?.data?.tax,
+                    serviceId: cubit.serviceRequirementModel!.data!.id!,
+                    serviceFee: cubit.serviceRequirementModel?.data?.serviceFee,
+                    serviceAmount:
+                        cubit.serviceRequirementModel?.data?.serviceAmount,
+                    serviceName: cubit.serviceRequirementModel?.data?.name,
+                  ),
+                );
               } else {
                 AppToast.toastError(
                   LocaleKeys.pleaseAttachDocuments.tr(),

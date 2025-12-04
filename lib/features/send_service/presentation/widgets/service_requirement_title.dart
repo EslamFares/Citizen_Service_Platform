@@ -17,7 +17,7 @@ class ServiceRequirementTitle extends StatelessWidget {
   Widget build(BuildContext context) {
     return Padding(
       padding: padding ?? EdgeInsets.only(top: paddingTop ?? 24.h, bottom: 8.h),
-      child: Text(title, style: AppTextStyles.font14W700),
+      child: Text(title, style: AppTextStyles.font14w700),
     );
   }
 }

@@ -115,5 +115,13 @@
   "requestService": "Request Service",
   "pleaseAttachDocuments": "Please attach the required documents",
   "followUp": "Follow Up",
-  "delete": "Delete"
+  "delete": "Delete",
+  "noAttachDocumentsRequired": "No attach documents required",
+  "serviceFees": "Service Fees",
+  "egyptianPound": "Egyptian Pound",
+  "requestConfirmedAfterPayment": "The request will be confirmed once the service fees are paid",
+  "pay": "Pay",
+  "later": "Later",
+  "feesPaid": "Fees Paid",
+  "feesNotPaid": "Fees Not Paid"
 }

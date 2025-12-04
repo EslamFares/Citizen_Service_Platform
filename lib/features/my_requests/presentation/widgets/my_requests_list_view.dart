@@ -40,10 +40,11 @@ class MyRequestsListView extends StatelessWidget {
                       code: requestsList[i].code,
                       status: requestsList[i].status,
                       time: requestsList[i].time,
-                      payStatus: requestsList[i].payStatus,
+
                       payDone: requestsList[i].payDone,
                     ),
                   ),
+                AppSizes.mainBottomNavHight.gapH,
               ],
             ),
           ),

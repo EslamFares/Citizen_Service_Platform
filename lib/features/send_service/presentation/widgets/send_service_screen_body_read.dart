@@ -3,6 +3,7 @@ import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/string_extensions.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
+import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_button_blur.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_requirement_title.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -16,11 +17,11 @@ class SendServiceScreenBodyRead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SendServiceCubit cubit = SendServiceCubit.get(context);
-    String des = cubit.serviceRequirementModel?.description ?? "";
-    List<String> requiredDocuments =
-        cubit.serviceRequirementModel?.requiredDocuments ?? [];
+    String des = cubit.serviceRequirementModel?.data?.description ?? "";
+    List<ServiceAttachmentType> requiredDocuments =
+        cubit.serviceRequirementModel?.data?.serviceAttachmentTypes ?? [];
     String applicationSteps =
-        cubit.serviceRequirementModel?.applicationSteps ?? "";
+        cubit.serviceRequirementModel?.data?.applicationSteps ?? "";
 
     return Column(
       children: [
@@ -51,7 +52,7 @@ class SendServiceScreenBodyRead extends StatelessWidget {
                           Padding(
                             padding: EdgeInsets.only(bottom: 8.h),
                             child: Text(
-                              "${i + 1}. ${requiredDocuments[i]}",
+                              "${i + 1}. ${requiredDocuments[i].name}",
                               style: AppTextStyles.font12w500Black,
                             ),
                           ),

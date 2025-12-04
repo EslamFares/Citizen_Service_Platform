@@ -19,7 +19,7 @@ List<RequestsItem> dummyItems = List.generate(
         )
         .toString(),
     status: "قيد  التفيذ",
-    payStatus: 'تم دفع الرسوم',
+
     payDone: Random().nextBool(),
   ),
 );
