@@ -52,6 +52,7 @@ class HomeServicesListView extends StatelessWidget {
                 );
               },
             ),
+            50.gapH,
           ],
         ),
       ),

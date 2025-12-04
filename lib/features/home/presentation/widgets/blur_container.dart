@@ -27,7 +27,7 @@ class BlurContainer extends StatelessWidget {
         width: width,
         height: height,
         // is required be >1
-        borderRadius: borderRadius > 1 ? borderRadius : 1.1,
+        borderRadius: borderRadius > 2 ? borderRadius : 2.r,
         blur: blur,
         alignment: Alignment.center,
         border: 1.h,

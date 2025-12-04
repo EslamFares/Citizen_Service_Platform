@@ -108,5 +108,11 @@
   "agreeTo": "Agree to",
   "termsPrivacy": "Terms & Conditions and Privacy Policy",
   "services2": "Services",
-  "pleaseChooseService": "Please choose one of the following services"
+  "pleaseChooseService": "Please choose one of the following services",
+  "serviceDescription": "Service Description",
+  "requiredDocuments": "Required Documents",
+  "applicationSteps": "Application Steps",
+  "requestService": "Request Service",
+  "pleaseAttachDocuments": "Please attach the required documents",
+  "followUp": "Follow Up"
 }

@@ -108,5 +108,11 @@
   "agreeTo": "الموافقة على",
   "termsPrivacy": "الشروط والاحكام وسياسة الخصوصية",
   "services2": "خدمات",
-  "pleaseChooseService": "برجاء اختيار احد الخدمات التالية"
+  "pleaseChooseService": "برجاء اختيار احد الخدمات التالية",
+  "serviceDescription": "وصف الخدمة",
+  "requiredDocuments": "المستندات المطلوبة",
+  "applicationSteps": "خطوات التقديم",
+  "requestService": "طلب الخدمة",
+  "pleaseAttachDocuments": "برجاء ارفاق المستندات المطلوبة",
+  "followUp": "متابعة"
 }

@@ -3,13 +3,20 @@ import 'package:citizen_service_platform/features/login/presentation/screens/log
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/screens/my_requests_screen.dart';
+import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
+import 'package:citizen_service_platform/features/send_service/data/model/send_service_screen_args.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_screen.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_upload_files_screen.dart';
 import 'package:citizen_service_platform/features/service_categories/data/model/service_categories_screen_args.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/screens/service_categories_screen.dart';
+import 'package:citizen_service_platform/features/sign_up/cubit/sign_up_cubit.dart';
+import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_password_screen.dart';
 import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_screen.dart';
 import 'package:citizen_service_platform/features/splash/data/model/app_version_model.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/splash_screen.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/update_app_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
 import 'app_routers_name.dart';
@@ -72,6 +79,39 @@ abstract class AppRouters {
           }
           return ServiceCategoriesScreen(
             args: state.extra as ServiceCategoriesScreenArgs,
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutersName.signUpPasswordScreen,
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! SignUpCubit) {
+            navException("SignUpCubit, SignUpPasswordScreenArgs");
+          }
+          return BlocProvider.value(
+            value: state.extra as SignUpCubit,
+            child: SignUpPasswordScreen(),
+          );
+        },
+      ),
+      GoRoute(
+        path: AppRoutersName.sendServiceScreen,
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! SendServiceScreenArgs) {
+            navException("ServiceCategoriesScreenArgs");
+          }
+          return SendServiceScreen(args: state.extra as SendServiceScreenArgs);
+        },
+      ),
+      GoRoute(
+        path: AppRoutersName.sendServiceUploadFilesScreen,
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! SendServiceCubit) {
+            navException("SendServiceCubit, SendServiceUploadFilesScreen");
+          }
+          return BlocProvider.value(
+            value: state.extra as SendServiceCubit,
+            child: SendServiceUploadFilesScreen(),
           );
         },
       ),

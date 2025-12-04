@@ -113,5 +113,11 @@ abstract class  LocaleKeys {
   static const termsPrivacy = 'termsPrivacy';
   static const services2 = 'services2';
   static const pleaseChooseService = 'pleaseChooseService';
+  static const serviceDescription = 'serviceDescription';
+  static const requiredDocuments = 'requiredDocuments';
+  static const applicationSteps = 'applicationSteps';
+  static const requestService = 'requestService';
+  static const pleaseAttachDocuments = 'pleaseAttachDocuments';
+  static const followUp = 'followUp';
 
 }
