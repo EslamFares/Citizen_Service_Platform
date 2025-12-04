@@ -33,9 +33,21 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
   }
 
   //======================================================
+  bool isNoMorePaggination = false;
+  int pageNumber = 1;
   ServiceCategoriesModel? serviceCategoriesModel;
-  Future<void> getServiceCategories() async {
-    emit(ServiceCategoriesLoading());
+  final List<ServiceCategoryModel> _allProjectsList = [];
+  Future<void> getServiceCategories({
+    bool isRefresh = false,
+    bool isPaggination = false,
+  }) async {
+    if (isRefresh) {
+      emit(ServiceCategoriesRefresh());
+    } else if (isPaggination) {
+      emit(ServiceCategoriesPaggination());
+    } else {
+      emit(ServiceCategoriesLoading());
+    }
     if (serviceId == null) {
       logPro.error("serviceId == null");
       emit(ServiceCategoriesError(LocaleKeys.anErrorOccurred.tr()));
@@ -43,13 +55,28 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
     }
     final res = await serviceCategoriesRepo.getServiceCategories(
       serviceId: serviceId!,
+      pageNumber: pageNumber,
     );
     res.fold(
       (errorMsg) {
         emit(ServiceCategoriesError(errorMsg));
       },
-      (user) {
-        serviceCategoriesModel = user;
+      (modelRes) {
+        ServiceCategoriesModel model = modelRes;
+        if (model.data?.isNotEmpty ?? false) {
+          pageNumber++;
+          _allProjectsList.addAll(model.data ?? []);
+          logPro.green('projectsModelRes.data : ${model.data?.length}');
+          logger.t("_allProjectsList : ${_allProjectsList.length}");
+        } else {
+          logger.t(" no more news");
+          isNoMorePaggination = true;
+          if (isPaggination) {
+            emit(NewsNoMorePaggination());
+          }
+        }
+        serviceCategoriesModel = model.copyWith(data: _allProjectsList);
+
         emit(ServiceCategoriesSuccess());
       },
     );

@@ -12,6 +12,8 @@ class ServiceCategoriesRepo {
   //=====================
   Future<Either<String, ServiceCategoriesModel>> getServiceCategories({
     required int serviceId,
+    required int pageNumber,
+    int pageSize = 10,
   }) async {
     try {
       // final res = await api.get(path: 'users');
