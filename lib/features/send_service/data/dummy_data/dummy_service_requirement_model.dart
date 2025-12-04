@@ -6,14 +6,15 @@ ServiceRequirementModel dummyServiceRequirementModel = ServiceRequirementModel(
   description: serviceDescription,
   requiredDocuments: requiredDocuments,
   applicationSteps: applicationSteps,
-  filesRequired: List.generate(
-    requiredDocuments.length,
-    (index) => FilesRequiredModel(
-      id: index,
-      name: requiredDocuments[index],
-      type: 'pdf',
-    ),
-  ),
+  filesRequired: [],
+  //  List.generate(
+  //   requiredDocuments.length,
+  //   (index) => FilesRequiredModel(
+  //     id: index,
+  //     name: requiredDocuments[index],
+  //     type: 'pdf',
+  //   ),
+  // ),
 );
 String serviceDescription = """
 تتيح هذه الخدمة للمواطنين والمقيمين تقديم طلب استخراج التراخيص الصادرة بسهولة عبر المنصة سواء كانت تراخيص مهنية، تجارية، أو شخصية. تهدف الخدمة إلى تبسيط الإجراءات تقليل أوقات الانتظار، وتمكين المستفيد من متابعة حالة الطلب بشكل لحظي حتى إصدار الترخيص النهائي.

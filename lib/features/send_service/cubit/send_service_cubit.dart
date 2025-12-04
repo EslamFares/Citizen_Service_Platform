@@ -161,7 +161,7 @@ class SendServiceCubit extends Cubit<SendServiceState> {
   Future<void> sendService() async {
     emit(SendServiceLoading());
     try {
-      final res = await sendServiceRepo.sendService();
+      final res = await sendServiceRepo.sendService(filesAttachment);
       debugPrint('res: $res');
       emit(SendServiceSuccess());
     } catch (e) {
