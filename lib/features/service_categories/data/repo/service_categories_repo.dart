@@ -1,6 +1,5 @@
+import 'package:citizen_service_platform/core/network/api/api_consts.dart';
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
-import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
-import 'package:citizen_service_platform/features/service_categories/data/dummy_data/dummy_service_categories_model.dart';
 import 'package:citizen_service_platform/features/service_categories/data/model/service_categories_model.dart';
 import 'package:dartz/dartz.dart';
 
@@ -11,15 +10,23 @@ class ServiceCategoriesRepo {
   ServiceCategoriesRepo(this.api);
   //=====================
   Future<Either<String, ServiceCategoriesModel>> getServiceCategories({
-    required int serviceId,
+    required int categoryId,
     required int pageNumber,
     int pageSize = 10,
   }) async {
     try {
-      // final res = await api.get(path: 'users');
-      // debugPrint('res: $res');
-      await Future.delayed(AppSizes.durDummyLoading2s);
-      ServiceCategoriesModel model = dummyServiceCategoriesModel;
+      // await Future.delayed(AppSizes.durDummyLoading2s);
+      // ServiceCategoriesModel model = dummyServiceCategoriesModel;
+
+      final res = await api.get(
+        path: ApiConsts.getServiceByCategoryId,
+        query: {
+          "CategoryId": categoryId,
+          "PageNumber": pageNumber,
+          "PageSize": pageSize,
+        },
+      );
+      ServiceCategoriesModel model = ServiceCategoriesModel.fromMap(res);
       return Right(model);
     } catch (e) {
       return Left(e.catchErrorMessage());

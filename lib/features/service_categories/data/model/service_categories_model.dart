@@ -1,85 +1,57 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+//ServiceCategoryModel
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-
-class ServiceCategoriesModel extends Equatable {
-  final String? name;
+class ServiceCategoriesModel {
+  final bool? isSuccess;
   final List<ServiceCategoryModel>? data;
-  const ServiceCategoriesModel({this.name, this.data});
+
+  ServiceCategoriesModel({this.isSuccess, this.data});
 
   ServiceCategoriesModel copyWith({
-    String? name,
+    bool? isSuccess,
     List<ServiceCategoryModel>? data,
-  }) {
-    return ServiceCategoriesModel(
-      name: name ?? this.name,
-      data: data ?? this.data,
-    );
-  }
+  }) => ServiceCategoriesModel(
+    isSuccess: isSuccess ?? this.isSuccess,
+    data: data ?? this.data,
+  );
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'name': name,
-      'data': data?.map((x) => x.toMap()).toList(),
-    };
-  }
-
-  factory ServiceCategoriesModel.fromMap(Map<String, dynamic> map) {
-    return ServiceCategoriesModel(
-      name: map['name'] != null ? map['name'] as String : null,
-      data: map['data'] != null
-          ? List<ServiceCategoryModel>.from(
-              (map['data'] as List<int>).map<ServiceCategoryModel?>(
-                (x) => ServiceCategoryModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-    );
-  }
+  factory ServiceCategoriesModel.fromJson(String str) =>
+      ServiceCategoriesModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ServiceCategoriesModel.fromJson(String source) =>
-      ServiceCategoriesModel.fromMap(
-        json.decode(source) as Map<String, dynamic>,
+  factory ServiceCategoriesModel.fromMap(Map<String, dynamic> json) =>
+      ServiceCategoriesModel(
+        isSuccess: json["isSuccess"],
+        data: json["data"] == null
+            ? []
+            : List<ServiceCategoryModel>.from(
+                json["data"]!.map((x) => ServiceCategoryModel.fromMap(x)),
+              ),
       );
 
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object?> get props => [name, data];
+  Map<String, dynamic> toMap() => {
+    "isSuccess": isSuccess,
+    "data": data == null ? [] : List<dynamic>.from(data!.map((x) => x.toMap())),
+  };
 }
 
-class ServiceCategoryModel extends Equatable {
+class ServiceCategoryModel {
   final int? id;
   final String? name;
-  const ServiceCategoryModel({this.id, this.name});
 
-  ServiceCategoryModel copyWith({int? id, String? name}) {
-    return ServiceCategoryModel(id: id ?? this.id, name: name ?? this.name);
-  }
+  ServiceCategoryModel({this.id, this.name});
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{'id': id, 'name': name};
-  }
+  ServiceCategoryModel copyWith({int? id, String? name}) =>
+      ServiceCategoryModel(id: id ?? this.id, name: name ?? this.name);
 
-  factory ServiceCategoryModel.fromMap(Map<String, dynamic> map) {
-    return ServiceCategoryModel(
-      id: map['id'] != null ? map['id'] as int : null,
-      name: map['name'] != null ? map['name'] as String : null,
-    );
-  }
+  factory ServiceCategoryModel.fromJson(String str) =>
+      ServiceCategoryModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ServiceCategoryModel.fromJson(String source) =>
-      ServiceCategoryModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ServiceCategoryModel.fromMap(Map<String, dynamic> json) =>
+      ServiceCategoryModel(id: json["id"], name: json["name"]);
 
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object?> get props => [id, name];
+  Map<String, dynamic> toMap() => {"id": id, "name": name};
 }

@@ -3,18 +3,26 @@ import 'package:citizen_service_platform/features/home/data/model/home_model.dar
 
 ServicesModel dummyServicesModel = ServicesModel(
   isSuccess: true,
-  servicesModelData: dummyServicesModelItemList,
+  data: dummyServicesModelData,
+);
+ServicesModelData dummyServicesModelData = ServicesModelData(
+  citizenName: "name",
+  branchId: 1,
+  branchName: "name",
+  serviceCategories: dummyServicesModelItemList,
 );
 int length = 11;
-List<ServicesItemModel> dummyServicesModelItemList = List.generate(
+List<ServiceCategory> dummyServicesModelItemList = List.generate(
   length,
-  (index) => ServicesItemModel(
-    id: index,
-    image: dummySerImg.length > index
+  (index) => ServiceCategory(
+    categoryId: index,
+    iconUrl: dummySerImg.length > index
         ? dummySerImg[index]
         : ("خدمة : "
               "$index"),
-    name: dummySerName.length > index ? dummySerName[index] : Assets.iconsIcon,
+    categoryName: dummySerName.length > index
+        ? dummySerName[index]
+        : Assets.iconsIcon,
   ),
 );
 // List<String> dummySerName = List.generate(length, (index) => "name $index");

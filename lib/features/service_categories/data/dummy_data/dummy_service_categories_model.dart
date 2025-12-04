@@ -1,7 +1,7 @@
 import 'package:citizen_service_platform/features/service_categories/data/model/service_categories_model.dart';
 
 ServiceCategoriesModel dummyServiceCategoriesModel = ServiceCategoriesModel(
-  name: "خدمات الترخيص",
+  isSuccess: true,
   data: dummyServiceCategories,
 );
 List<ServiceCategoryModel> dummyServiceCategories = List.generate(

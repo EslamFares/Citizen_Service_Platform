@@ -24,8 +24,8 @@ class HomeServicesListView extends StatelessWidget {
               builder: (context, state) {
                 HomeCubit cubit = HomeCubit.get(context);
                 //servicesCategories
-                List<ServicesItemModel> services =
-                    cubit.servicesModel?.servicesModelData ?? [];
+                List<ServiceCategory> services =
+                    cubit.servicesModel?.data?.serviceCategories ?? [];
                 if (services.isEmpty) {
                   return Padding(
                     padding: EdgeInsets.only(top: 150.h),
@@ -45,9 +45,9 @@ class HomeServicesListView extends StatelessWidget {
                     mainAxisExtent: 100.h,
                   ),
                   itemBuilder: (context, index) => ServicesItemView(
-                    image: services[index].image,
-                    title: services[index].name,
-                    id: services[index].id,
+                    image: services[index].iconUrl,
+                    title: services[index].categoryName,
+                    id: services[index].categoryId,
                   ),
                 );
               },

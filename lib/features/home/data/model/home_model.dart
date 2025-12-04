@@ -1,89 +1,118 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
-
-class ServicesModel extends Equatable {
+class ServicesModel {
   final bool? isSuccess;
-  final List<ServicesItemModel>? servicesModelData;
-  const ServicesModel({this.isSuccess, this.servicesModelData});
+  final ServicesModelData? data;
 
-  ServicesModel copyWith({
-    bool? isSuccess,
-    List<ServicesItemModel>? servicesModelData,
-  }) {
-    return ServicesModel(
-      isSuccess: isSuccess ?? this.isSuccess,
-      servicesModelData: servicesModelData ?? this.servicesModelData,
-    );
-  }
+  ServicesModel({this.isSuccess, this.data});
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'isSuccess': isSuccess,
-      'servicesModelData': servicesModelData?.map((x) => x.toMap()).toList(),
-    };
-  }
+  ServicesModel copyWith({bool? isSuccess, ServicesModelData? data}) =>
+      ServicesModel(
+        isSuccess: isSuccess ?? this.isSuccess,
+        data: data ?? this.data,
+      );
 
-  factory ServicesModel.fromMap(Map<String, dynamic> map) {
-    return ServicesModel(
-      isSuccess: map['isSuccess'] != null ? map['isSuccess'] as bool : null,
-      servicesModelData: map['servicesModelData'] != null
-          ? List<ServicesItemModel>.from(
-              (map['servicesModelData'] as List<int>).map<ServicesItemModel?>(
-                (x) => ServicesItemModel.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-    );
-  }
+  factory ServicesModel.fromJson(String str) =>
+      ServicesModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ServicesModel.fromJson(String source) =>
-      ServicesModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ServicesModel.fromMap(Map<String, dynamic> json) => ServicesModel(
+    isSuccess: json["isSuccess"],
+    data: json["data"] == null ? null : ServicesModelData.fromMap(json["data"]),
+  );
 
-  @override
-  bool get stringify => true;
-
-  @override
-  List<Object?> get props => [isSuccess, servicesModelData];
+  Map<String, dynamic> toMap() => {
+    "isSuccess": isSuccess,
+    "data": data?.toMap(),
+  };
 }
 
-class ServicesItemModel extends Equatable {
-  final String? name;
-  final String? image;
-  final int? id;
-  const ServicesItemModel({this.name, this.image, this.id});
+class ServicesModelData {
+  final String? citizenName;
+  final int? branchId;
+  final String? branchName;
+  final List<ServiceCategory>? serviceCategories;
 
-  ServicesItemModel copyWith({String? name, String? image, int? id}) {
-    return ServicesItemModel(
-      name: name ?? this.name,
-      image: image ?? this.image,
-      id: id ?? this.id,
-    );
-  }
+  ServicesModelData({
+    this.citizenName,
+    this.branchId,
+    this.branchName,
+    this.serviceCategories,
+  });
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{'name': name, 'image': image, 'id': id};
-  }
+  ServicesModelData copyWith({
+    String? citizenName,
+    int? branchId,
+    String? branchName,
+    List<ServiceCategory>? serviceCategories,
+  }) => ServicesModelData(
+    citizenName: citizenName ?? this.citizenName,
+    branchId: branchId ?? this.branchId,
+    branchName: branchName ?? this.branchName,
+    serviceCategories: serviceCategories ?? this.serviceCategories,
+  );
 
-  factory ServicesItemModel.fromMap(Map<String, dynamic> map) {
-    return ServicesItemModel(
-      name: map['name'] != null ? map['name'] as String : null,
-      image: map['image'] != null ? map['image'] as String : null,
-      id: map['id'],
-    );
-  }
+  factory ServicesModelData.fromJson(String str) =>
+      ServicesModelData.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ServicesItemModel.fromJson(String source) =>
-      ServicesItemModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  factory ServicesModelData.fromMap(Map<String, dynamic> json) =>
+      ServicesModelData(
+        citizenName: json["citizenName"],
+        branchId: json["branchId"],
+        branchName: json["branchName"],
+        serviceCategories: json["serviceCategories"] == null
+            ? []
+            : List<ServiceCategory>.from(
+                json["serviceCategories"]!.map(
+                  (x) => ServiceCategory.fromMap(x),
+                ),
+              ),
+      );
 
-  @override
-  bool get stringify => true;
+  Map<String, dynamic> toMap() => {
+    "citizenName": citizenName,
+    "branchId": branchId,
+    "branchName": branchName,
+    "serviceCategories": serviceCategories == null
+        ? []
+        : List<dynamic>.from(serviceCategories!.map((x) => x.toMap())),
+  };
+}
 
-  @override
-  List<Object?> get props => [name, image, id];
+class ServiceCategory {
+  final int? categoryId;
+  final String? categoryName;
+  final String? iconUrl;
+
+  ServiceCategory({this.categoryId, this.categoryName, this.iconUrl});
+
+  ServiceCategory copyWith({
+    int? categoryId,
+    String? categoryName,
+    String? iconUrl,
+  }) => ServiceCategory(
+    categoryId: categoryId ?? this.categoryId,
+    categoryName: categoryName ?? this.categoryName,
+    iconUrl: iconUrl ?? this.iconUrl,
+  );
+
+  factory ServiceCategory.fromJson(String str) =>
+      ServiceCategory.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory ServiceCategory.fromMap(Map<String, dynamic> json) => ServiceCategory(
+    categoryId: json["categoryId"],
+    categoryName: json["categoryName"],
+    iconUrl: json["iconURL"],
+  );
+
+  Map<String, dynamic> toMap() => {
+    "categoryId": categoryId,
+    "categoryName": categoryName,
+    "iconURL": iconUrl,
+  };
 }

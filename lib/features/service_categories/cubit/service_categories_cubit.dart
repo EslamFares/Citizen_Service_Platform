@@ -54,7 +54,7 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
       return;
     }
     final res = await serviceCategoriesRepo.getServiceCategories(
-      serviceId: serviceId!,
+      categoryId: serviceId!,
       pageNumber: pageNumber,
     );
     res.fold(
