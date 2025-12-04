@@ -58,7 +58,7 @@ class AppButtonBorder extends StatelessWidget {
       height: height,
       useHeight: useHeight,
       border: Border.all(
-        color: borderColor ?? AppColors.strockColor,
+        color: borderColor ?? AppColors.borderBrawnLight,
         width: borderWidth ?? 1.w,
       ),
       child:

@@ -33,7 +33,7 @@ class MenuScreen extends StatelessWidget {
             BlurAppBar(LocaleKeys.menu.tr()),
 
             Padding(
-              padding: AppSizes.sPaddingH,
+              padding: AppSizes.sPaddingHorizontal,
               child: Column(
                 children: [
                   20.h.gapH,

@@ -15,7 +15,7 @@ class MyRequestsRepo {
     try {
       // final res = await api.get(path: 'users');
       // debugPrint('res: $res');
-      await Future.delayed(AppSizes.durDummyLoading);
+      await Future.delayed(AppSizes.durDummyLoading300ms);
       MyRequestsModel requestsModel = dummyMyRequestsModel;
       // throw "error";
       return Right(requestsModel);

@@ -111,5 +111,7 @@ abstract class  LocaleKeys {
   static const confirmPassword = 'confirmPassword';
   static const agreeTo = 'agreeTo';
   static const termsPrivacy = 'termsPrivacy';
+  static const services2 = 'services2';
+  static const pleaseChooseService = 'pleaseChooseService';
 
 }

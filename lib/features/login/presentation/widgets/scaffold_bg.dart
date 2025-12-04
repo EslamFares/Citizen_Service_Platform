@@ -8,13 +8,14 @@ class ScaffoldBg extends StatelessWidget {
   final String? bg;
   final bool safeAreaTop;
   final bool safeAreaBottom;
-
+  final PreferredSizeWidget? appBar;
   const ScaffoldBg({
     super.key,
     required this.body,
     this.bg,
     this.safeAreaTop = false,
     this.safeAreaBottom = false,
+    this.appBar,
   });
 
   @override
@@ -47,14 +48,8 @@ class ScaffoldBg extends StatelessWidget {
                 backgroundColor: Colors.transparent,
 
                 // app bar show background
-                extendBodyBehindAppBar: true,
-                // appBar: CustomAppBar(
-                //   title: "",
-                //   showCircleLeading: true,
-                //   backgroundColor: Colors.transparent,
-                //   showLeading: showloginButton,
-                //   onPressed: onPressedAppBarLeading,
-                // ),
+                // extendBodyBehindAppBar: true,
+                appBar: appBar,
                 body: body,
               ),
             ),

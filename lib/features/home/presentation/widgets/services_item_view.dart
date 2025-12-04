@@ -1,13 +1,15 @@
 import 'package:citizen_service_platform/const/assets.dart';
+import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_buttons/app_button_click.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_image/app_image.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_colors.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
-import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:citizen_service_platform/features/home/presentation/widgets/blur_container.dart';
+import 'package:citizen_service_platform/features/service_categories/data/model/service_categories_screen_args.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 class ServicesItemView extends StatelessWidget {
   final String? title;
@@ -30,7 +32,15 @@ class ServicesItemView extends StatelessWidget {
       borderRadius: 16.r,
       child: AppButtonClick(
         onPressed: () {
-          logPro.error("service index: $id");
+          if (id != null) {
+            context.push(
+              AppRoutersName.serviceCategoriesScreen,
+              extra: ServiceCategoriesScreenArgs(
+                title: title ?? "",
+                serviceId: id!,
+              ),
+            );
+          }
           onTap?.call();
         },
         child: Column(
@@ -45,7 +55,7 @@ class ServicesItemView extends StatelessWidget {
                 color: AppColors.brownLight,
                 borderRadius: BorderRadius.circular(12.r),
               ),
-              //todo  TODO: come here imag enot load
+
               child: AppImage(
                 image ?? Assets.iconsIcon,
                 width: 24.h,

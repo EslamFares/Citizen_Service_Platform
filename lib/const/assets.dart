@@ -34,6 +34,14 @@ class Assets {
   /// assets/icons/icon.png
   static const String iconsIcon = "assets/icons/icon.png";
 
+  /// Assets for iconsIconColor
+  /// assets/icons/icon_color.png
+  static const String iconsIconColor = "assets/icons/icon_color.png";
+
+  /// Assets for iconsIconSmall
+  /// assets/icons/icon_small.png
+  static const String iconsIconSmall = "assets/icons/icon_small.png";
+
   /// Assets for iconsRequestsCheck
   /// assets/icons/requests/check.png
   static const String iconsRequestsCheck = "assets/icons/requests/check.png";
@@ -41,6 +49,10 @@ class Assets {
   /// Assets for iconsRequestsTime
   /// assets/icons/requests/time.png
   static const String iconsRequestsTime = "assets/icons/requests/time.png";
+
+  /// Assets for iconsSplashIconAndroid12
+  /// assets/icons/splash_icon_android_12.png
+  static const String iconsSplashIconAndroid12 = "assets/icons/splash_icon_android_12.png";
 
   /// Assets for imgHomeBg
   /// assets/img/home_bg.png
@@ -53,6 +65,10 @@ class Assets {
   /// Assets for imgRequsetsBg
   /// assets/img/requsets_bg.png
   static const String imgRequsetsBg = "assets/img/requsets_bg.png";
+
+  /// Assets for imgServiceCategoriesBg
+  /// assets/img/service_categories_bg.png
+  static const String imgServiceCategoriesBg = "assets/img/service_categories_bg.png";
 
   /// Assets for imgServices1
   /// assets/img/services/1.png

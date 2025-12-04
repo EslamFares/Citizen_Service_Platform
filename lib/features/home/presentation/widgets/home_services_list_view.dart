@@ -23,6 +23,7 @@ class HomeServicesListView extends StatelessWidget {
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
                 HomeCubit cubit = HomeCubit.get(context);
+                //servicesCategories
                 List<ServicesItemModel> services =
                     cubit.servicesModel?.servicesModelData ?? [];
                 if (services.isEmpty) {

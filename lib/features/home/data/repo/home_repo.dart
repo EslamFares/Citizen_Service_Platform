@@ -14,7 +14,7 @@ class HomeRepo {
     try {
       // final res = await api.get(path: 'users');
       // debugPrint('res: $res');
-      await Future.delayed(AppSizes.durDummyLoading);
+      await Future.delayed(AppSizes.durDummyLoading300ms);
       ServicesModel servicesModel = dummyServicesModel;
       // throw "error";
       return Right(servicesModel);

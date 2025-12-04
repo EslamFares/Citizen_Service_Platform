@@ -106,5 +106,7 @@
   "enterPassword": "Enter Password",
   "confirmPassword": "Confirm Password",
   "agreeTo": "Agree to",
-  "termsPrivacy": "Terms & Conditions and Privacy Policy"
+  "termsPrivacy": "Terms & Conditions and Privacy Policy",
+  "services2": "Services",
+  "pleaseChooseService": "Please choose one of the following services"
 }
