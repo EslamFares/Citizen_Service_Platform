@@ -114,5 +114,6 @@
   "applicationSteps": "Application Steps",
   "requestService": "Request Service",
   "pleaseAttachDocuments": "Please attach the required documents",
-  "followUp": "Follow Up"
+  "followUp": "Follow Up",
+  "delete": "Delete"
 }

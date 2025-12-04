@@ -4,6 +4,8 @@ abstract class SendServiceState {}
 
 class SendServiceInitial extends SendServiceState {}
 
+class SelectFilesState extends SendServiceState {}
+
 class SendServiceLoading extends SendServiceState {}
 
 class SendServiceSuccess extends SendServiceState {}

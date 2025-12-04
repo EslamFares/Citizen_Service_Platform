@@ -119,5 +119,6 @@ abstract class  LocaleKeys {
   static const requestService = 'requestService';
   static const pleaseAttachDocuments = 'pleaseAttachDocuments';
   static const followUp = 'followUp';
+  static const delete = 'delete';
 
 }

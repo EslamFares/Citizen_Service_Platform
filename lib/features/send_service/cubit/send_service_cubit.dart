@@ -1,5 +1,11 @@
+import 'dart:io';
+
+import 'package:citizen_service_platform/core/utils/extentions/string_extensions.dart';
+import 'package:citizen_service_platform/features/send_service/data/model/send_file_model.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
+import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -44,6 +50,66 @@ class SendServiceCubit extends Cubit<SendServiceState> {
     emit(SendServiceInitial());
   }
 
+  //==============Upload Files==========
+  List<SendFileModel> filesAttachment = [];
+  deleteFile(int id) {
+    try {
+      filesAttachment.removeWhere((element) => element.id == id);
+      emit(SelectFilesState());
+      checkValidateAllFilesDone();
+    } catch (e) {
+      logPro.e(e.toString());
+    }
+  }
+
+  bool isFilesSelected(int? id) {
+    if (id == null) return false;
+    String? path;
+    path = filesAttachment.firstWhereOrNull((e) => e.id == id)?.file?.path;
+    return path.isNotNullAndNotEmpty;
+  }
+
+  _setFile(int id, File file) {
+    try {
+      if (!filesAttachment.any((element) => element.id == id)) {
+        filesAttachment.add(SendFileModel(id: id, file: file));
+      } else {
+        filesAttachment.firstWhereOrNull((element) => element.id == id)?.file =
+            file;
+      }
+      emit(SelectFilesState());
+    } catch (e) {
+      logPro.e(e.toString());
+    }
+  }
+
+  pickFile(int id) async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      allowMultiple: false,
+      type: FileType.custom,
+      allowedExtensions: [
+        'jpg',
+        'png',
+        'jpeg',
+        'pdf',
+        'doc',
+        'docx',
+        'xlsx',
+        'txt',
+      ],
+    );
+
+    if (result != null && result.files.isNotEmpty) {
+      for (var path in result.paths) {
+        if (path != null) {
+          File file = File(path);
+          _setFile(id, file);
+        }
+      }
+    }
+    checkValidateAllFilesDone();
+  }
+
   //============================get Service Requirement===============
   ServiceRequirementModel? serviceRequirementModel;
   Future<void> getServiceRequirement() async {
@@ -68,6 +134,30 @@ class SendServiceCubit extends Cubit<SendServiceState> {
   }
 
   //========================send Service==============================
+  Set<int> unValidatedFiles = {};
+  bool isFileValidated(int? id) => !unValidatedFiles.contains(id);
+  checkValidateAllFilesDone() {
+    List<FilesRequiredModel> filesRequired =
+        serviceRequirementModel?.filesRequired ?? [];
+    if (filesRequired.isEmpty) {
+      return true;
+    } else {
+      for (int i = 0; i < filesRequired.length; i++) {
+        String? path = filesAttachment
+            .firstWhereOrNull((element) => element.id == filesRequired[i].id)
+            ?.file
+            ?.path;
+        if (path.isNullOrEmpty) {
+          unValidatedFiles.add(filesRequired[i].id!);
+        } else {
+          unValidatedFiles.remove(filesRequired[i].id);
+        }
+      }
+      emit(SelectFilesState());
+      return unValidatedFiles.isEmpty;
+    }
+  }
+
   Future<void> sendService() async {
     emit(SendServiceLoading());
     try {

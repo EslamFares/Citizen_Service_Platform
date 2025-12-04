@@ -114,5 +114,6 @@
   "applicationSteps": "خطوات التقديم",
   "requestService": "طلب الخدمة",
   "pleaseAttachDocuments": "برجاء ارفاق المستندات المطلوبة",
-  "followUp": "متابعة"
+  "followUp": "متابعة",
+  "delete": "حذف"
 }

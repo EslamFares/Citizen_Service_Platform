@@ -18,6 +18,10 @@ class Assets {
   /// assets/icons/bottom_nav/my_requests.png
   static const String iconsBottomNavMyRequests = "assets/icons/bottom_nav/my_requests.png";
 
+  /// Assets for iconsDelete
+  /// assets/icons/delete.png
+  static const String iconsDelete = "assets/icons/delete.png";
+
   /// Assets for iconsHomeLocation
   /// assets/icons/home/location.png
   static const String iconsHomeLocation = "assets/icons/home/location.png";
@@ -53,6 +57,10 @@ class Assets {
   /// Assets for iconsSplashIconAndroid12
   /// assets/icons/splash_icon_android_12.png
   static const String iconsSplashIconAndroid12 = "assets/icons/splash_icon_android_12.png";
+
+  /// Assets for iconsUpload
+  /// assets/icons/upload.png
+  static const String iconsUpload = "assets/icons/upload.png";
 
   /// Assets for imgHomeBg
   /// assets/img/home_bg.png
