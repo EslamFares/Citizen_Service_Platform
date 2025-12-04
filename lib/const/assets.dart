@@ -54,6 +54,10 @@ class Assets {
   /// assets/icons/requests/not_pay.png
   static const String iconsRequestsNotPay = "assets/icons/requests/not_pay.png";
 
+  /// Assets for iconsRequestsRequestItem
+  /// assets/icons/requests/request_item.png
+  static const String iconsRequestsRequestItem = "assets/icons/requests/request_item.png";
+
   /// Assets for iconsRequestsTime
   /// assets/icons/requests/time.png
   static const String iconsRequestsTime = "assets/icons/requests/time.png";

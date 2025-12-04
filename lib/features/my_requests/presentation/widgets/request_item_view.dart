@@ -57,7 +57,7 @@ class RequestItemView extends StatelessWidget {
                     borderRadius: BorderRadius.circular(12.r),
                   ),
                   child: Image.asset(
-                    Assets.iconsIcon,
+                    Assets.iconsRequestsRequestItem,
                     width: 20.h,
                     height: 20.h,
                     color: AppColors.primaryColor,
