@@ -83,7 +83,7 @@ class _ServiceCategoriesListViewState extends State<ServiceCategoriesListView>
                       40.h.gapH,
                       if (cubit.isNoMorePaggination)
                         Text(
-                          "noMoreData",
+                          LocaleKeys.noMoreServices.tr(),
                           style: AppTextStyles.font12w500Black,
                         ),
                       if (serviceCategories.length < 10) 500.h.gapH,

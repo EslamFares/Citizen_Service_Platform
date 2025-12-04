@@ -124,5 +124,7 @@
   "later": "Later",
   "feesPaid": "Fees Paid",
   "feesNotPaid": "Fees Not Paid",
-  "paymentSuccessful": "Payment Successful"
+  "paymentSuccessful": "Payment Successful",
+  "noMoreServices": "No more services"
+
 }

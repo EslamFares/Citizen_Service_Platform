@@ -124,5 +124,6 @@
   "later": "لاحقًا",
   "feesPaid": "تم دفع الرسوم",
   "feesNotPaid": "لم يتم دفع الرسوم",
-  "paymentSuccessful": "تم الدفع بنجاح"
+  "paymentSuccessful": "تم الدفع بنجاح",
+  "noMoreServices": "لا يوجد خدمات اخرى"
 }
