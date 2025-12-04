@@ -36,12 +36,21 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
   bool isNoMorePaggination = false;
   int pageNumber = 1;
   ServiceCategoriesModel? serviceCategoriesModel;
+
+  _getProgestsQuaryRefresh() {
+    pageNumber = 1;
+    _allProjectsList.clear();
+    isNoMorePaggination = false;
+  }
+
   final List<ServiceCategoryModel> _allProjectsList = [];
   Future<void> getServiceCategories({
     bool isRefresh = false,
     bool isPaggination = false,
   }) async {
     if (isRefresh) {
+      _getProgestsQuaryRefresh();
+
       emit(ServiceCategoriesRefresh());
     } else if (isPaggination) {
       emit(ServiceCategoriesPaggination());

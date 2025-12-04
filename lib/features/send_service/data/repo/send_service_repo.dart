@@ -1,7 +1,7 @@
+import 'package:citizen_service_platform/core/network/api/api_consts.dart';
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/core/utils/log/logger.dart';
-import 'package:citizen_service_platform/features/send_service/data/dummy_data/dummy_service_requirement_model.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/send_file_model.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 import 'package:dartz/dartz.dart';
@@ -15,13 +15,17 @@ class SendServiceRepo {
   //=====================
 
   Future<Either<String, ServiceRequirementModel>> getServiceRequirement({
-    required int serviceId,
+    required int serviceCategoryId,
   }) async {
     try {
-      // final res = await api.get(path: 'users');
-      // debugPrint('res: $res');
-      await Future.delayed(AppSizes.durDummyLoading2s);
-      ServiceRequirementModel model = dummyServiceRequirementModel;
+      // await Future.delayed(AppSizes.durDummyLoading2s);
+      // ServiceRequirementModel model = dummyServiceRequirementModel;
+
+      final res = await api.get(
+        path: ApiConsts.getServiceDetails,
+        query: {"serviceId": serviceCategoryId},
+      );
+      ServiceRequirementModel model = ServiceRequirementModel.fromMap(res);
       return Right(model);
     } catch (e) {
       return Left(e.catchErrorMessage());

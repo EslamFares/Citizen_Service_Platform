@@ -4,6 +4,7 @@ import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dar
 import 'package:citizen_service_platform/core/utils/extentions/string_extensions.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/widgets/app_text_html.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_button_blur.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_requirement_title.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -24,6 +25,7 @@ class SendServiceScreenBodyRead extends StatelessWidget {
         cubit.serviceRequirementModel?.data?.applicationSteps ?? "";
 
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         Expanded(
           child: Padding(
@@ -62,9 +64,9 @@ class SendServiceScreenBodyRead extends StatelessWidget {
                   if (applicationSteps.isNotNullAndNotEmpty)
                     ServiceRequirementTitle(LocaleKeys.applicationSteps.tr()),
                   if (applicationSteps.isNotNullAndNotEmpty)
-                    Text(
+                    AppTextHtml(
                       applicationSteps,
-                      style: AppTextStyles.font12w500Black,
+                      // style: AppTextStyles.font12w500Black,
                     ),
                 ],
               ),

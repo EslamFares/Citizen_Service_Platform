@@ -124,7 +124,7 @@ abstract class AppValidator {
     return urlRegExp.hasMatch(link);
   }
 
-  static String? password(String? value, {int passwordLength = 8}) {
+  static String? password(String? value, {int passwordLength = 6}) {
     if (value == null || value.isEmpty) {
       return "pleaseEnterYourPassword".tr();
     } else if (value.length < passwordLength) {

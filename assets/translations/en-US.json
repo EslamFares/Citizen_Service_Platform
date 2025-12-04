@@ -123,5 +123,6 @@
   "pay": "Pay",
   "later": "Later",
   "feesPaid": "Fees Paid",
-  "feesNotPaid": "Fees Not Paid"
+  "feesNotPaid": "Fees Not Paid",
+  "paymentSuccessful": "Payment Successful"
 }

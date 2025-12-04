@@ -120,7 +120,7 @@ class SendServiceCubit extends Cubit<SendServiceState> {
       return;
     }
     final res = await sendServiceRepo.getServiceRequirement(
-      serviceId: serviceCategoryId!,
+      serviceCategoryId: serviceCategoryId!,
     );
     res.fold(
       (errorMsg) {

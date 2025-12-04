@@ -123,5 +123,6 @@
   "pay": "دفع",
   "later": "لاحقًا",
   "feesPaid": "تم دفع الرسوم",
-  "feesNotPaid": "لم يتم دفع الرسوم"
+  "feesNotPaid": "لم يتم دفع الرسوم",
+  "paymentSuccessful": "تم الدفع بنجاح"
 }

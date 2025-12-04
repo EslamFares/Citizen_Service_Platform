@@ -2,6 +2,7 @@ import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_buttons/app_button.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_buttons/app_button_border.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_toast.dart';
 import 'package:citizen_service_platform/features/home/presentation/widgets/blur_container.dart';
 import 'package:citizen_service_platform/features/service_pay/cubit/service_pay_cubit.dart';
 import 'package:easy_localization/easy_localization.dart';
@@ -24,15 +25,21 @@ class PayOrLaterSection extends StatelessWidget {
         children: [
           BlocConsumer<ServicePayCubit, ServicePayState>(
             listener: (context, state) {
-              if (state is ServicePaySuccess) {}
+              if (state is ServicePaySuccess) {
+                AppToast.toast(LocaleKeys.paymentSuccessful.tr());
+                context.go(AppRoutersName.mainBottomNavScreen);
+              }
             },
             builder: (context, state) {
               // ignore: unused_local_variable
               final cubit = ServicePayCubit.get(context);
               return AppButton(
+                isLoading: state is ServicePayLoading,
                 height: 50.h,
                 margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 8.h),
-                onPressed: () {},
+                onPressed: () {
+                  cubit.payServices();
+                },
                 text: LocaleKeys.pay.tr(),
               );
             },

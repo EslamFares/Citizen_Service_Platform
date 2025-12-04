@@ -128,5 +128,6 @@ abstract class  LocaleKeys {
   static const later = 'later';
   static const feesPaid = 'feesPaid';
   static const feesNotPaid = 'feesNotPaid';
+  static const paymentSuccessful = 'paymentSuccessful';
 
 }

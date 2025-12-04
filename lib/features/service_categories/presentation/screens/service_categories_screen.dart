@@ -38,14 +38,17 @@ class ServiceCategoriesScreen extends StatelessWidget {
             buildWhen: (previous, current) =>
                 current is ServiceCategoriesLoading ||
                 current is ServiceCategoriesSuccess ||
+                current is ServiceCategoriesRefresh ||
                 current is ServiceCategoriesError,
             builder: (context, state) {
               if (state is ServiceCategoriesLoading) {
                 return const AppLoaderGif();
               } else if (state is ServiceCategoriesError) {
                 return AppError(text: state.errorMessage);
+              } else if (state is ServiceCategoriesSuccess) {
+                return ServiceCategoriesListView();
               }
-              return ServiceCategoriesListView();
+              return const AppLoaderGif();
             },
           ),
         ),

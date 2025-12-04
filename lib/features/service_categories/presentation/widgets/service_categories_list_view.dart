@@ -52,29 +52,43 @@ class _ServiceCategoriesListViewState extends State<ServiceCategoriesListView>
             ),
 
             Expanded(
-              child: SingleChildScrollView(
-                controller: scrollController,
-                child: Column(
-                  spacing: 8.w,
-                  children: [
-                    for (var serviceCategory in serviceCategories)
-                      ServiceCategoriesItemView(
-                        serviceCategory: serviceCategory,
-                      ),
+              child: RefreshIndicator(
+                onRefresh: () async {
+                  await cubit.getServiceCategories(isRefresh: true);
+                },
 
-                    10.h.gapH,
-                    BlocBuilder<ServiceCategoriesCubit, ServiceCategoriesState>(
-                      builder: (context, state) {
-                        if (state is ServiceCategoriesPaggination) {
-                          return AppLoader();
-                        }
-                        return SizedBox();
-                      },
-                    ),
-                    40.h.gapH,
-                    if (cubit.isNoMorePaggination)
-                      Text("noMoreData", style: AppTextStyles.font12w500Black),
-                  ],
+                child: SingleChildScrollView(
+                  physics: AlwaysScrollableScrollPhysics(),
+                  controller: scrollController,
+                  child: Column(
+                    spacing: 8.w,
+                    children: [
+                      for (var serviceCategory in serviceCategories)
+                        ServiceCategoriesItemView(
+                          serviceCategory: serviceCategory,
+                        ),
+
+                      10.h.gapH,
+                      BlocBuilder<
+                        ServiceCategoriesCubit,
+                        ServiceCategoriesState
+                      >(
+                        builder: (context, state) {
+                          if (state is ServiceCategoriesPaggination) {
+                            return AppLoader();
+                          }
+                          return SizedBox();
+                        },
+                      ),
+                      40.h.gapH,
+                      if (cubit.isNoMorePaggination)
+                        Text(
+                          "noMoreData",
+                          style: AppTextStyles.font12w500Black,
+                        ),
+                      if (serviceCategories.length < 10) 500.h.gapH,
+                    ],
+                  ),
                 ),
               ),
             ),

@@ -18,5 +18,7 @@ abstract class ApiConsts {
   static const String getAllService = 'CitizenServices/V1/GetAllCategories';
   static const String getServiceByCategoryId =
       'CitizenServices/V1/GetServiceByCategoryId';
+  static const String getServiceDetails =
+      'CitizenServices/V1/GetServiceDetails';
   //================================================================
 }
