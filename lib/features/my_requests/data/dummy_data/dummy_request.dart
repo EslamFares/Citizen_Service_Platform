@@ -7,8 +7,8 @@ MyRequestsModel dummyMyRequestsModel = MyRequestsModel(
   data: dummyItems,
 );
 List<RequestsItem> dummyItems = List.generate(
-  // dummyRequestName.length,
-  3,
+  dummyRequestName.length,
+  // 3,
   (index) => RequestsItem(
     id: index,
     title: dummyRequestName[index],
