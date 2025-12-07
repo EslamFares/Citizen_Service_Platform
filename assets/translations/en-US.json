@@ -125,6 +125,7 @@
   "feesPaid": "Fees Paid",
   "feesNotPaid": "Fees Not Paid",
   "paymentSuccessful": "Payment Successful",
-  "noMoreServices": "No more services"
+  "noMoreServices": "No more services",
+  "pleaseSelectBranch": "Please select branch"
 
 }

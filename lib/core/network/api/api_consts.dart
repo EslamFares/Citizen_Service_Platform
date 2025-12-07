@@ -22,5 +22,6 @@ abstract class ApiConsts {
       'CitizenServices/V1/GetServiceDetails';
   static const String sendServiceRequest =
       'CitizenServices/V1/SendServiceRequest';
+  static const String getAllBranches = "Account/GetAllBranches";
   //================================================================
 }

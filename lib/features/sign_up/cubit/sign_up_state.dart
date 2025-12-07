@@ -4,6 +4,15 @@ abstract class SignUpState {}
 
 class SignUpInitial extends SignUpState {}
 
+class GetAllBranchesLoading extends SignUpState {}
+
+class GetAllBranchesSuccess extends SignUpState {}
+
+class GetAllBranchesError extends SignUpState {
+  final String errorMessage;
+  GetAllBranchesError(this.errorMessage);
+}
+
 class SignUpLoading extends SignUpState {}
 
 class SignUpSuccess extends SignUpState {}

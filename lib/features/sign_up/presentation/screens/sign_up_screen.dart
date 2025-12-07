@@ -23,7 +23,7 @@ class SignUpScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => SignUpCubit(getIt<SignUpRepo>()),
+      create: (context) => SignUpCubit(getIt<SignUpRepo>())..init(),
       child: ScaffoldBg(
         safeAreaTop: true,
         body: SingleChildScrollView(

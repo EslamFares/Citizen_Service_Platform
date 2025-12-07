@@ -5,6 +5,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../const/locale_keys.g.dart';
 import '../../../core/utils/log/logger.dart';
+import '../data/model/branch_model.dart';
 import '../data/repo/sign_up_repo.dart';
 
 part 'sign_up_state.dart';
@@ -20,26 +21,64 @@ class SignUpCubit extends Cubit<SignUpState> {
   }
 
   //===========================================
-  Future<void> init() async {}
+  Future<void> init() async {
+    await getAllBranches();
+  }
+
+  //===========================================
+  List<BranchModel> branches = [];
+  getAllBranches() async {
+    emit(GetAllBranchesLoading());
+    try {
+      final res = await signUpRepo.getAllBranches();
+      res.fold(
+        (errorMsg) {
+          emit(GetAllBranchesError(errorMsg));
+        },
+        (branchesRes) {
+          branches = branchesRes;
+          emit(GetAllBranchesSuccess());
+        },
+      );
+    } catch (e) {
+      logger.e("Error login $e");
+      emit(GetAllBranchesError(LocaleKeys.anErrorOccurred.tr()));
+    }
+  }
 
   //===========================================
   final formKey = GlobalKey<FormState>();
   final formKeyPassword = GlobalKey<FormState>();
   TextEditingController nationalId = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
-  TextEditingController governorate = TextEditingController();
+  // TextEditingController governorate = TextEditingController();
   TextEditingController address = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmController = TextEditingController();
+  int? selectedBranchId;
+  void selectedBranch(String? id) {
+    try {
+      if (id == null) return;
+      int idNum = int.parse(id);
+      selectedBranchId = idNum;
+    } catch (e) {
+      emit(SignUpError(LocaleKeys.pleaseSelectBranch.tr()));
+    }
+  }
+
   //======================================================
   Future<void> signUp() async {
     emit(SignUpLoading());
+    if (selectedBranchId == null) {
+      emit(SignUpError(LocaleKeys.pleaseSelectBranch.tr()));
+      return;
+    }
     try {
       final res = await signUpRepo.signUp(
         nationalId: int.parse(nationalId.text),
         phoneNumber: phoneNumber.text,
-        governorate: governorate.text,
+        branchId: selectedBranchId!,
         address: address.text,
         name: name.text,
         password: passwordController.text,
@@ -61,25 +100,17 @@ class SignUpCubit extends Cubit<SignUpState> {
       logger.e("Error login $e");
       emit(SignUpError(LocaleKeys.anErrorOccurred.tr()));
     }
-    // try {
-    //   final res = await signUpRepo.signUp(
-    //     nationalId: nationalId.text,
-    //     phoneNumber: phoneNumber.text,
-    //     governorate: governorate.text,
-    //     address: address.text,
-    //     name: name.text,
-    //     password: passwordController.text,
-    //   );
-    //   debugPrint('res: $res');
-    //   emit(SignUpSuccess());
-    // } catch (e) {
-    //   if (e is ServerFailure) {
-    //     logPro.error("ServerFailure : ${e.toString()}");
-    //     emit(SignUpError(e.msgApi));
-    //   } else {
-    //     logPro.error("e.toString() : ${e.toString()}");
-    //     emit(SignUpError(LocaleKeys.anErrorOccurred.tr()));
-    //   }
-    // }
+  }
+
+  @override
+  Future<void> close() {
+    nationalId.dispose();
+    phoneNumber.dispose();
+    // governorate.dispose();
+    address.dispose();
+    name.dispose();
+    passwordController.dispose();
+    passwordConfirmController.dispose();
+    return super.close();
   }
 }
