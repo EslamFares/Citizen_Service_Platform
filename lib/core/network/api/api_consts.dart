@@ -20,5 +20,7 @@ abstract class ApiConsts {
       'CitizenServices/V1/GetServiceByCategoryId';
   static const String getServiceDetails =
       'CitizenServices/V1/GetServiceDetails';
+  static const String sendServiceRequest =
+      'CitizenServices/V1/SendServiceRequest';
   //================================================================
 }

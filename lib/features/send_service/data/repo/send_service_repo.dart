@@ -33,23 +33,26 @@ class SendServiceRepo {
   }
 
   /*================== sendService =================*/
-  Future<Either<String, String>> sendService(
-    List<SendFileModel> filesAttachment,
-  ) async {
+  Future<Either<String, String>> sendService({
+    required List<SendFileModel> filesAttachment,
+    required bool isLater,
+    required int? serviceId,
+  }) async {
     try {
       List data = [];
       for (var fileModel in filesAttachment) {
         Map<String, dynamic> dataFile = {
-          "id": fileModel.id,
-          'file': await MultipartFile.fromFile(fileModel.file!.path),
+          "attachmentTypeId": fileModel.id,
+          //todo  TODO: come here send files
+          'File': await MultipartFile.fromFile(fileModel.file!.path),
         };
         data.add(dataFile);
       }
       final res = await api.post(
         responseType: ResponseType.json,
-        path: "ApiConsts.uploadImage",
+        path: ApiConsts.sendServiceRequest,
         isFormData: true,
-        data: data,
+        data: {"serviceId": serviceId, "isLater": isLater, "Attachments": data},
       );
       logPro.w('res: $res');
       await Future.delayed(AppSizes.durDummyLoading2s);

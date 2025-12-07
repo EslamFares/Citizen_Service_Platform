@@ -25,34 +25,48 @@ class PayOrLaterSection extends StatelessWidget {
           BlocConsumer<SendServiceCubit, SendServiceState>(
             listener: (context, state) {
               if (state is SendServiceSuccess) {
-                AppToast.toast(LocaleKeys.paymentSuccessful.tr());
-                context.go(AppRoutersName.mainBottomNavScreen);
+                if (state.isLater) {
+                  context.go(AppRoutersName.mainBottomNavScreen);
+                } else {
+                  AppToast.toast(LocaleKeys.paymentSuccessful.tr());
+                  context.go(AppRoutersName.mainBottomNavScreen);
+                }
               }
             },
             builder: (context, state) {
               // ignore: unused_local_variable
               final cubit = SendServiceCubit.get(context);
               return AppButton(
-                isLoading: state is SendServiceLoading,
+                isLoading: state is SendServiceLoading && !(state.isLater),
                 height: 50.h,
                 margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 8.h),
-                onPressed: () {},
+                onPressed: () {
+                  cubit.sendService(isLater: false);
+                },
                 text: LocaleKeys.pay.tr(),
               );
             },
           ),
-          AppButtonBorder(
-            height: 50.h,
-            margin: EdgeInsets.only(
-              left: 40.w,
-              right: 40.w,
-              top: 8.h,
-              bottom: 16.h,
-            ),
-            onPressed: () {
-              context.go(AppRoutersName.mainBottomNavScreen);
+          BlocBuilder<SendServiceCubit, SendServiceState>(
+            builder: (context, state) {
+              final cubit = SendServiceCubit.get(context);
+
+              return AppButtonBorder(
+                isLoading: state is SendServiceLoading && (state.isLater),
+
+                height: 50.h,
+                margin: EdgeInsets.only(
+                  left: 40.w,
+                  right: 40.w,
+                  top: 8.h,
+                  bottom: 16.h,
+                ),
+                onPressed: () {
+                  cubit.sendService(isLater: true);
+                },
+                text: LocaleKeys.later.tr(),
+              );
             },
-            text: LocaleKeys.later.tr(),
           ),
         ],
       ),

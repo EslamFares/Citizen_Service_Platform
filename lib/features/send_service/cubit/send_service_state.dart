@@ -6,9 +6,15 @@ class SendServiceInitial extends SendServiceState {}
 
 class SelectFilesState extends SendServiceState {}
 
-class SendServiceLoading extends SendServiceState {}
+class SendServiceLoading extends SendServiceState {
+  final bool isLater;
+  SendServiceLoading({required this.isLater});
+}
 
-class SendServiceSuccess extends SendServiceState {}
+class SendServiceSuccess extends SendServiceState {
+  final bool isLater;
+  SendServiceSuccess({required this.isLater});
+}
 
 class SendServiceError extends SendServiceState {
   final String errorMessage;

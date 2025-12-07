@@ -7,10 +7,9 @@ import 'package:citizen_service_platform/features/send_service/cubit/send_servic
 import 'package:citizen_service_platform/features/send_service/data/model/send_service_screen_args.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_screen.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_upload_files_screen.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/screens/service_pay_or_later_screen.dart';
 import 'package:citizen_service_platform/features/service_categories/data/model/service_categories_screen_args.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/screens/service_categories_screen.dart';
-import 'package:citizen_service_platform/features/service_pay/data/model/service_pay_screen_args.dart';
-import 'package:citizen_service_platform/features/service_pay/presentation/screens/service_pay_screen.dart';
 import 'package:citizen_service_platform/features/sign_up/cubit/sign_up_cubit.dart';
 import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_password_screen.dart';
 import 'package:citizen_service_platform/features/sign_up/presentation/screens/sign_up_screen.dart';
@@ -119,12 +118,15 @@ abstract class AppRouters {
         },
       ),
       GoRoute(
-        path: AppRoutersName.servicePayScreen,
+        path: AppRoutersName.servicePayOrLaterScreen,
         builder: (context, state) {
-          if (state.extra == null || state.extra is! ServicePayScreenArgs) {
-            navException("ServicePayScreenArgs");
+          if (state.extra == null || state.extra is! SendServiceCubit) {
+            navException("SendServiceCubit", "ServicePayScreen");
           }
-          return ServicePayScreen(args: state.extra as ServicePayScreenArgs);
+          return BlocProvider.value(
+            value: state.extra as SendServiceCubit,
+            child: ServicePayOrLaterScreen(),
+          );
         },
       ),
     ],

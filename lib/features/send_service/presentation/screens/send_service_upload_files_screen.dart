@@ -11,7 +11,6 @@ import 'package:citizen_service_platform/features/send_service/data/model/servic
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_button_blur.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_upload_file_button.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/widgets/app_bar_trans.dart';
-import 'package:citizen_service_platform/features/service_pay/data/model/service_pay_screen_args.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -108,15 +107,8 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
               bool isValid = cubit.checkValidateAllFilesDone();
               if (isValid && cubit.serviceRequirementModel?.data?.id != null) {
                 context.push(
-                  AppRoutersName.servicePayScreen,
-                  extra: ServicePayScreenArgs(
-                    serviceTax: cubit.serviceRequirementModel?.data?.tax,
-                    serviceId: cubit.serviceRequirementModel!.data!.id!,
-                    serviceFee: cubit.serviceRequirementModel?.data?.serviceFee,
-                    serviceAmount:
-                        cubit.serviceRequirementModel?.data?.serviceAmount,
-                    serviceName: cubit.serviceRequirementModel?.data?.name,
-                  ),
+                  AppRoutersName.servicePayOrLaterScreen,
+                  extra: cubit,
                 );
               } else {
                 AppToast.toastError(

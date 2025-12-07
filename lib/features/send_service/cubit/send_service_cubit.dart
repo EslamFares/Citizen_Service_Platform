@@ -10,7 +10,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../const/locale_keys.g.dart';
-import '../../../core/network/errors/server_failure.dart';
 import '../../../core/utils/log/logger.dart';
 import '../data/repo/send_service_repo.dart';
 
@@ -158,20 +157,22 @@ class SendServiceCubit extends Cubit<SendServiceState> {
     }
   }
 
-  Future<void> sendService() async {
-    emit(SendServiceLoading());
-    try {
-      final res = await sendServiceRepo.sendService(filesAttachment);
-      debugPrint('res: $res');
-      emit(SendServiceSuccess());
-    } catch (e) {
-      if (e is ServerFailure) {
-        logPro.error("ServerFailure : ${e.toString()}");
-        emit(SendServiceError(e.msgApi));
-      } else {
-        logPro.error("e.toString() : ${e.toString()}");
-        emit(SendServiceError(LocaleKeys.anErrorOccurred.tr()));
-      }
+  Future<void> sendService({required bool isLater}) async {
+    emit(SendServiceLoading(isLater: isLater));
+    int? serviceId = serviceRequirementModel?.data?.id;
+    if (serviceId == null) {
+      emit(SendServiceError(LocaleKeys.anErrorOccurred.tr()));
+      return;
     }
+    final res = await sendServiceRepo.sendService(
+      filesAttachment: filesAttachment,
+      isLater: isLater,
+      serviceId: serviceId,
+    );
+    debugPrint('res: $res');
+    res.fold(
+      (l) => emit(SendServiceError(l)),
+      (r) => emit(SendServiceSuccess(isLater: isLater)),
+    );
   }
 }

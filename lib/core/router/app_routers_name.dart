@@ -13,5 +13,5 @@ abstract class AppRoutersName {
   static const String sendServiceScreen = '/sendServiceScreen';
   static const String sendServiceUploadFilesScreen =
       '/SendServiceUploadFilesScreen';
-  static const String servicePayScreen = '/servicePayScreen';
+  static const String servicePayOrLaterScreen = '/servicePayOrLaterScreen';
 }
