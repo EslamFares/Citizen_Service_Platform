@@ -24,7 +24,6 @@ class RequestItemView extends StatelessWidget {
     required this.code,
     required this.status,
     required this.time,
-
     required this.payDone,
   });
 

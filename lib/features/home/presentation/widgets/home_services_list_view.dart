@@ -19,7 +19,9 @@ class HomeServicesListView extends StatelessWidget {
       child: SingleChildScrollView(
         child: Column(
           children: [
-            70.h.gapH,
+            // 70.h.gapH,
+            // 70.h.gapH,
+            25.h.gapH,
             BlocBuilder<HomeCubit, HomeState>(
               builder: (context, state) {
                 HomeCubit cubit = HomeCubit.get(context);

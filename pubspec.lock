@@ -453,14 +453,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "9.1.1"
-  glassmorphism:
+  glass:
     dependency: "direct main"
     description:
-      name: glassmorphism
-      sha256: c0f65ea2681d4ee6d4125b947946d983335cd44765e835cdc039894b076a6e31
+      name: glass
+      sha256: "444684d73df51782d3d9e0dec7cb37fbe1f4a1456e1dc591663966ab37c4cd0e"
       url: "https://pub.dev"
     source: hosted
-    version: "3.0.0"
+    version: "2.0.0+2"
   go_router:
     dependency: "direct main"
     description:

@@ -19,7 +19,6 @@ class PayOrLaterSection extends StatelessWidget {
     return BlurContainer(
       height: 135.h,
       width: double.infinity,
-      borderRadius: 0,
       blur: 20,
       child: Column(
         children: [

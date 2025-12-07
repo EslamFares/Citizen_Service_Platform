@@ -28,10 +28,8 @@ class MyMainBottomNavigationBar extends StatelessWidget {
           child: BlurContainer(
             width: context.width,
             height: AppSizes.mainBottomNavHight,
-            borderRadius: 1.1,
             child: BottomNavigationBar(
               elevation: 0,
-
               onTap: (value) {
                 cubit.changeIndex(value);
               },

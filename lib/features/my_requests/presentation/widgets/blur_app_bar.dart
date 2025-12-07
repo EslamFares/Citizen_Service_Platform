@@ -12,7 +12,7 @@ class BlurAppBar extends StatelessWidget {
     return BlurContainer(
       height: 85.h,
       width: double.infinity,
-      borderRadius: 0,
+      blur: 10,
       child: Padding(
         padding: EdgeInsets.all(16.w),
         child: Align(

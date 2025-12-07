@@ -17,7 +17,6 @@ class SendServiceButtonBlur extends StatelessWidget {
     return BlurContainer(
       height: 100.h,
       width: double.infinity,
-      borderRadius: 0,
       blur: 20,
       child: AppButton(
         margin: EdgeInsets.only(

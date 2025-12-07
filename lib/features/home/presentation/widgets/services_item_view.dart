@@ -27,8 +27,6 @@ class ServicesItemView extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlurContainer(
-      width: 350,
-      height: 350,
       borderRadius: 16.r,
       child: AppButtonClick(
         onPressed: () {
