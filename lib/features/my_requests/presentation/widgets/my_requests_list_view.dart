@@ -1,4 +1,6 @@
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
+import 'package:citizen_service_platform/core/shared_widgets/app_loader.dart';
+import 'package:citizen_service_platform/core/shared_widgets/pagination_mixin.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
@@ -11,8 +13,19 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../cubit/my_requests_cubit.dart';
 
-class MyRequestsListView extends StatelessWidget {
+class MyRequestsListView extends StatefulWidget {
   const MyRequestsListView({super.key});
+
+  @override
+  State<MyRequestsListView> createState() => _MyRequestsListViewState();
+}
+
+class _MyRequestsListViewState extends State<MyRequestsListView>
+    with PaginationMixin {
+  @override
+  Future<void> onPaginate() {
+    return MyRequestsCubit.get(context).getRequests(isPagination: true);
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,30 +35,55 @@ class MyRequestsListView extends StatelessWidget {
         List<RequestsItem> requestsList = cubit.requestsModel?.data ?? [];
         return Padding(
           padding: AppSizes.sPaddingHorizontal,
-          child: SingleChildScrollView(
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                10.h.gapH,
-                Text(
-                  LocaleKeys.currentRequests.tr(),
-                  style: AppTextStyles.font14w600Black,
-                ),
-                16.h.gapH,
-                for (int i = 0; i < requestsList.length; i++)
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: RequestItemView(
-                      name: requestsList[i].title,
-                      code: requestsList[i].code,
-                      status: requestsList[i].status,
-                      time: requestsList[i].time,
+          child: RefreshIndicator(
+            onRefresh: () async {
+              await cubit.getRequests(isRefresh: true);
+            },
 
-                      payDone: requestsList[i].payDone,
+            child: SingleChildScrollView(
+              controller: scrollController,
+              physics: AlwaysScrollableScrollPhysics(),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisSize: MainAxisSize.max,
+                children: [
+                  context.width.gapW,
+                  Padding(
+                    padding: EdgeInsets.only(bottom: 16.h, top: 10.h),
+                    child: Text(
+                      LocaleKeys.currentRequests.tr(),
+                      style: AppTextStyles.font14w600Black,
                     ),
                   ),
-                AppSizes.mainBottomNavHight.gapH,
-              ],
+                  for (int i = 0; i < requestsList.length; i++)
+                    Padding(
+                      padding: EdgeInsets.only(bottom: 8.h),
+                      child: RequestItemView(
+                        name: requestsList[i].title,
+                        code: requestsList[i].code,
+                        status: requestsList[i].status,
+                        time: requestsList[i].time,
+                        payDone: requestsList[i].payDone,
+                      ),
+                    ),
+                  10.h.gapH,
+                  BlocBuilder<MyRequestsCubit, MyRequestsState>(
+                    builder: (context, state) {
+                      if (state is MyRequestsPaginate) {
+                        return AppLoader();
+                      }
+                      return SizedBox();
+                    },
+                  ),
+                  40.h.gapH,
+                  if (cubit.isNoMorePagination)
+                    Text(
+                      LocaleKeys.noMoreServices.tr(),
+                      style: AppTextStyles.font12w500Black,
+                    ),
+                  AppSizes.mainBottomNavHight.gapH,
+                ],
+              ),
             ),
           ),
         );

@@ -1,3 +1,4 @@
+import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:citizen_service_platform/features/my_requests/data/model/my_requests_model.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -21,17 +22,48 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
   }
 
   //======================================================
-  MyRequestsModel? requestsModel;
-  Future<void> getRequests() async {
-    emit(MyRequestsLoading());
+  bool isNoMorePagination = false;
+  int pageNumber = 1;
 
-    final res = await myRequestsRepo.getRequests();
+  _onRefresh() {
+    pageNumber = 1;
+    _allList.clear();
+    isNoMorePagination = false;
+  }
+
+  MyRequestsModel? requestsModel;
+  final List<RequestsItem> _allList = [];
+  Future<void> getRequests({
+    bool isRefresh = false,
+    bool isPagination = false,
+  }) async {
+    if (isRefresh) {
+      _onRefresh();
+      emit(MyRequestsRefresh());
+    } else if (isPagination) {
+      emit(MyRequestsPaginate());
+    } else {
+      emit(MyRequestsLoading());
+    }
+
+    final res = await myRequestsRepo.getRequests(pageNumber: pageNumber);
     res.fold(
       (errorMsg) {
         emit(MyRequestsError(errorMsg));
       },
-      (model) {
-        requestsModel = model;
+      (modelRes) {
+        MyRequestsModel model = modelRes;
+        if (model.data?.isNotEmpty ?? false) {
+          _allList.addAll(model.data ?? []);
+          logPro.green(
+            'dataCome : ${model.data?.length} || _allList : ${_allList.length} || pageNumber : $pageNumber',
+          );
+          pageNumber++;
+        } else {
+          logger.t("no more news");
+          isNoMorePagination = true;
+        }
+        requestsModel = model.copyWith(data: _allList);
         emit(MyRequestsSuccess());
       },
     );

@@ -8,9 +8,7 @@ class ServiceCategoriesLoading extends ServiceCategoriesState {}
 
 class ServiceCategoriesRefresh extends ServiceCategoriesState {}
 
-class ServiceCategoriesPaggination extends ServiceCategoriesState {}
-
-class NewsNoMorePaggination extends ServiceCategoriesState {}
+class ServiceCategoriesPagination extends ServiceCategoriesState {}
 
 class ServiceCategoriesSuccess extends ServiceCategoriesState {}
 

@@ -33,27 +33,26 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
   }
 
   //======================================================
-  bool isNoMorePaggination = false;
+  bool isNoMorePagination = false;
   int pageNumber = 1;
   ServiceCategoriesModel? serviceCategoriesModel;
 
-  _getProgestsQuaryRefresh() {
+  _onRefresh() {
     pageNumber = 1;
-    _allProjectsList.clear();
-    isNoMorePaggination = false;
+    _allList.clear();
+    isNoMorePagination = false;
   }
 
-  final List<ServiceCategoryModel> _allProjectsList = [];
+  final List<ServiceCategoryModel> _allList = [];
   Future<void> getServiceCategories({
     bool isRefresh = false,
-    bool isPaggination = false,
+    bool isPagination = false,
   }) async {
     if (isRefresh) {
-      _getProgestsQuaryRefresh();
-
+      _onRefresh();
       emit(ServiceCategoriesRefresh());
-    } else if (isPaggination) {
-      emit(ServiceCategoriesPaggination());
+    } else if (isPagination) {
+      emit(ServiceCategoriesPagination());
     } else {
       emit(ServiceCategoriesLoading());
     }
@@ -73,18 +72,16 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
       (modelRes) {
         ServiceCategoriesModel model = modelRes;
         if (model.data?.isNotEmpty ?? false) {
+          _allList.addAll(model.data ?? []);
+          logPro.green(
+            'dataCome : ${model.data?.length} || _allList : ${_allList.length} || pageNumber : $pageNumber',
+          );
           pageNumber++;
-          _allProjectsList.addAll(model.data ?? []);
-          logPro.green('projectsModelRes.data : ${model.data?.length}');
-          logger.t("_allProjectsList : ${_allProjectsList.length}");
         } else {
           logger.t(" no more news");
-          isNoMorePaggination = true;
-          if (isPaggination) {
-            emit(NewsNoMorePaggination());
-          }
+          isNoMorePagination = true;
         }
-        serviceCategoriesModel = model.copyWith(data: _allProjectsList);
+        serviceCategoriesModel = model.copyWith(data: _allList);
 
         emit(ServiceCategoriesSuccess());
       },
