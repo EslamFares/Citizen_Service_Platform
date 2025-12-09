@@ -1,6 +1,5 @@
 import "package:citizen_service_platform/core/utils/app_utils/app_validation/app_regex.dart";
 import "package:citizen_service_platform/core/utils/app_utils/app_validation/check_is_int.dart";
-import "package:citizen_service_platform/core/utils/app_utils/covert_arabic_nums_to_english_num.dart";
 import "package:easy_localization/easy_localization.dart";
 
 //! use==>     validate: (value) => AppValidator.saPhone(value),
@@ -70,14 +69,6 @@ abstract class AppValidator {
       return null;
     }
     return null;
-  }
-
-  static String? isArabicNums(String? value) {
-    if (!containsArabicNumbers(value!)) {
-      return "enterCorrectNum".tr();
-    } else {
-      return null;
-    }
   }
 
   static String? isNumInt(String? value, {int length = 14}) {

@@ -35,6 +35,7 @@ class SignUpForm extends StatelessWidget {
                 maxLengthLetter: 14,
                 maxLengthLetterShowNum: false,
                 hintText: "0" * 14,
+                keyBordType: TextInputType.number,
                 validate: AppValidator.isNumInt,
               ),
               // TextFormTitle(LocaleKeys.password.tr()),
@@ -48,6 +49,7 @@ class SignUpForm extends StatelessWidget {
               GlobalTextForm(
                 controller: cubit.phoneNumber,
                 maxLengthLetter: 11,
+                keyBordType: TextInputType.phone,
                 maxLengthLetterShowNum: false,
                 hintText: "01${"x" * 9}",
                 validate: AppValidator.egPhone,
@@ -95,12 +97,14 @@ class SignUpForm extends StatelessWidget {
               //   hintText: "البحيرة",
               //   validate: AppValidator.requird,
               // ),
-              TextFormTitle(LocaleKeys.address.tr()),
-              GlobalTextForm(
-                controller: cubit.address,
-                hintText: "العنوان التفصيلى",
-                validate: AppValidator.requird,
-              ),
+              //*------------------ address -----------------*/
+
+              // TextFormTitle(LocaleKeys.address.tr()),
+              // GlobalTextForm(
+              //   controller: cubit.address,
+              //   hintText: "العنوان التفصيلى",
+              //   validate: AppValidator.requird,
+              // ),
             ],
           ),
         );

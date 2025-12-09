@@ -1,7 +1,9 @@
+import 'package:citizen_service_platform/core/shared/funcs/detect_location_helper.dart';
 import 'package:citizen_service_platform/features/login/data/funcs/save_user_data_after_login.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:geolocator/geolocator.dart';
 
 import '../../../const/locale_keys.g.dart';
 import '../../../core/utils/log/logger.dart';
@@ -52,7 +54,7 @@ class SignUpCubit extends Cubit<SignUpState> {
   TextEditingController nationalId = TextEditingController();
   TextEditingController phoneNumber = TextEditingController();
   // TextEditingController governorate = TextEditingController();
-  TextEditingController address = TextEditingController();
+  // TextEditingController address = TextEditingController();
   TextEditingController name = TextEditingController();
   TextEditingController passwordController = TextEditingController();
   TextEditingController passwordConfirmController = TextEditingController();
@@ -75,12 +77,21 @@ class SignUpCubit extends Cubit<SignUpState> {
       return;
     }
     try {
+      await DetectLocationHelper.detectLocation();
+      Position? location = DetectLocationHelper.currentLocation;
+      if (location == null) {
+        emit(SignUpError(LocaleKeys.openLoacationPermission.tr()));
+        return;
+      }
+
       final res = await signUpRepo.signUp(
         nationalId: int.parse(nationalId.text),
         phoneNumber: phoneNumber.text,
         branchId: selectedBranchId!,
-        address: address.text,
+        // address: address.text,
         name: name.text,
+        lat: location.latitude,
+        lon: location.longitude,
         password: passwordController.text,
       );
       res.fold(
@@ -107,7 +118,7 @@ class SignUpCubit extends Cubit<SignUpState> {
     nationalId.dispose();
     phoneNumber.dispose();
     // governorate.dispose();
-    address.dispose();
+    // address.dispose();
     name.dispose();
     passwordController.dispose();
     passwordConfirmController.dispose();

@@ -14,6 +14,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:go_router/go_router.dart';
+import 'package:toastification/toastification.dart';
 
 class SignUpPasswordScreen extends StatelessWidget {
   const SignUpPasswordScreen({super.key});
@@ -51,7 +52,10 @@ class SignUpPasswordScreen extends StatelessWidget {
                   if (state is SignUpSuccess) {
                     GoRouter.of(context).go(AppRoutersName.mainBottomNavScreen);
                   } else if (state is SignUpError) {
-                    AppToast.toastError(state.errorMessage);
+                    AppToast.toastificationShow(
+                      state.errorMessage,
+                      type: ToastificationType.error,
+                    );
                   }
                 },
                 builder: (context, state) {

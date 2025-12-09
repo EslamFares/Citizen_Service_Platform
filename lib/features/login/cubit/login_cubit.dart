@@ -39,7 +39,7 @@ class LoginCubit extends Cubit<LoginState> {
       emit(LoginWithBiometricError(LocaleKeys.operationCancelled.tr()));
       return;
     }
-    int? nationalId = await SecureStorageHelper.readInt(AppConst.kNationalId);
+    int? nationalId = await SecureStorageHelper.read(AppConst.kNationalId);
     String? password = await SecureStorageHelper.read(AppConst.kPassword);
     if (nationalId == null || password.isNullOrEmpty) {
       emit(

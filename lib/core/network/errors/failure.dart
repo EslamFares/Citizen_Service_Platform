@@ -1,4 +1,3 @@
-import 'package:citizen_service_platform/core/network/errors/error_model/error_model.dart';
 import 'package:citizen_service_platform/core/network/func/error_status_tr.dart';
 import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:dio/dio.dart';
@@ -25,9 +24,10 @@ abstract class Failure {
     String apiMessage = "";
     if (errorResponse != null) {
       try {
-        ErrorModel errorModel = ErrorModel.fromJson(errorResponse.data);
-        apiMessage = errorModel.errorMessage ?? "";
-        logger.w("errorModel.errorMessage: ${errorModel.errorMessage}");
+        // ErrorModel errorModel = ErrorModel.fromJson(errorResponse.data);
+        // apiMessage = errorModel.errorMessage ?? "";
+        // logger.w("errorModel.errorMessage: ${errorModel.errorMessage}");
+        apiMessage = errorResponse.toString();
       } catch (_) {}
     }
     if (apiMessage.isEmpty) {

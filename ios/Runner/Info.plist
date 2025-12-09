@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 	<dict>
+		<key>NSLocationUsageDescription</key>
+		<string>The app needs access to your current location to determine the delivery address.</string>
 		<key>NSFaceIDUsageDescription</key>
 		<string>Used to log in automatically without entering your credentials every time</string>
 		<key>CFBundleDevelopmentRegion</key>

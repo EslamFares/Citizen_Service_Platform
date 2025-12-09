@@ -10,11 +10,17 @@ abstract class ApiConsts {
       "http://citizensservicesapi.runasp.net/api/";
   static const String _baseUrlProduction =
       "http://citizensservicesapi.runasp.net/api/";
-  //----------------------------------------------------------------
-  static const String getLastAppVersion = "getLastAppVersion";
-  static const String sendOtp = "Accounts/v1/SendOTP";
-  static const String verifyOtp = "Accounts/v1/VerifyOtp";
 
+  //--------------------------global--------------------------------------
+  static const String getLastAppVersion = "getLastAppVersion";
+
+  //---------------------------- Account ------------------------------------
+  static const String login = "Account/Login";
+  static const String register = "Account/Register";
+  static const String verifyOtp = "Accounts/v1/VerifyOtp";
+  static const String sendOtp = "Accounts/v1/SendOTP";
+
+  //---------------------------- CitizenServices ------------------------------------
   static const String getAllService = 'CitizenServices/V1/GetAllCategories';
   static const String getServiceByCategoryId =
       'CitizenServices/V1/GetServiceByCategoryId';

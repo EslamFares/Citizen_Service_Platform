@@ -21,7 +21,7 @@ class HomeAppBar extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Text(
-                "${LocaleKeys.hello.tr()}, ${UserHelper.user?.data?.fullName ?? ""} !",
+                "${LocaleKeys.hello.tr()}, ${UserHelper.user?.fullName ?? ""} !",
                 style: AppTextStyles.font14w600Black,
                 maxLines: 2,
                 overflow: TextOverflow.ellipsis,
@@ -33,7 +33,7 @@ class HomeAppBar extends StatelessWidget {
 
                   Expanded(
                     child: Text(
-                      (UserHelper.user?.data?.location ?? "--, --"),
+                      (UserHelper.user?.branchName ?? "--, --"),
                       style: AppTextStyles.font14w600Black,
                     ),
                   ),

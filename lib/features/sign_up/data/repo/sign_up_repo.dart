@@ -1,7 +1,6 @@
 import 'package:citizen_service_platform/core/network/api/api_consts.dart';
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
 import 'package:citizen_service_platform/features/login/data/model/login_model.dart';
-import 'package:citizen_service_platform/features/login/data/repo/login_repo.dart';
 import 'package:citizen_service_platform/features/sign_up/data/model/branch_model.dart';
 import 'package:dartz/dartz.dart';
 
@@ -26,20 +25,31 @@ class SignUpRepo {
 
   //=====================
   Future<Either<String, UserModel>> signUp({
-    required int nationalId,
-    required String password,
     required String name,
+    required int nationalId,
     required String phoneNumber,
     required int branchId,
-    required String address,
+    // required String address,
+    required double lat,
+    required double lon,
+    required String password,
   }) async {
     try {
-      // final res = await api.get(path: 'users');
-      // debugPrint('res: $res');
+      final res = await api.post(
+        path: ApiConsts.register,
+        isFormData: true,
+        data: {
+          "FullName": name,
+          "NationalId": nationalId,
+          "PhoneNumber": phoneNumber,
+          "BranchId": branchId,
+          "Latitude": lat,
+          "Longitude": lon,
+          "Password": password,
+        },
+      );
 
-      await Future.delayed(const Duration(seconds: 2));
-      Map<String, dynamic> resJsonApi = dummyUserModel.toJson();
-      UserModel userModel = UserModel.fromJson(resJsonApi);
+      UserModel userModel = UserModel.fromMap(res);
       return Right(userModel);
     } catch (e) {
       return Left(e.catchErrorMessage());

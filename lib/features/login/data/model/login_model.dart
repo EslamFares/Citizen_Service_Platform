@@ -1,110 +1,87 @@
 import 'dart:convert';
 
 class UserModel {
-  final bool? isSuccess;
-  final String? errorMessage;
-  final String? errorCode;
-  final UserModelData? data;
-
-  UserModel({this.isSuccess, this.errorMessage, this.errorCode, this.data});
-
-  UserModel copyWith({
-    bool? isSuccess,
-    String? errorMessage,
-    String? errorCode,
-    UserModelData? data,
-  }) => UserModel(
-    isSuccess: isSuccess ?? this.isSuccess,
-    errorMessage: errorMessage ?? this.errorMessage,
-    errorCode: errorCode ?? this.errorCode,
-    data: data ?? this.data,
-  );
-
-  factory UserModel.fromRawJson(String str) =>
-      UserModel.fromJson(json.decode(str));
-
-  String toRawJson() => json.encode(toJson());
-
-  factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
-    isSuccess: json["isSuccess"],
-    errorMessage: json["errorMessage"],
-    errorCode: json["errorCode"],
-    data: json["data"] == null ? null : UserModelData.fromJson(json["data"]),
-  );
-
-  Map<String, dynamic> toJson() => {
-    "isSuccess": isSuccess,
-    "errorMessage": errorMessage,
-    "errorCode": errorCode,
-    "data": data?.toJson(),
-  };
-}
-
-class UserModelData {
   final String? message;
   final bool? isAuthenticated;
-  final String? userId;
-  final String? imagePath;
   final String? fullName;
-  final String? phoneNumber;
+  final String? email;
   final String? token;
-  final String? location;
+  final String? expiresOn;
+  final String? userId;
+  final String? image;
+  final int? branchId;
+  final String? branchName;
+  final String? nationalId;
 
-  UserModelData({
+  UserModel({
     this.message,
     this.isAuthenticated,
-    this.userId,
-    this.imagePath,
     this.fullName,
-    this.phoneNumber,
+    this.email,
     this.token,
-    this.location,
+    this.expiresOn,
+    this.userId,
+    this.image,
+    this.branchId,
+    this.branchName,
+    this.nationalId,
   });
 
-  UserModelData copyWith({
+  UserModel copyWith({
     String? message,
     bool? isAuthenticated,
-    String? userId,
-    String? imagePath,
     String? fullName,
-    String? phoneNumber,
+    String? email,
     String? token,
-    String? location,
-  }) => UserModelData(
+    String? expiresOn,
+    String? userId,
+    String? image,
+    int? branchId,
+    String? branchName,
+    String? nationalId,
+  }) => UserModel(
     message: message ?? this.message,
     isAuthenticated: isAuthenticated ?? this.isAuthenticated,
-    userId: userId ?? this.userId,
-    imagePath: imagePath ?? this.imagePath,
     fullName: fullName ?? this.fullName,
-    phoneNumber: phoneNumber ?? this.phoneNumber,
+    email: email ?? this.email,
     token: token ?? this.token,
-    location: location ?? this.location,
+    expiresOn: expiresOn ?? this.expiresOn,
+    userId: userId ?? this.userId,
+    image: image ?? this.image,
+    branchId: branchId ?? this.branchId,
+    branchName: branchName ?? this.branchName,
+    nationalId: nationalId ?? this.nationalId,
   );
 
-  factory UserModelData.fromRawJson(String str) =>
-      UserModelData.fromJson(json.decode(str));
+  factory UserModel.fromJson(String str) => UserModel.fromMap(json.decode(str));
 
-  String toRawJson() => json.encode(toJson());
+  String toJson() => json.encode(toMap());
 
-  factory UserModelData.fromJson(Map<String, dynamic> json) => UserModelData(
+  factory UserModel.fromMap(Map<String, dynamic> json) => UserModel(
     message: json["message"],
     isAuthenticated: json["isAuthenticated"],
-    userId: json["userId"],
-    imagePath: json["imagePath"],
     fullName: json["fullName"],
-    phoneNumber: json["phoneNumber"],
+    email: json["email"],
     token: json["token"],
-    location: json["location"],
+    expiresOn: json["expiresOn"],
+    userId: json["userId"],
+    image: json["image"],
+    branchId: json["branchId"],
+    branchName: json["branchName"],
+    nationalId: json["nationalId"],
   );
 
-  Map<String, dynamic> toJson() => {
+  Map<String, dynamic> toMap() => {
     "message": message,
     "isAuthenticated": isAuthenticated,
-    "userId": userId,
-    "imagePath": imagePath,
     "fullName": fullName,
-    "phoneNumber": phoneNumber,
+    "email": email,
     "token": token,
-    "location": location,
+    "expiresOn": expiresOn,
+    "userId": userId,
+    "image": image,
+    "branchId": branchId,
+    "branchName": branchName,
+    "nationalId": nationalId,
   };
 }

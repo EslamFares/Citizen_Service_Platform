@@ -17,8 +17,8 @@ abstract class UserHelper {
     try {
       String? data = await SecureStorageHelper.read(AppConst.kUser);
       if (data != null) {
-        user = UserModel.fromRawJson(data);
-        if (user?.data != null) {
+        user = UserModel.fromJson(data);
+        if (user != null) {
           logPro.s("user  loaded from local storage");
           isUserLogin = true;
           return user;
@@ -38,8 +38,8 @@ abstract class UserHelper {
 
   //*================== set user =================*/
   static Future<void> setUser(UserModel userModel) async {
-    await SecureStorageHelper.write(AppConst.kUser, userModel.toRawJson());
-    await SecureStorageHelper.write(AppConst.kToken, userModel.data?.token);
+    await SecureStorageHelper.write(AppConst.kUser, userModel.toJson());
+    await SecureStorageHelper.write(AppConst.kToken, userModel.token);
   }
 
   //*================== in clear on reinstall =================*/

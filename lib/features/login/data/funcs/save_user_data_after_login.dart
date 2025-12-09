@@ -11,7 +11,7 @@ Future<void> saveUserDataAfterLogin({
   required int? nationalId,
   required String? password,
 }) async {
-  if (userModel != null && userModel.data?.token != null) {
+  if (userModel != null && userModel.token != null) {
     await UserHelper.setUser(userModel);
     await UserHelper.getUserModel();
     /*================== Biometric Auth =================*/

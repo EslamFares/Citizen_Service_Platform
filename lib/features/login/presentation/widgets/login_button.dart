@@ -7,6 +7,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
+import 'package:toastification/toastification.dart';
 
 import '../../cubit/login_cubit.dart';
 
@@ -24,7 +25,11 @@ class LoginButton extends StatelessWidget {
         if (state is LoginSuccess) {
           GoRouter.of(context).go(AppRoutersName.mainBottomNavScreen);
         } else if (state is LoginError) {
-          AppToast.toastError(state.errorMessage);
+          // AppToast.toastError(state.errorMessage);
+          AppToast.toastificationShow(
+            state.errorMessage,
+            type: ToastificationType.error,
+          );
         }
         if (state is LoginWithBiometricError) {
           AppToast.toastificationShow(
