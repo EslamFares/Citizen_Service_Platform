@@ -6,14 +6,14 @@ MyRequestsModel dummyMyRequestsModel = MyRequestsModel(
   isSuccess: true,
   data: dummyItems,
 );
-List<RequestsItem> dummyItems = List.generate(
+List<RequestItem> dummyItems = List.generate(
   dummyRequestName.length,
   // 3,
-  (index) => RequestsItem(
+  (index) => RequestItem(
     id: index,
-    title: dummyRequestName[index],
-    code: Random().nextInt(10000),
-    time: DateTime.now()
+
+    serviceName: dummyRequestName[index],
+    createdAt: DateTime.now()
         .copyWith(
           month: (Random().nextInt(11) + 1),
           day: (Random().nextInt(30) + 1),
@@ -21,7 +21,7 @@ List<RequestsItem> dummyItems = List.generate(
         .toString(),
     status: "قيد  التفيذ",
 
-    payDone: Random().nextBool(),
+    isPaid: Random().nextBool(),
   ),
 );
 List dummyRequestName = [

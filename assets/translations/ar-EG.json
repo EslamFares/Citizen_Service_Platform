@@ -126,5 +126,6 @@
   "feesNotPaid": "لم يتم دفع الرسوم",
   "paymentSuccessful": "تم الدفع بنجاح",
   "noMoreServices": "لا يوجد خدمات اخرى",
-  "pleaseSelectBranch": "برجاء اختيار الفرع"
+  "pleaseSelectBranch": "برجاء اختيار الفرع",
+  "noMoreRequests": "لا يوجد طلبات اخرى"
 }

@@ -28,12 +28,14 @@ class PayOrLaterSection extends StatelessWidget {
                 if (state.isLater) {
                   context.go(AppRoutersName.mainBottomNavScreen);
                 } else {
-                  AppToast.toast(LocaleKeys.paymentSuccessful.tr());
+                  AppToast.toastificationShowSuccess(
+                    LocaleKeys.sentSuccessfully.tr(),
+                  );
                   context.go(AppRoutersName.mainBottomNavScreen);
                 }
               }
               if (state is SendServiceError) {
-                AppToast.toast(state.errorMessage);
+                AppToast.toastificationShowError(state.errorMessage);
               }
             },
             builder: (context, state) {

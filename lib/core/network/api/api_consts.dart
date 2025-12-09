@@ -19,6 +19,7 @@ abstract class ApiConsts {
   static const String register = "Account/Register";
   static const String verifyOtp = "Accounts/v1/VerifyOtp";
   static const String sendOtp = "Accounts/v1/SendOTP";
+  static const String getAllBranches = "Account/GetAllBranches";
 
   //---------------------------- CitizenServices ------------------------------------
   static const String getAllService = 'CitizenServices/V1/GetAllCategories';
@@ -28,6 +29,6 @@ abstract class ApiConsts {
       'CitizenServices/V1/GetServiceDetails';
   static const String sendServiceRequest =
       'CitizenServices/V1/SendServiceRequest';
-  static const String getAllBranches = "Account/GetAllBranches";
+  static const String getRequests = "CitizenServices/V1/GetCitizenRequests";
   //================================================================
 }

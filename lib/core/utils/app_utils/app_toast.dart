@@ -56,6 +56,14 @@ abstract class AppToast {
   }
 
   //!=======================================================================
+  static void toastificationShowSuccess(String text) {
+    toastificationShow(text, type: ToastificationType.success);
+  }
+
+  static void toastificationShowError(String text) {
+    toastificationShow(text, type: ToastificationType.error);
+  }
+
   static void toastificationShow(
     String text, {
     BuildContext? context,

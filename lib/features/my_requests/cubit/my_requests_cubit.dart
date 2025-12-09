@@ -32,7 +32,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
   }
 
   MyRequestsModel? requestsModel;
-  final List<RequestsItem> _allList = [];
+  final List<RequestItem> _allList = [];
   Future<void> getRequests({
     bool isRefresh = false,
     bool isPagination = false,

@@ -2,6 +2,8 @@ import 'package:citizen_service_platform/core/network/func/error_status_tr.dart'
 import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:dio/dio.dart';
 
+import 'error_model/error_model.dart';
+
 abstract class Failure {
   final String message;
   final int? status;
@@ -24,11 +26,14 @@ abstract class Failure {
     String apiMessage = "";
     if (errorResponse != null) {
       try {
-        // ErrorModel errorModel = ErrorModel.fromJson(errorResponse.data);
-        // apiMessage = errorModel.errorMessage ?? "";
-        // logger.w("errorModel.errorMessage: ${errorModel.errorMessage}");
-        apiMessage = errorResponse.toString();
-      } catch (_) {}
+        ErrorModel errorModel = ErrorModel.fromMap(errorResponse.data);
+        apiMessage = errorModel.errorMessage ?? "";
+        if (apiMessage.isEmpty) {
+          apiMessage = errorResponse.toString();
+        }
+      } catch (_) {
+        logPro.error("error in extract ApiMessage");
+      }
     }
     if (apiMessage.isEmpty) {
       apiMessage = errorStautsTr(status);

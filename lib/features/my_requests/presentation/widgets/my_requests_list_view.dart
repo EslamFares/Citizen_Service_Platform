@@ -32,7 +32,7 @@ class _MyRequestsListViewState extends State<MyRequestsListView>
     return BlocBuilder<MyRequestsCubit, MyRequestsState>(
       builder: (context, state) {
         MyRequestsCubit cubit = MyRequestsCubit.get(context);
-        List<RequestsItem> requestsList = cubit.requestsModel?.data ?? [];
+        List<RequestItem> requestsList = cubit.requestsModel?.data ?? [];
         return Padding(
           padding: AppSizes.sPaddingHorizontal,
           child: RefreshIndicator(
@@ -59,11 +59,11 @@ class _MyRequestsListViewState extends State<MyRequestsListView>
                     Padding(
                       padding: EdgeInsets.only(bottom: 8.h),
                       child: RequestItemView(
-                        name: requestsList[i].title,
-                        code: requestsList[i].code,
+                        name: requestsList[i].serviceName,
+                        code: requestsList[i].id,
                         status: requestsList[i].status,
-                        time: requestsList[i].time,
-                        payDone: requestsList[i].payDone,
+                        time: requestsList[i].createdAt,
+                        payDone: requestsList[i].isPaid,
                       ),
                     ),
                   10.h.gapH,
@@ -77,9 +77,14 @@ class _MyRequestsListViewState extends State<MyRequestsListView>
                   ),
                   40.h.gapH,
                   if (cubit.isNoMorePagination)
-                    Text(
-                      LocaleKeys.noMoreServices.tr(),
-                      style: AppTextStyles.font12w500Black,
+                    Center(
+                      child: Padding(
+                        padding: EdgeInsets.only(bottom: 8.h),
+                        child: Text(
+                          LocaleKeys.noMoreRequests.tr(),
+                          style: AppTextStyles.font12w500Black,
+                        ),
+                      ),
                     ),
                   AppSizes.mainBottomNavHight.gapH,
                 ],
