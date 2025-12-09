@@ -52,6 +52,7 @@ class ServiceCategoriesCubit extends Cubit<ServiceCategoriesState> {
       _onRefresh();
       emit(ServiceCategoriesRefresh());
     } else if (isPagination) {
+      isNoMorePagination = false;
       emit(ServiceCategoriesPagination());
     } else {
       emit(ServiceCategoriesLoading());

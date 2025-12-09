@@ -20,60 +20,64 @@ class PayOrLaterSection extends StatelessWidget {
       height: 135.h,
       width: double.infinity,
       blur: 20,
-      child: Column(
-        children: [
-          BlocConsumer<SendServiceCubit, SendServiceState>(
-            listener: (context, state) {
-              if (state is SendServiceSuccess) {
-                if (state.isLater) {
-                  context.go(AppRoutersName.mainBottomNavScreen);
-                } else {
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            BlocConsumer<SendServiceCubit, SendServiceState>(
+              listener: (context, state) {
+                if (state is SendServiceSuccess) {
                   AppToast.toastificationShowSuccess(
                     LocaleKeys.sentSuccessfully.tr(),
                   );
-                  context.go(AppRoutersName.mainBottomNavScreen);
+                  // AppToast.toast(LocaleKeys.sentSuccessfully.tr());
+                  if (state.isLater) {
+                    context.go(AppRoutersName.mainBottomNavScreen);
+                  } else {
+                    context.go(AppRoutersName.mainBottomNavScreen);
+                  }
                 }
-              }
-              if (state is SendServiceError) {
-                AppToast.toastificationShowError(state.errorMessage);
-              }
-            },
-            builder: (context, state) {
-              // ignore: unused_local_variable
-              final cubit = SendServiceCubit.get(context);
-              return AppButton(
-                isLoading: state is SendServiceLoading && (state.isPaid),
-                height: 50.h,
-                margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 8.h),
-                onPressed: () {
-                  cubit.sendService(isPaid: true);
-                },
-                text: LocaleKeys.pay.tr(),
-              );
-            },
-          ),
-          BlocBuilder<SendServiceCubit, SendServiceState>(
-            builder: (context, state) {
-              final cubit = SendServiceCubit.get(context);
+                if (state is SendServiceError) {
+                  AppToast.toastificationShowError(state.errorMessage);
+                  // AppToast.toastError(state.errorMessage);
+                }
+              },
+              builder: (context, state) {
+                // ignore: unused_local_variable
+                final cubit = SendServiceCubit.get(context);
+                return AppButton(
+                  isLoading: state is SendServiceLoading && (state.isPaid),
+                  height: 50.h,
+                  margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 8.h),
+                  onPressed: () {
+                    cubit.sendService(isPaid: true);
+                  },
+                  text: LocaleKeys.pay.tr(),
+                );
+              },
+            ),
+            BlocBuilder<SendServiceCubit, SendServiceState>(
+              builder: (context, state) {
+                final cubit = SendServiceCubit.get(context);
 
-              return AppButtonBorder(
-                isLoading: state is SendServiceLoading && !(state.isPaid),
+                return AppButtonBorder(
+                  isLoading: state is SendServiceLoading && !(state.isPaid),
 
-                height: 50.h,
-                margin: EdgeInsets.only(
-                  left: 40.w,
-                  right: 40.w,
-                  top: 8.h,
-                  bottom: 16.h,
-                ),
-                onPressed: () {
-                  cubit.sendService(isPaid: false);
-                },
-                text: LocaleKeys.later.tr(),
-              );
-            },
-          ),
-        ],
+                  height: 50.h,
+                  margin: EdgeInsets.only(
+                    left: 40.w,
+                    right: 40.w,
+                    top: 8.h,
+                    bottom: 16.h,
+                  ),
+                  onPressed: () {
+                    cubit.sendService(isPaid: false);
+                  },
+                  text: LocaleKeys.later.tr(),
+                );
+              },
+            ),
+          ],
+        ),
       ),
     );
   }

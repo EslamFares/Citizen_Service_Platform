@@ -41,6 +41,7 @@ class MyRequestsCubit extends Cubit<MyRequestsState> {
       _onRefresh();
       emit(MyRequestsRefresh());
     } else if (isPagination) {
+      isNoMorePagination = false;
       emit(MyRequestsPaginate());
     } else {
       emit(MyRequestsLoading());
