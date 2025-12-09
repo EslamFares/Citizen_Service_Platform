@@ -1,3 +1,5 @@
+import 'dart:developer';
+
 import 'package:citizen_service_platform/core/network/api/api_consts.dart';
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
@@ -35,24 +37,38 @@ class SendServiceRepo {
   /*================== sendService =================*/
   Future<Either<String, String>> sendService({
     required List<SendFileModel> filesAttachment,
-    required bool isLater,
+    required bool isPaid,
     required int? serviceId,
   }) async {
     try {
-      List data = [];
-      for (var fileModel in filesAttachment) {
-        Map<String, dynamic> dataFile = {
-          "attachmentTypeId": fileModel.id,
-          //todo  TODO: come here send files
-          'File': await MultipartFile.fromFile(fileModel.file!.path),
-        };
-        data.add(dataFile);
+      //todo  TODO: send  multi list files
+      //send multi list in FormData
+      final formData = FormData();
+      formData.fields.add(MapEntry("ServiceId", serviceId.toString()));
+      formData.fields.add(MapEntry("IsPaid", isPaid.toString()));
+
+      for (var f in filesAttachment) {
+        formData.fields.add(MapEntry("AttachmentTypeId", f.id.toString()));
       }
+
+      for (var f in filesAttachment) {
+        formData.files.add(
+          MapEntry("Attachments", await MultipartFile.fromFile(f.file!.path)),
+        );
+      }
+      for (var f in formData.fields) {
+        log("FIELD >>> ${f.key} = ${f.value}");
+      }
+
+      for (var f in formData.files) {
+        log("FILE >>> ${f.key} = ${f.value.filename}");
+      }
+
       final res = await api.post(
         responseType: ResponseType.json,
         path: ApiConsts.sendServiceRequest,
-        isFormData: true,
-        data: {"serviceId": serviceId, "isLater": isLater, "Attachments": data},
+        contentType: 'multipart/form-data',
+        data: formData,
       );
       logPro.w('res: $res');
       await Future.delayed(AppSizes.durDummyLoading2s);

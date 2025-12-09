@@ -32,16 +32,19 @@ class PayOrLaterSection extends StatelessWidget {
                   context.go(AppRoutersName.mainBottomNavScreen);
                 }
               }
+              if (state is SendServiceError) {
+                AppToast.toast(state.errorMessage);
+              }
             },
             builder: (context, state) {
               // ignore: unused_local_variable
               final cubit = SendServiceCubit.get(context);
               return AppButton(
-                isLoading: state is SendServiceLoading && !(state.isLater),
+                isLoading: state is SendServiceLoading && (state.isPaid),
                 height: 50.h,
                 margin: EdgeInsets.only(left: 40.w, right: 40.w, top: 8.h),
                 onPressed: () {
-                  cubit.sendService(isLater: false);
+                  cubit.sendService(isPaid: true);
                 },
                 text: LocaleKeys.pay.tr(),
               );
@@ -52,7 +55,7 @@ class PayOrLaterSection extends StatelessWidget {
               final cubit = SendServiceCubit.get(context);
 
               return AppButtonBorder(
-                isLoading: state is SendServiceLoading && (state.isLater),
+                isLoading: state is SendServiceLoading && !(state.isPaid),
 
                 height: 50.h,
                 margin: EdgeInsets.only(
@@ -62,7 +65,7 @@ class PayOrLaterSection extends StatelessWidget {
                   bottom: 16.h,
                 ),
                 onPressed: () {
-                  cubit.sendService(isLater: true);
+                  cubit.sendService(isPaid: false);
                 },
                 text: LocaleKeys.later.tr(),
               );

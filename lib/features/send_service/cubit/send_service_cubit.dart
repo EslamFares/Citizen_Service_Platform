@@ -157,8 +157,8 @@ class SendServiceCubit extends Cubit<SendServiceState> {
     }
   }
 
-  Future<void> sendService({required bool isLater}) async {
-    emit(SendServiceLoading(isLater: isLater));
+  Future<void> sendService({required bool isPaid}) async {
+    emit(SendServiceLoading(isPaid: isPaid));
     int? serviceId = serviceRequirementModel?.data?.id;
     if (serviceId == null) {
       emit(SendServiceError(LocaleKeys.anErrorOccurred.tr()));
@@ -166,13 +166,13 @@ class SendServiceCubit extends Cubit<SendServiceState> {
     }
     final res = await sendServiceRepo.sendService(
       filesAttachment: filesAttachment,
-      isLater: isLater,
+      isPaid: isPaid,
       serviceId: serviceId,
     );
     debugPrint('res: $res');
     res.fold(
       (l) => emit(SendServiceError(l)),
-      (r) => emit(SendServiceSuccess(isLater: isLater)),
+      (r) => emit(SendServiceSuccess(isLater: isPaid)),
     );
   }
 }

@@ -7,8 +7,8 @@ class SendServiceInitial extends SendServiceState {}
 class SelectFilesState extends SendServiceState {}
 
 class SendServiceLoading extends SendServiceState {
-  final bool isLater;
-  SendServiceLoading({required this.isLater});
+  final bool isPaid;
+  SendServiceLoading({required this.isPaid});
 }
 
 class SendServiceSuccess extends SendServiceState {
