@@ -41,8 +41,6 @@ class SendServiceRepo {
     required int? serviceId,
   }) async {
     try {
-      //todo  TODO: send  multi list files
-      // filesAttachment.removeLast();
       //send multi list in FormData
       final formData = FormData();
       formData.fields.add(MapEntry("ServiceId", serviceId.toString()));

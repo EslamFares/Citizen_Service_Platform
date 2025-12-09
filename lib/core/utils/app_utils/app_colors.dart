@@ -5,6 +5,7 @@ abstract class AppColors {
   static const Color secondary = Color(0xff556B76);
   static const Color brown = Color(0xffA38C7C);
   static Color brownLight = Color(0xffE5C7AA).withValues(alpha: .15);
+  static Color scaffoldBg = Colors.white;
   static Color requestStatusBg = Color(0xffFFF1C9);
   static Color requestStatusText = Color(0xff9D8526);
   static Color requestStatusGrayLight = Color(0xff9F9F9F);
