@@ -1,7 +1,7 @@
 import 'package:citizen_service_platform/core/utils/app_config/app_config.dart';
 
 //TODO : App Config Environments Edit Before Release
-AppConfig appConfig = AppConfigEnvironments.debug;
+AppConfig appConfig = AppConfigEnvironments.release;
 
 abstract class AppConfigEnvironments {
   //*------------ Debug ------------
