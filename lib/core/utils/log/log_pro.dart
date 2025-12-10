@@ -1,6 +1,10 @@
 part of 'logger.dart';
 
-LogPro logProPtr = logPro.copyWith(usePrint: true, lineLength: 100);
+LogPro logProSimple = logPro.copyWith(
+  simpleShapeLog: true,
+  stackTraceLinesToShow: 0,
+);
+LogPro logProPrint = logPro.copyWith(usePrint: true, lineLength: 100);
 
 LogPro logPro = LogPro(
   isLoggingEnabled: appConfig.enableLogpro,

@@ -1,11 +1,9 @@
-import 'dart:developer';
-
 import 'package:citizen_service_platform/core/network/api/api_consts.dart';
 import 'package:citizen_service_platform/core/network/errors/catch_error_message_extension.dart';
-import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/send_file_model.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
+import 'package:citizen_service_platform/features/send_service/data/model/success_global_model.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart';
 
@@ -20,9 +18,6 @@ class SendServiceRepo {
     required int serviceCategoryId,
   }) async {
     try {
-      // await Future.delayed(AppSizes.durDummyLoading2s);
-      // ServiceRequirementModel model = dummyServiceRequirementModel;
-
       final res = await api.get(
         path: ApiConsts.getServiceDetails,
         query: {"serviceId": serviceCategoryId},
@@ -56,11 +51,11 @@ class SendServiceRepo {
         );
       }
       for (var f in formData.fields) {
-        log("FIELD >>> ${f.key} = ${f.value}");
+        logProSimple.w("FIELD >>> ${f.key} = ${f.value}");
       }
 
       for (var f in formData.files) {
-        log("FILE >>> ${f.key} = ${f.value.filename}");
+        logProSimple.w("FILE >>> ${f.key} = ${f.value.filename}");
       }
 
       final res = await api.post(
@@ -69,21 +64,18 @@ class SendServiceRepo {
         contentType: 'multipart/form-data',
         data: formData,
       );
-      logPro.w('res: $res');
-      await Future.delayed(AppSizes.durDummyLoading2s);
-      return Right("success");
+      String? successMsg;
+      try {
+        SuccessGlobalModel model = SuccessGlobalModel.fromMap(res);
+        successMsg = model.message;
+      } catch (_) {}
+      if (successMsg == null || successMsg.isEmpty) {
+        successMsg = "Success";
+      }
+      logProSimple.s("successMsg : $successMsg");
+      return Right(successMsg);
     } catch (e) {
       return Left(e.catchErrorMessage());
     }
   }
 }
-  //   Map<String, dynamic> dataFile = {'file': await MultipartFile.fromFile(file.path)};
-  //   return await api.post(
-  //     responseType: ResponseType.json,
-  //     path: ApiConsts.uploadImage,
-  //     isFormData: true,
-  //     data: {
-  //       "projectId": projectId,
-  //       ...dataFile,
-  //     },
-  //   );
