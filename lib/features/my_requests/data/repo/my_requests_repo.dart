@@ -18,16 +18,9 @@ class MyRequestsRepo {
     try {
       final res = await api.post(
         path: ApiConsts.getRequests,
-        data: {
-          "pageNumber": pageNumber,
-          "pageSize": pageSize,
-          "isMyRequests": true,
-          "isOngoing": true,
-        },
+        data: {"pageNumber": pageNumber, "pageSize": pageSize},
       );
-
       MyRequestsModel requestsModel = MyRequestsModel.fromMap(res);
-      // throw "error";
       return Right(requestsModel);
     } catch (e) {
       return Left(e.catchErrorMessage());
