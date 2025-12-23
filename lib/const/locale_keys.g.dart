@@ -144,5 +144,14 @@ abstract class  LocaleKeys {
   static const serviceName = 'serviceName';
   static const invoiceDetails = 'invoiceDetails';
   static const confirmationRequestService = 'confirmationRequestService';
+  static const pleaseEnterValidPhoneNumber = 'pleaseEnterValidPhoneNumber';
+  static const invalidIdNumber = 'invalidIdNumber';
+  static const between = 'between';
+  static const and = 'and';
+  static const enterValueGreaterThan = 'enterValueGreaterThan';
+  static const enterValueLessThan = 'enterValueLessThan';
+  static const nameIsRequired = 'nameIsRequired';
+  static const pleaseEnterAValidTextOrNumbersOnly = 'pleaseEnterAValidTextOrNumbersOnly';
+  static const enterValue = 'enterValue';
 
 }

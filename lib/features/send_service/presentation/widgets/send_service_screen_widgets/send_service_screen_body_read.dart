@@ -24,7 +24,6 @@ class SendServiceScreenBodyRead extends StatelessWidget {
     /*------------------ required documents -----------------*/
     List<ServiceAttachmentType> requiredDocuments =
         cubit.serviceRequirementModel?.data?.serviceAttachmentTypes ?? [];
-    bool requiredDocumentsIsNotEmpty = requiredDocuments.isNotEmpty;
     /*------------------ steps -----------------*/
     String applicationSteps =
         cubit.serviceRequirementModel?.data?.applicationSteps ?? "";

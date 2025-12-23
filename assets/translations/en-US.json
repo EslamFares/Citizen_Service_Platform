@@ -139,5 +139,14 @@
   "serviceType": "Service Type",
   "serviceName": "Service Name",
   "invoiceDetails": "Invoice Details",
-  "confirmationRequestService": "Confirmation Request Service"
+  "confirmationRequestService": "Confirmation Request Service",
+  "pleaseEnterValidPhoneNumber": "Please enter a valid phone number",
+  "invalidIdNumber": "Invalid ID number",
+  "between": "Between",
+  "and": "And",
+  "enterValueGreaterThan": "Enter a value greater than",
+  "enterValueLessThan": "Enter a value less than",
+  "nameIsRequired": "Name is required",
+  "pleaseEnterAValidTextOrNumbersOnly": "Please enter a valid text or numbers only",
+  "enterValue": "Enter value"
 }

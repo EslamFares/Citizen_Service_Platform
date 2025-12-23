@@ -139,5 +139,14 @@
   "serviceType": "نوع الخدمة",
   "serviceName": "اسم الخدمة",
   "invoiceDetails": "تفاصيل الفاتورة",
-  "confirmationRequestService": "تأكيد طلب الخدمة"
+  "confirmationRequestService": "تأكيد طلب الخدمة",
+  "pleaseEnterValidPhoneNumber": "برجاء إدخال رقم هاتف صحيح",
+  "invalidIdNumber": "رقم الهوية غير صحيح",
+  "between": "بين",
+  "and": "و",
+  "enterValueGreaterThan": "أدخل قيمة أكبر من",
+  "enterValueLessThan": "أدخل قيمة أقل من",
+  "nameIsRequired": "الاسم مطلوب",
+  "pleaseEnterAValidTextOrNumbersOnly": "برجاء إدخال نص صحيح أو أرقام فقط",
+  "enterValue": "أدخل قيمة"
 }
