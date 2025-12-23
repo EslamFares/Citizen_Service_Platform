@@ -1,17 +1,15 @@
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
-import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/string_extensions.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/app_text_html.dart';
-import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_button_blur.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_screen_widgets/request_service_read_done_button.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/money_or_free.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_requirement_title.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
-import 'package:go_router/go_router.dart';
 
 class SendServiceScreenBodyRead extends StatelessWidget {
   const SendServiceScreenBodyRead({super.key});
@@ -22,13 +20,11 @@ class SendServiceScreenBodyRead extends StatelessWidget {
     /*------------------ description -----------------*/
     String des = cubit.serviceRequirementModel?.data?.description ?? "";
     /*------------------ amount -----------------*/
-    num serviceAmount = cubit.serviceRequirementModel?.data?.serviceAmount ?? 0;
-    num serviceFee = cubit.serviceRequirementModel?.data?.serviceFee ?? 0;
-    num tax = cubit.serviceRequirementModel?.data?.tax ?? 0;
-    num total = serviceAmount + serviceFee + tax;
+    num total = cubit.totalAmount;
     /*------------------ required documents -----------------*/
     List<ServiceAttachmentType> requiredDocuments =
         cubit.serviceRequirementModel?.data?.serviceAttachmentTypes ?? [];
+    bool requiredDocumentsIsNotEmpty = requiredDocuments.isNotEmpty;
     /*------------------ steps -----------------*/
     String applicationSteps =
         cubit.serviceRequirementModel?.data?.applicationSteps ?? "";
@@ -92,16 +88,8 @@ class SendServiceScreenBodyRead extends StatelessWidget {
             ),
           ),
         ),
-        //*================== Done Read =================*/
-        SendServiceButtonBlur(
-          title: LocaleKeys.requestService.tr(),
-          onPressed: () {
-            context.push(
-              AppRoutersName.sendServiceUploadFilesScreen,
-              extra: cubit,
-            );
-          },
-        ),
+        //*================== Read Done=================*/
+        RequestServiceReadDoneButton(),
       ],
     );
   }

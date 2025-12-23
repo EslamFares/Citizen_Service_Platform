@@ -5,10 +5,10 @@ import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dar
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/scaffold_bg.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
-import 'package:citizen_service_platform/features/send_service/presentation/widgets/pay_or_later_section.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/invoice_details_item.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/invoice_details_title.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/money_or_free.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/pay_or_later_section.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/request_confirmed_after_payment_title_icon.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/service_fees_total_text.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/widgets/app_bar_trans.dart';

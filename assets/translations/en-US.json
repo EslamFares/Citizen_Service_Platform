@@ -138,5 +138,6 @@
   "transactionNumber": "Transaction Number",
   "serviceType": "Service Type",
   "serviceName": "Service Name",
-  "invoiceDetails": "Invoice Details"
+  "invoiceDetails": "Invoice Details",
+  "confirmationRequestService": "Confirmation Request Service"
 }

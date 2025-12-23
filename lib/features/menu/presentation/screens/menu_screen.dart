@@ -45,7 +45,7 @@ class MenuScreen extends StatelessWidget {
                       return AppButtonBorder(
                         text: LocaleKeys.logout.tr(),
                         onPressed: () {
-                          iosShowDialog(
+                          appShowDialog(
                             context: context,
                             title: LocaleKeys.logout.tr(),
                             subTitle: LocaleKeys.areYouSure.tr(),

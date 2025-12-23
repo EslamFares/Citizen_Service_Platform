@@ -138,5 +138,6 @@
   "transactionNumber": "رقم المعاملة",
   "serviceType": "نوع الخدمة",
   "serviceName": "اسم الخدمة",
-  "invoiceDetails": "تفاصيل الفاتورة"
+  "invoiceDetails": "تفاصيل الفاتورة",
+  "confirmationRequestService": "تأكيد طلب الخدمة"
 }

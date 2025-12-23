@@ -111,6 +111,8 @@ class SendServiceCubit extends Cubit<SendServiceState> {
 
   //============================get Service Requirement===============
   ServiceRequirementModel? serviceRequirementModel;
+  num totalAmount = 0;
+  bool get totalAmountNotFree => totalAmount > 0;
   Future<void> getServiceRequirement() async {
     emit(GetServiceRequirementLoading());
     if (serviceCategoryId == null) {
@@ -127,9 +129,21 @@ class SendServiceCubit extends Cubit<SendServiceState> {
       },
       (model) {
         serviceRequirementModel = model;
+        setTotalAmount();
         emit(GetServiceRequirementSuccess());
       },
     );
+  }
+
+  setTotalAmount() {
+    if (serviceRequirementModel?.data?.serviceAmount == null) {
+      totalAmount = 0;
+    } else {
+      num serviceAmount = serviceRequirementModel?.data?.serviceAmount ?? 0;
+      num serviceFee = serviceRequirementModel?.data?.serviceFee ?? 0;
+      num tax = serviceRequirementModel?.data?.tax ?? 0;
+      totalAmount = serviceAmount + serviceFee + tax;
+    }
   }
 
   //========================send Service==============================

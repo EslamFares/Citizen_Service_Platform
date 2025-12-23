@@ -143,5 +143,6 @@ abstract class  LocaleKeys {
   static const serviceType = 'serviceType';
   static const serviceName = 'serviceName';
   static const invoiceDetails = 'invoiceDetails';
+  static const confirmationRequestService = 'confirmationRequestService';
 
 }

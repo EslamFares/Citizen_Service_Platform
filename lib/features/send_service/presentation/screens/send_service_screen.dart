@@ -1,9 +1,11 @@
 import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_error/app_error.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_loader_gif.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_toast.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/scaffold_bg.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/send_service_screen_args.dart';
-import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_screen_body_read.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_screen_widgets/send_service_screen_body_read.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/navigator_after_pay.dart';
 import 'package:citizen_service_platform/features/service_categories/presentation/widgets/app_bar_trans.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -27,7 +29,15 @@ class SendServiceScreen extends StatelessWidget {
       child: ScaffoldBg(
         bg: Assets.imgServiceTopBottomNotEmptyCenterNotEmptyBg,
         appBar: appBarTrans("${args.serviceCategoryName}"),
-        body: BlocBuilder<SendServiceCubit, SendServiceState>(
+        body: BlocConsumer<SendServiceCubit, SendServiceState>(
+          listener: (context, state) {
+            if (state is SendServiceSuccess) {
+              navigatorAfterPay(context, isLater: state.isLater);
+            }
+            if (state is SendServiceError) {
+              AppToast.toastificationShowError(state.errorMessage);
+            }
+          },
           buildWhen: (previous, current) =>
               current is GetServiceRequirementLoading ||
               current is GetServiceRequirementSuccess ||

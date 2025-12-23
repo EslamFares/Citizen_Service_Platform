@@ -6,10 +6,12 @@ import 'package:flutter_screenutil/flutter_screenutil.dart';
 class SendServiceButtonBlur extends StatelessWidget {
   final String title;
   final void Function()? onPressed;
+  final bool isLoading;
   const SendServiceButtonBlur({
     super.key,
     required this.title,
     required this.onPressed,
+    this.isLoading = false,
   });
 
   @override
@@ -19,6 +21,7 @@ class SendServiceButtonBlur extends StatelessWidget {
       width: double.infinity,
       blur: 20,
       child: AppButton(
+        isLoading: isLoading,
         margin: EdgeInsets.only(
           left: 40.w,
           right: 40.w,
