@@ -26,7 +26,7 @@ class MenuScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => MenuCubit(getIt<MenuRepo>()),
       child: ScaffoldBg(
-        bg: Assets.imgRequsetsBg,
+        bg: Assets.imgServiceTopBottomNotEmptyCenterNotEmptyBg,
 
         body: Column(
           children: [

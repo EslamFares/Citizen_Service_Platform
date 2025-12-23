@@ -74,21 +74,21 @@ class Assets {
   /// assets/img/home_bg.png
   static const String imgHomeBg = "assets/img/home_bg.png";
 
-  /// Assets for imgLoginBg
-  /// assets/img/login_bg.png
-  static const String imgLoginBg = "assets/img/login_bg.png";
+  /// Assets for imgServiceTopBottomEmptyCenterNotEmptyBg
+  /// assets/img/service_top_bottom_empty_center_notEmpty_bg.png
+  static const String imgServiceTopBottomEmptyCenterNotEmptyBg = "assets/img/service_top_bottom_empty_center_notEmpty_bg.png";
 
-  /// Assets for imgRequsetsBg
-  /// assets/img/requsets_bg.png
-  static const String imgRequsetsBg = "assets/img/requsets_bg.png";
+  /// Assets for imgServiceTopBottomNotEmptyCenterEmptyBg
+  /// assets/img/service_top_bottom_notEmpty_center_empty_bg.png
+  static const String imgServiceTopBottomNotEmptyCenterEmptyBg = "assets/img/service_top_bottom_notEmpty_center_empty_bg.png";
 
-  /// Assets for imgServiceCategoriesBg
-  /// assets/img/service_categories_bg.png
-  static const String imgServiceCategoriesBg = "assets/img/service_categories_bg.png";
+  /// Assets for imgServiceTopBottomNotEmptyCenterNotEmptyBg
+  /// assets/img/service_top_bottom_notEmpty_center_notEmpty_bg.png
+  static const String imgServiceTopBottomNotEmptyCenterNotEmptyBg = "assets/img/service_top_bottom_notEmpty_center_notEmpty_bg.png";
 
-  /// Assets for imgServiceTopBottomCenterEmptyBg
-  /// assets/img/service_top_bottom_center_empty_bg.png
-  static const String imgServiceTopBottomCenterEmptyBg = "assets/img/service_top_bottom_center_empty_bg.png";
+  /// Assets for imgServiceTopNotEmptyBottomEmptyCenterNotEmptyBg
+  /// assets/img/service_top_notEmpty_bottom_empty_center_notEmpty_bg.png
+  static const String imgServiceTopNotEmptyBottomEmptyCenterNotEmptyBg = "assets/img/service_top_notEmpty_bottom_empty_center_notEmpty_bg.png";
 
   /// Assets for imgServices1
   /// assets/img/services/1.png

@@ -20,7 +20,7 @@ class MyRequestsScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => MyRequestsCubit(getIt<MyRequestsRepo>())..init(),
       child: ScaffoldBg(
-        bg: Assets.imgRequsetsBg,
+        bg: Assets.imgServiceTopBottomNotEmptyCenterNotEmptyBg,
 
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,

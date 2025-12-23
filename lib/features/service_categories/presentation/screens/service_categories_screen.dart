@@ -26,7 +26,7 @@ class ServiceCategoriesScreen extends StatelessWidget {
           ServiceCategoriesCubit(getIt<ServiceCategoriesRepo>())
             ..init(serviceId: args.serviceId),
       child: ScaffoldBg(
-        bg: Assets.imgServiceCategoriesBg,
+        bg: Assets.imgServiceTopNotEmptyBottomEmptyCenterNotEmptyBg,
         appBar: appBarTrans("${LocaleKeys.services2.tr()} ${args.title}"),
         body: Padding(
           padding: EdgeInsets.only(

@@ -39,7 +39,7 @@ class ScaffoldBg extends StatelessWidget {
             ),
             Positioned.fill(
               child: Image.asset(
-                bg ?? Assets.imgLoginBg,
+                bg ?? Assets.imgServiceTopBottomEmptyCenterNotEmptyBg,
                 fit: BoxFit.fill,
                 width: context.width,
                 height: context.height,

@@ -1,7 +1,6 @@
 import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/shared/funcs/date_formate.dart';
-import 'package:citizen_service_platform/core/utils/app_utils/app_colors.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/scaffold_bg.dart';
@@ -31,83 +30,77 @@ class ServicePayOrLaterScreen extends StatelessWidget {
     num tax = cubit.serviceRequirementModel?.data?.tax ?? 0;
     num total = serviceAmount + serviceFee + tax;
     return ScaffoldBg(
-      bg: Assets.imgServiceTopBottomCenterEmptyBg,
+      bg: Assets.imgServiceTopBottomNotEmptyCenterEmptyBg,
       appBar: appBarTrans("${LocaleKeys.pay.tr()} $serviceName"),
       body: Column(
         children: [
           Expanded(
-            child: Container(
-              color: AppColors.scaffoldBgWhiteGrey,
-              child: Padding(
-                padding: EdgeInsets.only(left: 16.w, right: 16.w),
-                child: SingleChildScrollView(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      RequestConfirmedAfterPaymentTitleIcon(),
-                      Center(
-                        child: Image.asset(
-                          Assets.imgVisaPay,
-                          height: 90.h,
-                          width: 140.h,
-                        ),
+            child: Padding(
+              padding: EdgeInsets.only(left: 16.w, right: 16.w),
+              child: SingleChildScrollView(
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    RequestConfirmedAfterPaymentTitleIcon(),
+                    Center(
+                      child: Image.asset(
+                        Assets.imgVisaPay,
+                        height: 90.h,
+                        width: 140.h,
                       ),
-                      /*------------------ Total -----------------*/
-                      Center(child: ServiceFeesTotalText(total: total)),
+                    ),
+                    /*------------------ Total -----------------*/
+                    Center(child: ServiceFeesTotalText(total: total)),
 
-                      /*------------------ invoiceDetails -----------------*/
-                      InvoiceDetailsTitle(
-                        title: LocaleKeys.invoiceDetails.tr(),
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.serviceName.tr(),
-                        serviceAmount: serviceName,
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.serviceType.tr(),
-                        serviceAmount: "",
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.transactionNumber.tr(),
-                        serviceAmount: "",
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.requestDate.tr(),
-                        serviceAmount: serviceRequestDate(DateTime.now()),
-                      ),
+                    /*------------------ invoiceDetails -----------------*/
+                    InvoiceDetailsTitle(title: LocaleKeys.invoiceDetails.tr()),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.serviceName.tr(),
+                      serviceAmount: serviceName,
+                    ),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.serviceType.tr(),
+                      serviceAmount: "",
+                    ),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.transactionNumber.tr(),
+                      serviceAmount: "",
+                    ),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.requestDate.tr(),
+                      serviceAmount: serviceRequestDate(DateTime.now()),
+                    ),
 
-                      /*------------------ paymentDetails -----------------*/
-                      8.h.gapH,
-                      InvoiceDetailsTitle(
-                        title: LocaleKeys.paymentDetails.tr(),
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.serviceValue.tr(),
-                        serviceAmount: moneyOrFree(serviceAmount),
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.fees.tr(),
-                        serviceAmount: moneyOrEmpty(serviceFee),
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.tax.tr(),
-                        serviceAmount: moneyOrEmpty(tax),
-                      ),
-                      InvoiceDetailsItem(
-                        title: LocaleKeys.total.tr(),
-                        serviceAmount: moneyOrFree(total),
-                        showDivider: false,
-                        style: AppTextStyles.font14w700,
-                      ),
+                    /*------------------ paymentDetails -----------------*/
+                    8.h.gapH,
+                    InvoiceDetailsTitle(title: LocaleKeys.paymentDetails.tr()),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.serviceValue.tr(),
+                      serviceAmount: moneyOrFree(serviceAmount),
+                    ),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.fees.tr(),
+                      serviceAmount: moneyOrEmpty(serviceFee),
+                    ),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.tax.tr(),
+                      serviceAmount: moneyOrEmpty(tax),
+                    ),
+                    InvoiceDetailsItem(
+                      title: LocaleKeys.total.tr(),
+                      serviceAmount: moneyOrFree(total),
+                      showDivider: false,
+                      style: AppTextStyles.font14w700,
+                    ),
 
-                      /*------------------ gap -----------------*/
-                      100.h.gapH,
-                    ],
-                  ),
+                    /*------------------ gap -----------------*/
+                    100.h.gapH,
+                  ],
                 ),
               ),
             ),
           ),
+
           PayOrLaterSection(),
         ],
       ),
