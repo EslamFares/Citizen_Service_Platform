@@ -132,5 +132,16 @@ abstract class  LocaleKeys {
   static const noMoreServices = 'noMoreServices';
   static const pleaseSelectBranch = 'pleaseSelectBranch';
   static const noMoreRequests = 'noMoreRequests';
+  static const free = 'free';
+  static const total = 'total';
+  static const tax = 'tax';
+  static const fees = 'fees';
+  static const serviceValue = 'serviceValue';
+  static const paymentDetails = 'paymentDetails';
+  static const requestDate = 'requestDate';
+  static const transactionNumber = 'transactionNumber';
+  static const serviceType = 'serviceType';
+  static const serviceName = 'serviceName';
+  static const invoiceDetails = 'invoiceDetails';
 
 }

@@ -127,6 +127,16 @@
   "paymentSuccessful": "Payment Successful",
   "noMoreServices": "No more services",
   "pleaseSelectBranch": "Please select branch",
-  "noMoreRequests": "No more requests"
-
+  "noMoreRequests": "No more requests",
+  "free": "Free",
+  "total": "Total",
+  "tax": "Tax",
+  "fees": "Fees",
+  "serviceValue": "Service Value",
+  "paymentDetails": "Payment Details",
+  "requestDate": "Request Date",
+  "transactionNumber": "Transaction Number",
+  "serviceType": "Service Type",
+  "serviceName": "Service Name",
+  "invoiceDetails": "Invoice Details"
 }

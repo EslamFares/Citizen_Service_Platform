@@ -86,6 +86,10 @@ class Assets {
   /// assets/img/service_categories_bg.png
   static const String imgServiceCategoriesBg = "assets/img/service_categories_bg.png";
 
+  /// Assets for imgServiceTopBottomCenterEmptyBg
+  /// assets/img/service_top_bottom_center_empty_bg.png
+  static const String imgServiceTopBottomCenterEmptyBg = "assets/img/service_top_bottom_center_empty_bg.png";
+
   /// Assets for imgServices1
   /// assets/img/services/1.png
   static const String imgServices1 = "assets/img/services/1.png";

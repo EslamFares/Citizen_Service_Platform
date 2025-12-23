@@ -6,6 +6,7 @@ import 'package:citizen_service_platform/features/send_service/cubit/send_servic
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/app_text_html.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/send_service_button_blur.dart';
+import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_pay_or_later_screen_widgets/money_or_free.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/widgets/service_requirement_title.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -18,9 +19,17 @@ class SendServiceScreenBodyRead extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     SendServiceCubit cubit = SendServiceCubit.get(context);
+    /*------------------ description -----------------*/
     String des = cubit.serviceRequirementModel?.data?.description ?? "";
+    /*------------------ amount -----------------*/
+    num serviceAmount = cubit.serviceRequirementModel?.data?.serviceAmount ?? 0;
+    num serviceFee = cubit.serviceRequirementModel?.data?.serviceFee ?? 0;
+    num tax = cubit.serviceRequirementModel?.data?.tax ?? 0;
+    num total = serviceAmount + serviceFee + tax;
+    /*------------------ required documents -----------------*/
     List<ServiceAttachmentType> requiredDocuments =
         cubit.serviceRequirementModel?.data?.serviceAttachmentTypes ?? [];
+    /*------------------ steps -----------------*/
     String applicationSteps =
         cubit.serviceRequirementModel?.data?.applicationSteps ?? "";
 
@@ -42,6 +51,16 @@ class SendServiceScreenBodyRead extends StatelessWidget {
                     ),
                   if (des.isNotNullAndNotEmpty)
                     Text(des, style: AppTextStyles.font12w500Black),
+
+                  //*================== Amount =================*/
+                  ServiceRequirementTitle(
+                    LocaleKeys.serviceFees.tr(),
+                    paddingTop: 8.h,
+                  ),
+                  Text(
+                    moneyOrFree(total),
+                    style: AppTextStyles.font12w500Black,
+                  ),
 
                   //*================== required Documents =================*/
                   if (requiredDocuments.isNotEmpty)

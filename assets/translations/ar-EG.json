@@ -127,5 +127,16 @@
   "paymentSuccessful": "تم الدفع بنجاح",
   "noMoreServices": "لا يوجد خدمات اخرى",
   "pleaseSelectBranch": "برجاء اختيار الفرع",
-  "noMoreRequests": "لا يوجد طلبات اخرى"
+  "noMoreRequests": "لا يوجد طلبات اخرى",
+  "free": "مجانية",
+  "total": "اجمالي",
+  "tax": "ضريبة",
+  "fees": "رسوم",
+  "serviceValue": "قيمة الخدمة",
+  "paymentDetails": "تفاصيل الدفع",
+  "requestDate": "تاريخ الطلب",
+  "transactionNumber": "رقم المعاملة",
+  "serviceType": "نوع الخدمة",
+  "serviceName": "اسم الخدمة",
+  "invoiceDetails": "تفاصيل الفاتورة"
 }

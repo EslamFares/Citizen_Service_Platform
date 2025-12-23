@@ -13,6 +13,8 @@ abstract class AppColors {
 
   static const Color grey = Color(0xFF707070);
   static const Color greyBottomNavbar = Color(0xFFB8B8B8);
+  static const Color dividerBlack8 = Color(0xFFE3E3E3);
+  static const Color scaffoldBgWhiteGrey = Color(0xffF7F7F7);
 
   //+================================
   static const Color homeBottomNavBarBg = Colors.white10;
