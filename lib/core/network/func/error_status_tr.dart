@@ -1,6 +1,6 @@
 import 'package:easy_localization/easy_localization.dart';
 
-String errorStautsTr(int? errorCase) {
+String errorStatusTr(int? errorCase) {
   switch (errorCase) {
     case 4081:
       return "timeout".tr();

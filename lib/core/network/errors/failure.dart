@@ -13,9 +13,9 @@ abstract class Failure {
   final String msgApi;
 
   Failure(this.message, {this.status, this.errorResponse})
-    : userMsg = errorStautsTr(status),
+    : userMsg = errorStatusTr(status),
       msgApi = _extractApiMessage(message, errorResponse, status),
-      msg = _extarctMsg(message);
+      msg = _extractMsg(message);
 
   static String _extractApiMessage(
     String message,
@@ -28,20 +28,20 @@ abstract class Failure {
       try {
         ErrorModel errorModel = ErrorModel.fromMap(errorResponse.data);
         apiMessage = errorModel.errorMessage ?? "";
-        if (apiMessage.isEmpty) {
-          apiMessage = errorResponse.toString();
-        }
       } catch (_) {
-        logPro.error("error in extract ApiMessage");
+        logPro.error("error in extract ApiMessage as ErrorModel");
+      }
+      if (apiMessage.isEmpty) {
+        apiMessage = errorResponse.toString();
       }
     }
-    if (apiMessage.isEmpty) {
-      apiMessage = errorStautsTr(status);
+    if (apiMessage.isEmpty || apiMessage.contains("{")) {
+      apiMessage = errorStatusTr(status);
     }
     return apiMessage;
   }
 
-  static String _extarctMsg(String message) {
+  static String _extractMsg(String message) {
     final parts = message.split(": ");
     return parts.isNotEmpty ? parts[0].trim() : message;
   }
