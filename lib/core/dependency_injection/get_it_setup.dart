@@ -1,4 +1,6 @@
 import 'package:citizen_service_platform/core/network/api/api_service.dart';
+import 'package:citizen_service_platform/features/forget_password/cubit/forget_password_cubit.dart';
+import 'package:citizen_service_platform/features/forget_password/data/repo/forget_password_repo.dart';
 import 'package:citizen_service_platform/features/home/cubit/home_cubit.dart';
 import 'package:citizen_service_platform/features/home/data/repo/home_repo.dart';
 import 'package:citizen_service_platform/features/login/cubit/login_cubit.dart';
@@ -9,6 +11,8 @@ import 'package:citizen_service_platform/features/menu/cubit/menu_cubit.dart';
 import 'package:citizen_service_platform/features/menu/data/repo/menu_repo.dart';
 import 'package:citizen_service_platform/features/my_requests/cubit/my_requests_cubit.dart';
 import 'package:citizen_service_platform/features/my_requests/data/repo/my_requests_repo.dart';
+import 'package:citizen_service_platform/features/reset_password/cubit/reset_password_cubit.dart';
+import 'package:citizen_service_platform/features/reset_password/data/repo/reset_password_repo.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/repo/send_service_repo.dart';
 import 'package:citizen_service_platform/features/service_categories/cubit/service_categories_cubit.dart';
@@ -17,6 +21,8 @@ import 'package:citizen_service_platform/features/sign_up/cubit/sign_up_cubit.da
 import 'package:citizen_service_platform/features/sign_up/data/repo/sign_up_repo.dart';
 import 'package:citizen_service_platform/features/splash/cubit/splash_cubit.dart';
 import 'package:citizen_service_platform/features/splash/data/repo/splash_repo.dart';
+import 'package:citizen_service_platform/features/verify_otp/cubit/verify_otp_cubit.dart';
+import 'package:citizen_service_platform/features/verify_otp/data/repo/verify_otp_repo.dart';
 import 'package:dio/dio.dart';
 import 'package:get_it/get_it.dart';
 
@@ -41,6 +47,14 @@ Future<void> setupGetIt() async {
   getIt.registerSingleton<SendServiceRepo>(
     SendServiceRepo(getIt<ApiService>()),
   );
+  getIt.registerSingleton<VerifyOtpRepo>(VerifyOtpRepo(getIt<ApiService>()));
+  getIt.registerSingleton<ForgetPasswordRepo>(
+    ForgetPasswordRepo(getIt<ApiService>()),
+  );
+  getIt.registerSingleton<ResetPasswordRepo>(
+    ResetPasswordRepo(getIt<ApiService>()),
+  );
+
   //^----------------- Cubits ---------------------------------
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepo>()));
   getIt.registerFactory<SplashCubit>(() => SplashCubit(getIt<SplashRepo>()));
@@ -59,7 +73,15 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<SendServiceCubit>(
     () => SendServiceCubit(getIt<SendServiceRepo>()),
   );
-
+  getIt.registerFactory<VerifyOtpCubit>(
+    () => VerifyOtpCubit(getIt<VerifyOtpRepo>()),
+  );
+  getIt.registerFactory<ForgetPasswordCubit>(
+    () => ForgetPasswordCubit(getIt<ForgetPasswordRepo>()),
+  );
+  getIt.registerFactory<ResetPasswordCubit>(
+    () => ResetPasswordCubit(getIt<ResetPasswordRepo>()),
+  );
   //=========home=============================================
   //registerFactory ==> for more than once use
   // getIt.registerFactory<HomeCubit>(() => HomeCubit(getIt()));

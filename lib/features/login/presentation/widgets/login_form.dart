@@ -27,13 +27,7 @@ class LoginForm extends StatelessWidget {
               ),
 
               TextFormTitle(LocaleKeys.nationalId.tr()),
-              GlobalTextForm(
-                controller: loginCubit.nationalId,
-                maxLengthLetter: 14,
-                maxLengthLetterShowNum: false,
-                hintText: "0" * 14,
-                validate: AppValidator.isNumInt,
-              ),
+              GlobalTextFormNationalId(controller: loginCubit.nationalId),
               TextFormTitle(LocaleKeys.password.tr()),
               GlobalTextForm(
                 controller: loginCubit.passwordController,
@@ -45,6 +39,23 @@ class LoginForm extends StatelessWidget {
           ),
         );
       },
+    );
+  }
+}
+
+class GlobalTextFormNationalId extends StatelessWidget {
+  const GlobalTextFormNationalId({super.key, required this.controller});
+
+  final TextEditingController? controller;
+
+  @override
+  Widget build(BuildContext context) {
+    return GlobalTextForm(
+      controller: controller,
+      maxLengthLetter: 14,
+      maxLengthLetterShowNum: false,
+      hintText: "0" * 14,
+      validate: AppValidator.isNumInt,
     );
   }
 }

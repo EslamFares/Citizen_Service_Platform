@@ -2,6 +2,7 @@ import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/shared_widgets/text_fileds/global_text_form.dart';
 import 'package:citizen_service_platform/core/shared_widgets/text_fileds/my_drop_down_text_filed.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_validation/app_validation.dart';
+import 'package:citizen_service_platform/features/login/presentation/widgets/login_form.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/text_form_title.dart';
 import 'package:citizen_service_platform/features/sign_up/cubit/sign_up_cubit.dart';
 import 'package:citizen_service_platform/features/sign_up/data/model/branch_model.dart';
@@ -30,14 +31,7 @@ class SignUpForm extends StatelessWidget {
                 validate: AppValidator.requird,
               ),
               TextFormTitle(LocaleKeys.nationalId.tr()),
-              GlobalTextForm(
-                controller: cubit.nationalId,
-                maxLengthLetter: 14,
-                maxLengthLetterShowNum: false,
-                hintText: "0" * 14,
-                keyBordType: TextInputType.number,
-                validate: AppValidator.isNumInt,
-              ),
+              GlobalTextFormNationalId(controller: cubit.nationalId),
               // TextFormTitle(LocaleKeys.password.tr()),
               // GlobalTextForm(
               //   controller: cubit.passwordController,

@@ -6,11 +6,15 @@ class AppButtonTextUnderLine extends StatelessWidget {
   final void Function()? onTap;
   final String text;
   final TextStyle? textStyle;
+  final double? fontSize;
+  final Color? color;
   const AppButtonTextUnderLine({
     super.key,
     required this.onTap,
     required this.text,
     this.textStyle,
+    this.fontSize,
+    this.color,
   });
 
   @override
@@ -20,10 +24,11 @@ class AppButtonTextUnderLine extends StatelessWidget {
         children: [
           TextSpan(
             text: text,
-            style: textStyle ??
+            style:
+                textStyle ??
                 TextStyle(
-                  color: Colors.blue,
-                  fontSize: 12.sp,
+                  color: color ?? Colors.blue,
+                  fontSize: fontSize ?? 12.sp,
                   fontWeight: FontWeight.w400,
                   decoration: TextDecoration.underline,
                   decorationColor: Colors.blue,

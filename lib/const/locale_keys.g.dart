@@ -153,5 +153,12 @@ abstract class  LocaleKeys {
   static const nameIsRequired = 'nameIsRequired';
   static const pleaseEnterAValidTextOrNumbersOnly = 'pleaseEnterAValidTextOrNumbersOnly';
   static const enterValue = 'enterValue';
+  static const pleaseEnterOtpSentToPhone = 'pleaseEnterOtpSentToPhone';
+  static const pleaseEnterNationalId = 'pleaseEnterNationalId';
+  static const newPassword = 'newPassword';
+  static const confirmNewPassword = 'confirmNewPassword';
+  static const relatedTo = 'relatedTo';
+  static const codeVerifiedSuccessfully = 'codeVerifiedSuccessfully';
+  static const successfully = 'successfully';
 
 }

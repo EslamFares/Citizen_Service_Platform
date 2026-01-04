@@ -1,8 +1,10 @@
+import 'package:citizen_service_platform/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:citizen_service_platform/features/home/presentation/screens/home_screen.dart';
 import 'package:citizen_service_platform/features/login/presentation/screens/login_screen.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/screens/my_requests_screen.dart';
+import 'package:citizen_service_platform/features/reset_password/presentation/screens/reset_password_screen.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/send_service_screen_args.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_screen.dart';
@@ -16,6 +18,8 @@ import 'package:citizen_service_platform/features/sign_up/presentation/screens/s
 import 'package:citizen_service_platform/features/splash/data/model/app_version_model.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/splash_screen.dart';
 import 'package:citizen_service_platform/features/splash/presentation/screens/update_app_screen.dart';
+import 'package:citizen_service_platform/features/verify_otp/data/model/verify_otp_screen_args.dart';
+import 'package:citizen_service_platform/features/verify_otp/presentation/screens/verify_otp_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -72,6 +76,14 @@ abstract class AppRouters {
         builder: (context, state) => SignUpScreen(),
       ),
       GoRoute(
+        path: AppRoutersName.forgetPasswordScreen,
+        builder: (context, state) => ForgetPasswordScreen(),
+      ),
+      GoRoute(
+        path: AppRoutersName.resetPasswordScreen,
+        builder: (context, state) => ResetPasswordScreen(),
+      ),
+      GoRoute(
         path: AppRoutersName.serviceCategoriesScreen,
         builder: (context, state) {
           if (state.extra == null ||
@@ -81,6 +93,15 @@ abstract class AppRouters {
           return ServiceCategoriesScreen(
             args: state.extra as ServiceCategoriesScreenArgs,
           );
+        },
+      ),
+      GoRoute(
+        path: AppRoutersName.verifyOtpScreen,
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! VerifyOtpScreenArgs) {
+            navException("VerifyOtpScreenArgs");
+          }
+          return VerifyOtpScreen(args: state.extra as VerifyOtpScreenArgs);
         },
       ),
       GoRoute(

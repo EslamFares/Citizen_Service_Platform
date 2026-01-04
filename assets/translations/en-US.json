@@ -148,5 +148,12 @@
   "enterValueLessThan": "Enter a value less than",
   "nameIsRequired": "Name is required",
   "pleaseEnterAValidTextOrNumbersOnly": "Please enter a valid text or numbers only",
-  "enterValue": "Enter value"
+  "enterValue": "Enter value",
+  "pleaseEnterOtpSentToPhone": "Please enter the OTP sent to your phone",
+  "pleaseEnterNationalId": "Please enter the national ID",
+  "newPassword": "New Password",
+  "confirmNewPassword": "Confirm New Password",
+  "relatedTo": "Related to",
+  "codeVerifiedSuccessfully": "Code verified successfully",
+  "successfully": " Successfully"
 }

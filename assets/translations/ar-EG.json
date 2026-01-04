@@ -148,5 +148,12 @@
   "enterValueLessThan": "أدخل قيمة أقل من",
   "nameIsRequired": "الاسم مطلوب",
   "pleaseEnterAValidTextOrNumbersOnly": "برجاء إدخال نص صحيح أو أرقام فقط",
-  "enterValue": "أدخل قيمة"
+  "enterValue": "أدخل قيمة",
+  "pleaseEnterOtpSentToPhone": "برجاء ادخال رقم رمز التحقق المرسل الي هاتفك",
+  "pleaseEnterNationalId": "برجاء ادخال الرقم القومي",
+  "newPassword": "كلمة المرور الجديدة",
+  "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
+  "relatedTo": "الخاص ب",
+  "codeVerifiedSuccessfully": "تم التحقق من الرمز بنجاح",
+  "successfully": "تم بنجاح "
 }
