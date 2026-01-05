@@ -5,7 +5,6 @@ import 'package:citizen_service_platform/features/send_service/data/model/send_f
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
 import 'package:collection/collection.dart';
 import 'package:easy_localization/easy_localization.dart';
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -82,30 +81,11 @@ class SendServiceCubit extends Cubit<SendServiceState> {
     }
   }
 
-  pickFile(int id) async {
-    FilePickerResult? result = await FilePicker.platform.pickFiles(
-      allowMultiple: false,
-      type: FileType.custom,
-      allowedExtensions: [
-        'jpg',
-        'png',
-        'jpeg',
-        'pdf',
-        'doc',
-        'docx',
-        'xlsx',
-        'txt',
-      ],
-    );
-
-    if (result != null && result.files.isNotEmpty) {
-      for (var path in result.paths) {
-        if (path != null) {
-          File file = File(path);
-          _setFile(id, file);
-        }
-      }
+  pickFile(int id, File? file) async {
+    if (file?.path != null) {
+      _setFile(id, file!);
     }
+
     checkValidateAllFilesDone();
   }
 

@@ -12,10 +12,14 @@ void errorRedScreenRefactor() {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Icon(Icons.error, color: Colors.red, size: 80),
+                const Icon(
+                  Icons.error_outline_sharp,
+                  color: Colors.grey,
+                  size: 80,
+                ),
                 const SizedBox(height: 20),
                 const Text(
-                  'Something went wrong! ',
+                  'Something went wrong!',
                   style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold),
                 ),
                 const SizedBox(height: 10),

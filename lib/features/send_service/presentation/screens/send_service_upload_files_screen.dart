@@ -2,7 +2,9 @@ import 'package:citizen_service_platform/const/assets.dart';
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_error/app_error.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_show_dialog.dart';
+import 'package:citizen_service_platform/core/shared_widgets/choose_img_widgets/image_file_picker_sheet_alert.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
+import 'package:citizen_service_platform/core/utils/log/logger.dart';
 import 'package:citizen_service_platform/features/login/presentation/widgets/scaffold_bg.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/service_requirement_model.dart';
@@ -70,7 +72,7 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
                                   isFilesSelected: cubit.isFilesSelected(
                                     file.id,
                                   ),
-                                  onPressed: () {
+                                  onPressed: () async {
                                     if (file.id != null) {
                                       if (cubit.isFilesSelected(file.id)) {
                                         iosShowDialog(
@@ -82,7 +84,18 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
                                           },
                                         );
                                       } else {
-                                        cubit.pickFile(file.id!);
+                                        await ImageFilePickerSheetAlert.show(
+                                          context: context,
+                                          onSubmit: (fileSelected) {
+                                            logPro.error(
+                                              "fileSelected : ${fileSelected.path}",
+                                            );
+                                            cubit.pickFile(
+                                              file.id!,
+                                              fileSelected,
+                                            );
+                                          },
+                                        );
                                       }
                                     }
                                   },
