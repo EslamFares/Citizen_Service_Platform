@@ -56,6 +56,7 @@ class GlobalTextFormNationalId extends StatelessWidget {
       maxLengthLetterShowNum: false,
       hintText: "0" * 14,
       validate: AppValidator.isNumInt,
+      keyBordType: TextInputType.number,
     );
   }
 }
