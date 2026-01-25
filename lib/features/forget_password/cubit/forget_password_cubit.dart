@@ -24,15 +24,16 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
   TextEditingController nationalIdController = TextEditingController();
 
   //======================================================
-  Future<void> getForgetPassword() async {
-    emit(state.copyWith(getForgetPassword: StateBox.loading()));
+  Future<void> isHaveAccount() async {
+    emit(state.copyWith(isHaveAccount: StateBox.loading()));
 
-    final res = await forgetPasswordRepo.getForgetPassword();
+    final res = await forgetPasswordRepo.isHaveAccount(
+      nationalIdController.text,
+    );
     res.fold(
-      (l) => emit(
-        state.copyWith(getForgetPassword: StateBox.error(errorMessage: l)),
-      ),
-      (r) => emit(state.copyWith(getForgetPassword: StateBox.success(data: r))),
+      (l) =>
+          emit(state.copyWith(isHaveAccount: StateBox.error(errorMessage: l))),
+      (r) => emit(state.copyWith(isHaveAccount: StateBox.success(data: r))),
     );
   }
 

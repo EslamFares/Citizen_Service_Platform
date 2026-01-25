@@ -101,7 +101,7 @@ class SignUpCubit extends Cubit<SignUpState> {
         (user) async {
           await saveUserDataAfterLogin(
             userModel: user,
-            nationalId: int.parse(nationalId.text),
+            nationalId: nationalId.text,
             password: passwordController.text,
           );
           emit(SignUpSuccess());

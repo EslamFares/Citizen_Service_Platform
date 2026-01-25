@@ -1,31 +1,22 @@
 part of 'forget_password_cubit.dart';
 
-
 class ForgetPasswordState {
-  final StateBox<ForgetPasswordModel> getForgetPassword;
- 
-  const ForgetPasswordState({
-    required this.getForgetPassword,
-  });
+  final StateBox<IsHaveAccountModel> isHaveAccount;
 
-ForgetPasswordState.initial()
-      : this(
-          getForgetPassword: const StateBox.initial(),
-        );
+  const ForgetPasswordState({required this.isHaveAccount});
+
+  ForgetPasswordState.initial() : this(isHaveAccount: const StateBox.initial());
 
   @override
   String toString() {
     return "\nForgetPasswordState( "
-        "getForgetPassword: ${getForgetPassword.type.name.toUpperCase()}, "
+        "getForgetPassword: ${isHaveAccount.type.name.toUpperCase()}, "
         ")";
   }
 
-  ForgetPasswordState copyWith({
-    StateBox<ForgetPasswordModel>? getForgetPassword,
-  }) {
+  ForgetPasswordState copyWith({StateBox<IsHaveAccountModel>? isHaveAccount}) {
     return ForgetPasswordState(
-      getForgetPassword: getForgetPassword ?? this.getForgetPassword,
+      isHaveAccount: isHaveAccount ?? this.isHaveAccount,
     );
   }
 }
-

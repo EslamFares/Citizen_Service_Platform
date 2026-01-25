@@ -28,6 +28,7 @@ class ResetPasswordButton extends StatelessWidget {
             LocaleKeys.resetPassword.tr() + LocaleKeys.successfully.tr(),
           );
           context.pop();
+          // GoRouter.of(context).go(AppRoutersName.mainBottomNavScreen);
         }
       },
       builder: (context, state) {

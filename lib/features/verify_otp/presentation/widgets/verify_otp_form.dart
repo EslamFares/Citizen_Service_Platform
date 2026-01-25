@@ -22,7 +22,7 @@ class VerifyOtpForm extends StatelessWidget {
           builder: (context, state) {
             VerifyOtpCubit cubit = VerifyOtpCubit.get(context);
             return PhoneText(
-              "${LocaleKeys.pleaseEnterOtpSentToPhone.tr()}\n ${LocaleKeys.relatedTo.tr()} ${cubit.phoneNumber ?? ''}",
+              "${LocaleKeys.pleaseEnterOtpSentToPhone.tr()}\n ${LocaleKeys.relatedTo.tr()} ${cubit.nationalId ?? ''}",
               style: AppTextStyles.font16w600Secondary.copyWith(),
             );
           },

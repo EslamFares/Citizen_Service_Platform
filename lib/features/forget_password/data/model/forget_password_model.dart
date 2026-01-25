@@ -1,39 +1,68 @@
 import 'dart:convert';
 
-import 'package:equatable/equatable.dart';
+class IsHaveAccountModel {
+  final bool? isSuccess;
+  final String? message;
+  final String? statusCode;
+  final IsHaveAccountModelData? data;
 
-class ForgetPasswordModel extends Equatable {
-  final String? data;
-  const ForgetPasswordModel({this.data});
+  IsHaveAccountModel({
+    this.isSuccess,
+    this.message,
+    this.statusCode,
+    this.data,
+  });
 
-  ForgetPasswordModel copyWith({String? data}) {
-    return ForgetPasswordModel(
-      data: data ?? this.data,
-    );
-  }
+  IsHaveAccountModel copyWith({
+    bool? isSuccess,
+    String? message,
+    String? statusCode,
+    IsHaveAccountModelData? data,
+  }) => IsHaveAccountModel(
+    isSuccess: isSuccess ?? this.isSuccess,
+    message: message ?? this.message,
+    statusCode: statusCode ?? this.statusCode,
+    data: data ?? this.data,
+  );
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'data': data,
-    };
-  }
-
-  factory ForgetPasswordModel.fromMap(Map<String, dynamic> map) {
-    return ForgetPasswordModel(
-      data: map['data'] != null ? map['data'] as String : null,
-    );
-  }
+  factory IsHaveAccountModel.fromJson(String str) =>
+      IsHaveAccountModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ForgetPasswordModel.fromJson(String source) =>
-      ForgetPasswordModel.fromMap(
-        json.decode(source) as Map<String, dynamic>,
+  factory IsHaveAccountModel.fromMap(Map<String, dynamic> json) =>
+      IsHaveAccountModel(
+        isSuccess: json["isSuccess"],
+        message: json["message"],
+        statusCode: json["statusCode"],
+        data: json["data"] == null
+            ? null
+            : IsHaveAccountModelData.fromMap(json["data"]),
       );
 
-  @override
-  bool get stringify => true;
+  Map<String, dynamic> toMap() => {
+    "isSuccess": isSuccess,
+    "message": message,
+    "statusCode": statusCode,
+    "data": data?.toMap(),
+  };
+}
 
-  @override
-  List<Object?> get props => [data];
+class IsHaveAccountModelData {
+  final String? isHave;
+
+  IsHaveAccountModelData({this.isHave});
+
+  IsHaveAccountModelData copyWith({String? isHave}) =>
+      IsHaveAccountModelData(isHave: isHave ?? this.isHave);
+
+  factory IsHaveAccountModelData.fromJson(String str) =>
+      IsHaveAccountModelData.fromMap(json.decode(str));
+
+  String toJson() => json.encode(toMap());
+
+  factory IsHaveAccountModelData.fromMap(Map<String, dynamic> json) =>
+      IsHaveAccountModelData(isHave: json["isHave"]);
+
+  Map<String, dynamic> toMap() => {"isHave": isHave};
 }

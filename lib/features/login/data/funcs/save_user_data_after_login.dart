@@ -8,7 +8,7 @@ import 'package:easy_localization/easy_localization.dart';
 
 Future<void> saveUserDataAfterLogin({
   required UserModel? userModel,
-  required int? nationalId,
+  required String? nationalId,
   required String? password,
 }) async {
   if (userModel != null && userModel.token != null) {

@@ -71,7 +71,7 @@ class LoginCubit extends Cubit<LoginState> {
         (user) async {
           await saveUserDataAfterLogin(
             userModel: user,
-            nationalId: nationalId,
+            nationalId: nationalId.toString(),
             password: password,
           );
           emit(LoginSuccess());

@@ -31,14 +31,14 @@ class VerifyOtpCubit extends Cubit<VerifyOtpState> {
     required String phoneNum,
     required bool autoSendOtpWhenOpen,
   }) async {
-    setPhoneNumber(phoneNumberCome: phoneNum);
+    setPhoneNumber(nationalIdCome: phoneNum);
     resendOtp(sendOtpToUser: autoSendOtpWhenOpen);
   }
 
   //===========================================
   Future<void> resendOtp({bool sendOtpToUser = true}) async {
     if (sendOtpToUser) {
-      bool isSent = await sendOtp(phoneNumber: phoneNumber!);
+      bool isSent = await sendOtp(nationalId: nationalId!);
       if (isSent) {
         startTimer();
       }
@@ -48,9 +48,9 @@ class VerifyOtpCubit extends Cubit<VerifyOtpState> {
   }
 
   //===========================================
-  String? phoneNumber;
-  setPhoneNumber({required String phoneNumberCome}) {
-    phoneNumber = phoneNumberCome;
+  String? nationalId;
+  setPhoneNumber({required String nationalIdCome}) {
+    nationalId = nationalIdCome;
     emit(SetPhoneNumber());
   }
 
@@ -84,10 +84,10 @@ class VerifyOtpCubit extends Cubit<VerifyOtpState> {
   GlobalKey<FormState> formKey = GlobalKey<FormState>();
   TextEditingController otpController = TextEditingController();
   //======================================================
-  Future<bool> sendOtp({required String phoneNumber}) async {
+  Future<bool> sendOtp({required String nationalId}) async {
     emit(SentOtpLoading());
 
-    final res = await verifyOtpRepo.sendOtp(phoneNumber: phoneNumber);
+    final res = await verifyOtpRepo.sendOtp(nationalId: nationalId);
     bool isSent = false;
     res.fold(
       (l) {
@@ -118,13 +118,13 @@ class VerifyOtpCubit extends Cubit<VerifyOtpState> {
   //======================================================
   Future<void> verifyOtp({required String? otp}) async {
     emit(VerifyOtpLoading());
-    if (phoneNumber.isNullOrEmpty || otp.isNullOrEmpty) {
+    if (nationalId.isNullOrEmpty || otp.isNullOrEmpty) {
       emit(VerifyOtpError(LocaleKeys.anErrorOccurred.tr()));
       return;
     }
 
     final res = await verifyOtpRepo.verifyOtp(
-      phoneNumber: phoneNumber!,
+      nationalId: nationalId!,
       otp: otp!,
     );
     res.fold((l) => emit(VerifyOtpError(l)), (r) => emit(VerifyOtpSuccess()));

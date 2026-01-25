@@ -1,3 +1,4 @@
+import 'package:citizen_service_platform/core/network/api/api_consts.dart';
 import 'package:dartz/dartz.dart';
 
 import '../../../../core/network/api/api_consumer.dart';
@@ -9,13 +10,18 @@ class ForgetPasswordRepo {
   ForgetPasswordRepo(this.api);
 
   //=====================
-  Future<Either<String, ForgetPasswordModel>> getForgetPassword() async {
+  Future<Either<String, IsHaveAccountModel>> isHaveAccount(
+    String nationalId,
+  ) async {
     try {
-      // final res = await api.get(path: ApiConsts.getForgetPassword);
-      Map<String, dynamic> res = ForgetPasswordModel(data: 'data').toMap();
+      final res = await api.post(
+        path: ApiConsts.isHaveAccount,
+        query: {"nationalId": nationalId},
+      );
+      // Map<String, dynamic> res = ForgetPasswordModel(data: 'data').toMap();
       // debugPrint('res: $res');
 
-      ForgetPasswordModel model = ForgetPasswordModel.fromMap(res);
+      IsHaveAccountModel model = IsHaveAccountModel.fromMap(res);
       return Right(model);
     } catch (e) {
       return Left(e.catchErrorMessage());

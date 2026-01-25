@@ -4,6 +4,7 @@ import 'package:citizen_service_platform/features/login/presentation/screens/log
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/screens/my_requests_screen.dart';
+import 'package:citizen_service_platform/features/reset_password/data/model/reset_password_arg.dart';
 import 'package:citizen_service_platform/features/reset_password/presentation/screens/reset_password_screen.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/send_service_screen_args.dart';
@@ -81,7 +82,12 @@ abstract class AppRouters {
       ),
       GoRoute(
         path: AppRoutersName.resetPasswordScreen,
-        builder: (context, state) => ResetPasswordScreen(),
+        builder: (context, state) {
+          if (state.extra == null || state.extra is! ResetPasswordArg) {
+            navException("ResetPasswordArg");
+          }
+          return ResetPasswordScreen(args: state.extra as ResetPasswordArg);
+        },
       ),
       GoRoute(
         path: AppRoutersName.serviceCategoriesScreen,

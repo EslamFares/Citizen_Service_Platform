@@ -5,32 +5,21 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/network/api/api_consumer.dart';
 
-bool _isTest = true;
-
 class VerifyOtpRepo {
   final ApiConsumer api;
   VerifyOtpRepo(this.api);
   //=====================
-  Future<Either<String, String>> verifyOtp({
-    required String phoneNumber,
+  Future<Either<String, dynamic>> verifyOtp({
+    required String nationalId,
     required String otp,
   }) async {
-    //todo  TODO: isNow Local
-    if (_isTest) {
-      await Future.delayed(const Duration(seconds: 3));
-      if (otp == "0" * 6) {
-        return Right("VerifyOtp");
-      } else {
-        return Left("Invalid OTP.");
-      }
-    }
     /*================== connect =================*/
 
     try {
       final res = await api.post(
         path: ApiConsts.verifyOtp,
         isFormData: true,
-        data: {"PhoneNumber": phoneNumber, "OTP": otp},
+        data: {"NationalId": nationalId, "Otp": otp},
       );
       return Right(res);
     } catch (e) {
@@ -40,25 +29,12 @@ class VerifyOtpRepo {
   /*===================================*/
 
   Future<Either<String, SentOtpModel>> sendOtp({
-    required String phoneNumber,
+    required String nationalId,
   }) async {
-    //todo  TODO: isNow Local
-
-    if (_isTest) {
-      await Future.delayed(const Duration(seconds: 3));
-      return Right(
-        SentOtpModel(
-          isSuccess: true,
-          data: SentOtpModelData(message: "sent successfully"),
-        ),
-      );
-    }
-    /*================== connect =================*/
-
     try {
       final res = await api.post(
         path: ApiConsts.sendOtp,
-        query: {"phoneNumber": phoneNumber},
+        query: {"nationalId": nationalId},
       );
       return Right(SentOtpModel.fromMap(res));
     } catch (e) {

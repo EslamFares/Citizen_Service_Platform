@@ -17,9 +17,11 @@ abstract class ApiConsts {
   //---------------------------- Account ------------------------------------
   static const String login = "Account/Login";
   static const String register = "Account/Register";
-  static const String verifyOtp = "Accounts/v1/VerifyOtp";
-  static const String sendOtp = "Accounts/v1/SendOTP";
+  static const String verifyOtp = "Account/v1/validate-otp";
+  static const String sendOtp = "Account/v1/SendOtp";
   static const String getAllBranches = "Account/GetAllBranches";
+  static const String isHaveAccount = "Account/v1/valdateNationalId";
+  static const String forgetPassword = "Account/v1/forget-password";
 
   //---------------------------- CitizenServices ------------------------------------
   static const String getAllService = 'CitizenServices/V1/GetAllCategories';
