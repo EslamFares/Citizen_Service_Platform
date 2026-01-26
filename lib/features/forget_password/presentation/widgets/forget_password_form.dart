@@ -6,16 +6,16 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import '../../cubit/reset_password_cubit.dart';
+import '../../cubit/forget_password_cubit.dart';
 
-class ResetPasswordForm extends StatelessWidget {
-  const ResetPasswordForm({super.key});
+class ForgetPasswordForm extends StatelessWidget {
+  const ForgetPasswordForm({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocBuilder<ResetPasswordCubit, ResetPasswordState>(
+    return BlocBuilder<ForgetPasswordCubit, ForgetPasswordState>(
       builder: (context, state) {
-        ResetPasswordCubit cubit = ResetPasswordCubit.get(context);
+        ForgetPasswordCubit cubit = ForgetPasswordCubit.get(context);
         return Form(
           key: cubit.formKey,
           child: Column(

@@ -2,7 +2,7 @@ import 'package:citizen_service_platform/const/locale_keys.g.dart';
 import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/shared/bloc/state_box.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_buttons/app_button.dart';
-import 'package:citizen_service_platform/features/reset_password/data/model/reset_password_arg.dart';
+import 'package:citizen_service_platform/features/forget_password/data/model/forget_password_arg.dart';
 import 'package:citizen_service_platform/features/verify_otp/data/model/verify_otp_screen_args.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
@@ -28,8 +28,8 @@ class IsHaveAccountButton extends StatelessWidget {
               onSuccess: () {
                 context.pop();
                 context.pushReplacement(
-                  AppRoutersName.resetPasswordScreen,
-                  extra: ResetPasswordArg(
+                  AppRoutersName.forgetPasswordScreen,
+                  extra: ForgetPasswordArg(
                     nationalId: cubit.nationalIdController.text,
                   ),
                 );

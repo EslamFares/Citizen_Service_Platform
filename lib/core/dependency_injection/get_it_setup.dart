@@ -1,4 +1,6 @@
 import 'package:citizen_service_platform/core/network/api/api_service.dart';
+import 'package:citizen_service_platform/features/forget_password/cubit/forget_password_cubit.dart';
+import 'package:citizen_service_platform/features/forget_password/data/repo/forget_password_repo.dart';
 import 'package:citizen_service_platform/features/home/cubit/home_cubit.dart';
 import 'package:citizen_service_platform/features/home/data/repo/home_repo.dart';
 import 'package:citizen_service_platform/features/is_have_account/cubit/is_have_account_cubit.dart';
@@ -11,8 +13,6 @@ import 'package:citizen_service_platform/features/menu/cubit/menu_cubit.dart';
 import 'package:citizen_service_platform/features/menu/data/repo/menu_repo.dart';
 import 'package:citizen_service_platform/features/my_requests/cubit/my_requests_cubit.dart';
 import 'package:citizen_service_platform/features/my_requests/data/repo/my_requests_repo.dart';
-import 'package:citizen_service_platform/features/reset_password/cubit/reset_password_cubit.dart';
-import 'package:citizen_service_platform/features/reset_password/data/repo/reset_password_repo.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/repo/send_service_repo.dart';
 import 'package:citizen_service_platform/features/service_categories/cubit/service_categories_cubit.dart';
@@ -51,8 +51,8 @@ Future<void> setupGetIt() async {
   getIt.registerSingleton<IsHaveAccountRepo>(
     IsHaveAccountRepo(getIt<ApiService>()),
   );
-  getIt.registerSingleton<ResetPasswordRepo>(
-    ResetPasswordRepo(getIt<ApiService>()),
+  getIt.registerSingleton<ForgetPasswordRepo>(
+    ForgetPasswordRepo(getIt<ApiService>()),
   );
 
   //^----------------- Cubits ---------------------------------
@@ -79,8 +79,8 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<IsHaveAccountCubit>(
     () => IsHaveAccountCubit(getIt<IsHaveAccountRepo>()),
   );
-  getIt.registerFactory<ResetPasswordCubit>(
-    () => ResetPasswordCubit(getIt<ResetPasswordRepo>()),
+  getIt.registerFactory<ForgetPasswordCubit>(
+    () => ForgetPasswordCubit(getIt<ForgetPasswordRepo>()),
   );
   //=========home=============================================
   //registerFactory ==> for more than once use

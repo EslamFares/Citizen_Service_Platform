@@ -1,20 +1,20 @@
-import 'package:citizen_service_platform/features/reset_password/data/model/reset_password_model.dart';
+import 'package:citizen_service_platform/features/forget_password/data/model/forget_password_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/shared/bloc/state_box.dart';
-import '../data/repo/reset_password_repo.dart';
+import '../data/repo/forget_password_repo.dart';
 
-part 'reset_password_state.dart';
+part 'forget_password_state.dart';
 
-class ResetPasswordCubit extends Cubit<ResetPasswordState> {
-  ResetPasswordCubit(this.resetPasswordRepo)
-    : super(ResetPasswordState.initial());
-  static ResetPasswordCubit get(context) => BlocProvider.of(context);
-  final ResetPasswordRepo resetPasswordRepo;
+class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
+  ForgetPasswordCubit(this.resetPasswordRepo)
+    : super(ForgetPasswordState.initial());
+  static ForgetPasswordCubit get(context) => BlocProvider.of(context);
+  final ForgetPasswordRepo resetPasswordRepo;
   //===========================================
   @override
-  void emit(ResetPasswordState state) {
+  void emit(ForgetPasswordState state) {
     if (!isClosed) super.emit(state);
   }
 

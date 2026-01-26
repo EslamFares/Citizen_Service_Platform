@@ -1,11 +1,11 @@
+import 'package:citizen_service_platform/features/forget_password/data/model/forget_password_arg.dart';
+import 'package:citizen_service_platform/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:citizen_service_platform/features/home/presentation/screens/home_screen.dart';
 import 'package:citizen_service_platform/features/is_have_account/presentation/screens/is_have_account_screen.dart';
 import 'package:citizen_service_platform/features/login/presentation/screens/login_screen.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/screens/my_requests_screen.dart';
-import 'package:citizen_service_platform/features/reset_password/data/model/reset_password_arg.dart';
-import 'package:citizen_service_platform/features/reset_password/presentation/screens/reset_password_screen.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
 import 'package:citizen_service_platform/features/send_service/data/model/send_service_screen_args.dart';
 import 'package:citizen_service_platform/features/send_service/presentation/screens/send_service_screen.dart';
@@ -81,12 +81,12 @@ abstract class AppRouters {
         builder: (context, state) => IsHaveAccountScreen(),
       ),
       GoRoute(
-        path: AppRoutersName.resetPasswordScreen,
+        path: AppRoutersName.forgetPasswordScreen,
         builder: (context, state) {
-          if (state.extra == null || state.extra is! ResetPasswordArg) {
+          if (state.extra == null || state.extra is! ForgetPasswordArg) {
             navException("ResetPasswordArg");
           }
-          return ResetPasswordScreen(args: state.extra as ResetPasswordArg);
+          return ForgetPasswordScreen(args: state.extra as ForgetPasswordArg);
         },
       ),
       GoRoute(

@@ -7,14 +7,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../cubit/reset_password_cubit.dart';
+import '../../cubit/forget_password_cubit.dart';
 
-class ResetPasswordButton extends StatelessWidget {
-  const ResetPasswordButton({super.key});
+class ForgetPasswordButton extends StatelessWidget {
+  const ForgetPasswordButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ResetPasswordCubit, ResetPasswordState>(
+    return BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
       listener: (context, state) {
         if (state.getResetPassword.isError) {
           AppToast.toastError(
@@ -32,7 +32,7 @@ class ResetPasswordButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        ResetPasswordCubit cubit = ResetPasswordCubit.get(context);
+        ForgetPasswordCubit cubit = ForgetPasswordCubit.get(context);
         return AppButton(
           isLoading: state.getResetPassword.isLoading,
           onPressed: () {

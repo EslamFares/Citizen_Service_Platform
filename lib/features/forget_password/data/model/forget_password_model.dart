@@ -1,37 +1,37 @@
 import 'dart:convert';
 
-class ResetPasswordModel {
+class ForgetPasswordModel {
   final bool? isSuccess;
   final String? message;
   final String? statusCode;
   final ResetPasswordModelData? data;
 
-  ResetPasswordModel({
+  ForgetPasswordModel({
     this.isSuccess,
     this.message,
     this.statusCode,
     this.data,
   });
 
-  ResetPasswordModel copyWith({
+  ForgetPasswordModel copyWith({
     bool? isSuccess,
     String? message,
     String? statusCode,
     ResetPasswordModelData? data,
-  }) => ResetPasswordModel(
+  }) => ForgetPasswordModel(
     isSuccess: isSuccess ?? this.isSuccess,
     message: message ?? this.message,
     statusCode: statusCode ?? this.statusCode,
     data: data ?? this.data,
   );
 
-  factory ResetPasswordModel.fromJson(String str) =>
-      ResetPasswordModel.fromMap(json.decode(str));
+  factory ForgetPasswordModel.fromJson(String str) =>
+      ForgetPasswordModel.fromMap(json.decode(str));
 
   String toJson() => json.encode(toMap());
 
-  factory ResetPasswordModel.fromMap(Map<String, dynamic> json) =>
-      ResetPasswordModel(
+  factory ForgetPasswordModel.fromMap(Map<String, dynamic> json) =>
+      ForgetPasswordModel(
         isSuccess: json["isSuccess"],
         message: json["message"],
         statusCode: json["statusCode"],
