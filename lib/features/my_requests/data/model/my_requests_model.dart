@@ -49,14 +49,22 @@ class RequestItem {
   final String? serviceName;
   final String? createdAt;
   final String? status;
-  final bool? isPaid;
+  final String? paidStatus;
+  final num? serviceAmount;
+  final num? serviceFee;
+  final num? tax;
+  final num? totalAmount;
 
   RequestItem({
     this.id,
     this.serviceName,
     this.createdAt,
     this.status,
-    this.isPaid,
+    this.paidStatus,
+    this.serviceAmount,
+    this.serviceFee,
+    this.tax,
+    this.totalAmount,
   });
 
   RequestItem copyWith({
@@ -64,13 +72,21 @@ class RequestItem {
     String? serviceName,
     String? createdAt,
     String? status,
-    bool? isPaid,
+    String? paidStatus,
+    num? serviceAmount,
+    num? serviceFee,
+    num? tax,
+    num? totalAmount,
   }) => RequestItem(
     id: id ?? this.id,
     serviceName: serviceName ?? this.serviceName,
     createdAt: createdAt ?? this.createdAt,
     status: status ?? this.status,
-    isPaid: isPaid ?? this.isPaid,
+    paidStatus: paidStatus ?? this.paidStatus,
+    serviceAmount: serviceAmount ?? this.serviceAmount,
+    serviceFee: serviceFee ?? this.serviceFee,
+    tax: tax ?? this.tax,
+    totalAmount: totalAmount ?? this.totalAmount,
   );
 
   factory RequestItem.fromJson(String str) =>
@@ -83,7 +99,11 @@ class RequestItem {
     serviceName: json["serviceName"],
     createdAt: json["createdAt"],
     status: json["status"],
-    isPaid: json["isPaid"],
+    paidStatus: json["paidStatus"],
+    serviceAmount: json["serviceAmount"],
+    serviceFee: json["serviceFee"],
+    tax: json["tax"],
+    totalAmount: json["totalAmount"],
   );
 
   Map<String, dynamic> toMap() => {
@@ -91,6 +111,10 @@ class RequestItem {
     "serviceName": serviceName,
     "createdAt": createdAt,
     "status": status,
-    "isPaid": isPaid,
+    "paidStatus": paidStatus,
+    "serviceAmount": serviceAmount,
+    "serviceFee": serviceFee,
+    "tax": tax,
+    "totalAmount": totalAmount,
   };
 }

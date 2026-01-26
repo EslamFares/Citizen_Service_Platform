@@ -24,11 +24,13 @@ class SendServiceUploadFilesScreenFollowUpButton extends StatelessWidget {
             bool isValid = cubit.checkValidateAllFilesDone();
             if (isValid && cubit.serviceRequirementModel?.data?.id != null) {
               if (cubit.totalAmountNotFree) {
+                //* is paid ==> nav to pay
                 context.push(
                   AppRoutersName.servicePayOrLaterScreen,
                   extra: cubit,
                 );
               } else {
+                //* is free
                 sendServiceTotalAmountFreeWithShowDialog(context, cubit);
               }
             } else {

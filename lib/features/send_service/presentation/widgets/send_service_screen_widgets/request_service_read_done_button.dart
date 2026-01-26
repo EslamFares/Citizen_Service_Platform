@@ -28,16 +28,19 @@ class RequestServiceReadDoneButton extends StatelessWidget {
           title: LocaleKeys.requestService.tr(),
           onPressed: () {
             if (requiredDocumentsIsNotEmpty) {
+              //*no required documents
               context.push(
                 AppRoutersName.sendServiceUploadFilesScreen,
                 extra: cubit,
               );
             } else if (totalAmountNotFree) {
+              //* is paid
               context.push(
                 AppRoutersName.servicePayOrLaterScreen,
                 extra: cubit,
               );
             } else {
+              //* is free
               sendServiceTotalAmountFreeWithShowDialog(context, cubit);
             }
           },

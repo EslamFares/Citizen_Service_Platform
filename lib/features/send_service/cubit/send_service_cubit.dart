@@ -160,6 +160,7 @@ class SendServiceCubit extends Cubit<SendServiceState> {
     }
     final res = await sendServiceRepo.sendService(
       filesAttachment: filesAttachment,
+      //* in BE they check if is free not take this value from me
       isPaid: isPaid,
       serviceId: serviceId,
     );

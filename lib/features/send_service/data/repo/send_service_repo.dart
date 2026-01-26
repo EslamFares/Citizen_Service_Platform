@@ -39,6 +39,7 @@ class SendServiceRepo {
       //send multi list in FormData
       final formData = FormData();
       formData.fields.add(MapEntry("ServiceId", serviceId.toString()));
+      //* in BE they check if is free not take this value from me
       formData.fields.add(MapEntry("IsPaid", isPaid.toString()));
 
       for (var f in filesAttachment) {

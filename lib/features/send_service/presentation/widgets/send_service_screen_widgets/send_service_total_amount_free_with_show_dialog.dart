@@ -12,6 +12,7 @@ sendServiceTotalAmountFreeWithShowDialog(
     context: context,
     title: LocaleKeys.requestService.tr(),
     subTitle: LocaleKeys.confirmationRequestService.tr(),
-    onConfirm: () => cubit.sendService(isPaid: true),
+    //* in BE they check if is free not take this value from me
+    onConfirm: () => cubit.sendService(isPaid: false),
   );
 }
