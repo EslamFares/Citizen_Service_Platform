@@ -1,4 +1,5 @@
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
+import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/shared/bloc/state_box.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_buttons/app_button.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_toast.dart';
@@ -27,8 +28,7 @@ class ForgetPasswordButton extends StatelessWidget {
           AppToast.toast(
             LocaleKeys.resetPassword.tr() + LocaleKeys.successfully.tr(),
           );
-          context.pop();
-          // GoRouter.of(context).go(AppRoutersName.mainBottomNavScreen);
+          GoRouter.of(context).go(AppRoutersName.mainBottomNavScreen);
         }
       },
       builder: (context, state) {

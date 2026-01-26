@@ -1,4 +1,6 @@
 import 'package:citizen_service_platform/features/forget_password/data/model/forget_password_model.dart';
+import 'package:citizen_service_platform/features/login/data/funcs/save_user_data_after_login.dart';
+import 'package:citizen_service_platform/features/login/data/model/login_model.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -40,13 +42,20 @@ class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
     res.fold(
       (l) =>
           emit(state.copyWith(resetPassword: StateBox.error(errorMessage: l))),
-      (user) async {
-        // await saveUserDataAfterLogin(
-        //   userModel: user,
-        //   nationalId: nationalId,
-        //   password: passwordController.text,
-        // );
-        emit(state.copyWith(resetPassword: StateBox.success(data: user)));
+      (forgetUserModel) async {
+        UserModel? user = forgetUserModel.data;
+
+        await saveUserDataAfterLogin(
+          userModel: user,
+          nationalId: nationalId,
+          password: passwordController.text,
+        );
+
+        emit(
+          state.copyWith(
+            resetPassword: StateBox.success(data: forgetUserModel),
+          ),
+        );
       },
     );
   }
