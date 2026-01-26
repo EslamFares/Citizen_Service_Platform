@@ -27,7 +27,7 @@ class SignUpForm extends StatelessWidget {
               GlobalTextForm(
                 controller: cubit.name,
 
-                hintText: "اسلام فارس",
+                hintText: LocaleKeys.name.tr(),
                 validate: AppValidator.requird,
               ),
               TextFormTitle(LocaleKeys.nationalId.tr()),
