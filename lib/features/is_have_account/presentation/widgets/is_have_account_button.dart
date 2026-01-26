@@ -9,16 +9,16 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 
-import '../../cubit/forget_password_cubit.dart';
+import '../../cubit/is_have_account_cubit.dart';
 
-class ForgetPasswordButton extends StatelessWidget {
-  const ForgetPasswordButton({super.key});
+class IsHaveAccountButton extends StatelessWidget {
+  const IsHaveAccountButton({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return BlocConsumer<ForgetPasswordCubit, ForgetPasswordState>(
+    return BlocConsumer<IsHaveAccountCubit, IsHaveAccountState>(
       listener: (context, state) {
-        ForgetPasswordCubit cubit = ForgetPasswordCubit.get(context);
+        IsHaveAccountCubit cubit = IsHaveAccountCubit.get(context);
         if (state.isHaveAccount.isSuccess) {
           context.push(
             AppRoutersName.verifyOtpScreen,
@@ -39,7 +39,7 @@ class ForgetPasswordButton extends StatelessWidget {
         }
       },
       builder: (context, state) {
-        ForgetPasswordCubit cubit = ForgetPasswordCubit.get(context);
+        IsHaveAccountCubit cubit = IsHaveAccountCubit.get(context);
         return AppButton(
           isLoading: state.isHaveAccount.isLoading,
           onPressed: () {

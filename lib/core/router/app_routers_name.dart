@@ -15,6 +15,6 @@ abstract class AppRoutersName {
       '/SendServiceUploadFilesScreen';
   static const String servicePayOrLaterScreen = '/servicePayOrLaterScreen';
   static const String verifyOtpScreen = '/VerifyOtpScreen';
-  static const String forgetPasswordScreen = '/ForgetPasswordScreen';
+  static const String isHaveAccountScreen = '/IsHaveAccountScreen';
   static const String resetPasswordScreen = '/ResetPasswordScreen';
 }

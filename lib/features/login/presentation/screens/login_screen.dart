@@ -44,7 +44,7 @@ class LoginScreen extends StatelessWidget {
                   alignment: AlignmentDirectional.centerEnd,
                   child: AppButtonTextUnderLine(
                     onTap: () {
-                      context.push(AppRoutersName.forgetPasswordScreen);
+                      context.push(AppRoutersName.isHaveAccountScreen);
                     },
                     text: LocaleKeys.forgetPassword.tr(),
                     textStyle: AppTextStyles.font14w600Black.copyWith(

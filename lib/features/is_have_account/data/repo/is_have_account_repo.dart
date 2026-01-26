@@ -3,11 +3,11 @@ import 'package:dartz/dartz.dart';
 
 import '../../../../core/network/api/api_consumer.dart';
 import '../../../../core/network/errors/catch_error_message_extension.dart';
-import '../model/forget_password_model.dart';
+import '../model/is_have_account_model.dart';
 
-class ForgetPasswordRepo {
+class IsHaveAccountRepo {
   final ApiConsumer api;
-  ForgetPasswordRepo(this.api);
+  IsHaveAccountRepo(this.api);
 
   //=====================
   Future<Either<String, IsHaveAccountModel>> isHaveAccount(
@@ -18,8 +18,6 @@ class ForgetPasswordRepo {
         path: ApiConsts.isHaveAccount,
         query: {"nationalId": nationalId},
       );
-      // Map<String, dynamic> res = ForgetPasswordModel(data: 'data').toMap();
-      // debugPrint('res: $res');
 
       IsHaveAccountModel model = IsHaveAccountModel.fromMap(res);
       return Right(model);

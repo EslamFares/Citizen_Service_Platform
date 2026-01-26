@@ -1,5 +1,5 @@
-import 'package:citizen_service_platform/features/forget_password/presentation/screens/forget_password_screen.dart';
 import 'package:citizen_service_platform/features/home/presentation/screens/home_screen.dart';
+import 'package:citizen_service_platform/features/is_have_account/presentation/screens/is_have_account_screen.dart';
 import 'package:citizen_service_platform/features/login/presentation/screens/login_screen.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/screens/main_bottom_nav_screen.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
@@ -77,8 +77,8 @@ abstract class AppRouters {
         builder: (context, state) => SignUpScreen(),
       ),
       GoRoute(
-        path: AppRoutersName.forgetPasswordScreen,
-        builder: (context, state) => ForgetPasswordScreen(),
+        path: AppRoutersName.isHaveAccountScreen,
+        builder: (context, state) => IsHaveAccountScreen(),
       ),
       GoRoute(
         path: AppRoutersName.resetPasswordScreen,

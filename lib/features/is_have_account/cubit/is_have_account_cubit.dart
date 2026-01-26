@@ -2,19 +2,19 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../core/shared/bloc/state_box.dart';
-import '../data/model/forget_password_model.dart';
-import '../data/repo/forget_password_repo.dart';
+import '../data/model/is_have_account_model.dart';
+import '../data/repo/is_have_account_repo.dart';
 
-part 'forget_password_state.dart';
+part 'is_have_account_state.dart';
 
-class ForgetPasswordCubit extends Cubit<ForgetPasswordState> {
-  ForgetPasswordCubit(this.forgetPasswordRepo)
-    : super(ForgetPasswordState.initial());
-  static ForgetPasswordCubit get(context) => BlocProvider.of(context);
-  final ForgetPasswordRepo forgetPasswordRepo;
+class IsHaveAccountCubit extends Cubit<IsHaveAccountState> {
+  IsHaveAccountCubit(this.forgetPasswordRepo)
+    : super(IsHaveAccountState.initial());
+  static IsHaveAccountCubit get(context) => BlocProvider.of(context);
+  final IsHaveAccountRepo forgetPasswordRepo;
   //===========================================
   @override
-  void emit(ForgetPasswordState state) {
+  void emit(IsHaveAccountState state) {
     if (!isClosed) super.emit(state);
   }
 

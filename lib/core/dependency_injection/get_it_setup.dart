@@ -1,8 +1,8 @@
 import 'package:citizen_service_platform/core/network/api/api_service.dart';
-import 'package:citizen_service_platform/features/forget_password/cubit/forget_password_cubit.dart';
-import 'package:citizen_service_platform/features/forget_password/data/repo/forget_password_repo.dart';
 import 'package:citizen_service_platform/features/home/cubit/home_cubit.dart';
 import 'package:citizen_service_platform/features/home/data/repo/home_repo.dart';
+import 'package:citizen_service_platform/features/is_have_account/cubit/is_have_account_cubit.dart';
+import 'package:citizen_service_platform/features/is_have_account/data/repo/is_have_account_repo.dart';
 import 'package:citizen_service_platform/features/login/cubit/login_cubit.dart';
 import 'package:citizen_service_platform/features/login/data/repo/login_repo.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/cubit/main_bottom_nav_cubit.dart';
@@ -48,8 +48,8 @@ Future<void> setupGetIt() async {
     SendServiceRepo(getIt<ApiService>()),
   );
   getIt.registerSingleton<VerifyOtpRepo>(VerifyOtpRepo(getIt<ApiService>()));
-  getIt.registerSingleton<ForgetPasswordRepo>(
-    ForgetPasswordRepo(getIt<ApiService>()),
+  getIt.registerSingleton<IsHaveAccountRepo>(
+    IsHaveAccountRepo(getIt<ApiService>()),
   );
   getIt.registerSingleton<ResetPasswordRepo>(
     ResetPasswordRepo(getIt<ApiService>()),
@@ -76,8 +76,8 @@ Future<void> setupGetIt() async {
   getIt.registerFactory<VerifyOtpCubit>(
     () => VerifyOtpCubit(getIt<VerifyOtpRepo>()),
   );
-  getIt.registerFactory<ForgetPasswordCubit>(
-    () => ForgetPasswordCubit(getIt<ForgetPasswordRepo>()),
+  getIt.registerFactory<IsHaveAccountCubit>(
+    () => IsHaveAccountCubit(getIt<IsHaveAccountRepo>()),
   );
   getIt.registerFactory<ResetPasswordCubit>(
     () => ResetPasswordCubit(getIt<ResetPasswordRepo>()),
