@@ -36,25 +36,34 @@ class SendServiceRepo {
     required int? serviceId,
   }) async {
     try {
-      //send multi list in FormData
-      final formData = FormData();
-      formData.fields.add(MapEntry("ServiceId", serviceId.toString()));
-      //* in BE they check if is free not take this value from me
-      formData.fields.add(MapEntry("IsPaid", isPaid.toString()));
+      final formData = FormData.fromMap({
+        "ServiceId": serviceId.toString(),
+        "IsPaid": isPaid.toString(),
+        // Use map to handle AttachmentTypeIds in one go
+        "AttachmentTypeId": filesAttachment
+            .map((f) => f.id.toString())
+            .toList(),
+      });
 
-      for (var f in filesAttachment) {
-        formData.fields.add(MapEntry("AttachmentTypeId", f.id.toString()));
-      }
+      // 1. Process files in PARALLEL for better speed
+      final fileEntries = await Future.wait(
+        filesAttachment.map((f) async {
+          return MapEntry(
+            "Attachments",
+            await MultipartFile.fromFile(
+              f.file!.path,
+              filename: f.file!.path.split('/').last,
+            ),
+          );
+        }),
+      );
 
-      for (var f in filesAttachment) {
-        formData.files.add(
-          MapEntry("Attachments", await MultipartFile.fromFile(f.file!.path)),
-        );
-      }
+      formData.files.addAll(fileEntries);
+
+      // 2. Optimized Logging (Optional: Remove in production)
       for (var f in formData.fields) {
         logProSimple.w("FIELD >>> ${f.key} = ${f.value}");
       }
-
       for (var f in formData.files) {
         logProSimple.w("FILE >>> ${f.key} = ${f.value.filename}");
       }
@@ -65,14 +74,16 @@ class SendServiceRepo {
         contentType: 'multipart/form-data',
         data: formData,
       );
-      String? successMsg;
+
+      // 3. Simplified Response Handling
+      String successMsg = "Success";
       try {
-        SuccessGlobalModel model = SuccessGlobalModel.fromMap(res);
-        successMsg = model.message;
+        final model = SuccessGlobalModel.fromMap(res);
+        if (model.message?.isNotEmpty ?? false) {
+          successMsg = model.message!;
+        }
       } catch (_) {}
-      if (successMsg == null || successMsg.isEmpty) {
-        successMsg = "Success";
-      }
+
       logProSimple.s("successMsg : $successMsg");
       return Right(successMsg);
     } catch (e) {
