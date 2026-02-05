@@ -13,6 +13,7 @@ class SplashRepo {
     // var res = await api.get(path: ApiConsts.getLastAppVersion, useAuth: false);
     var res = UpdateAppModel(
       androidFullVersion: "1.0.0+1",
+      iosFullVersion: "1.0.0+1",
       androidLink: "https://www.google.com",
       iosLink: "https://www.google.com",
     ).toMap();

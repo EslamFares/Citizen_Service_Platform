@@ -1,4 +1,5 @@
 import 'package:citizen_service_platform/const/assets.dart';
+import 'package:citizen_service_platform/core/utils/app_utils/app_colors.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
 import 'package:citizen_service_platform/features/splash/data/model/app_version_model.dart';
 import 'package:citizen_service_platform/features/splash/presentation/widgets/update_text_button.dart';
@@ -24,6 +25,7 @@ class UpdateAppScreen extends StatelessWidget {
               gapHorizontal(context.width),
               Image.asset(
                 Assets.iconsIcon,
+                color: AppColors.primaryColor,
                 width: context.width * .5,
                 height: context.width * .5,
               ),
