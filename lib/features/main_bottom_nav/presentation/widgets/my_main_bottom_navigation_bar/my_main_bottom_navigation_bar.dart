@@ -27,36 +27,40 @@ class MyMainBottomNavigationBar extends StatelessWidget {
           ),
           child: BlurContainer(
             width: context.width,
-            height: AppSizes.mainBottomNavHight,
-            child: BottomNavigationBar(
-              elevation: 0,
-              onTap: (value) {
-                cubit.changeIndex(value);
-              },
-              currentIndex: cubit.selectedIndex,
-              // backgroundColor: Colors.red,
-              selectedItemColor: AppColors.selectedColor,
-              backgroundColor: Colors.transparent,
-              selectedLabelStyle: AppTextStyles.font13w600SelectedColor,
-              unselectedLabelStyle: AppTextStyles.font13w600SelectedColor
-                  .copyWith(color: AppColors.unSelectedColor),
-              items: [
-                myMainBottomNavItem(
-                  imgPath: Assets.iconsBottomNavHome,
-                  text: LocaleKeys.home.tr(),
-                  isSelected: cubit.selectedIndex == 0,
-                ),
-                myMainBottomNavItem(
-                  imgPath: Assets.iconsBottomNavMyRequests,
-                  text: LocaleKeys.myRequests.tr(),
-                  isSelected: cubit.selectedIndex == 1,
-                ),
-                myMainBottomNavItem(
-                  imgPath: Assets.iconsBottomNavMenu,
-                  text: LocaleKeys.menu.tr(),
-                  isSelected: cubit.selectedIndex == 2,
-                ),
-              ],
+            child: ConstrainedBox(
+              constraints: BoxConstraints(
+                minHeight: AppSizes.mainBottomNavHight,
+              ),
+              child: BottomNavigationBar(
+                elevation: 0,
+                onTap: (value) {
+                  cubit.changeIndex(value);
+                },
+                currentIndex: cubit.selectedIndex,
+                // backgroundColor: Colors.red,
+                selectedItemColor: AppColors.selectedColor,
+                backgroundColor: Colors.transparent,
+                selectedLabelStyle: AppTextStyles.font13w600SelectedColor,
+                unselectedLabelStyle: AppTextStyles.font13w600SelectedColor
+                    .copyWith(color: AppColors.unSelectedColor),
+                items: [
+                  myMainBottomNavItem(
+                    imgPath: Assets.iconsBottomNavHome,
+                    text: LocaleKeys.home.tr(),
+                    isSelected: cubit.selectedIndex == 0,
+                  ),
+                  myMainBottomNavItem(
+                    imgPath: Assets.iconsBottomNavMyRequests,
+                    text: LocaleKeys.myRequests.tr(),
+                    isSelected: cubit.selectedIndex == 1,
+                  ),
+                  myMainBottomNavItem(
+                    imgPath: Assets.iconsBottomNavMenu,
+                    text: LocaleKeys.menu.tr(),
+                    isSelected: cubit.selectedIndex == 2,
+                  ),
+                ],
+              ),
             ),
           ),
         );
