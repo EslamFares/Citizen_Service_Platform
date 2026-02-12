@@ -7,9 +7,11 @@ abstract class ApiConsts {
   static String get baseUrl =>
       isTestBaseUrl ? _baseUrlTest : _baseUrlProduction;
   static const String _baseUrlTest =
-      "http://citizensservicesapi.runasp.net/api/";
+      "https://gulfterminal.com/CitizenServicesAPI/api/";
   static const String _baseUrlProduction =
-      "http://citizensservicesapi.runasp.net/api/";
+      "https://gulfterminal.com/CitizenServicesAPI/api/";
+
+  // "http://citizensservicesapi.runasp.net/api/";
 
   //--------------------------global--------------------------------------
   static const String getLastAppVersion = "getLastAppVersion";
