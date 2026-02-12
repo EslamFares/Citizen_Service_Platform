@@ -26,78 +26,94 @@ class RequestItemViewInfo extends StatelessWidget {
   Widget build(BuildContext context) {
     bool payDone = paidStatus == "مدفوع";
     bool isFree = paidStatus == "مجاني";
-    return Column(
-      children: [
-        Row(
-          spacing: 8.h,
-          children: [
-            Container(
-              width: 40.h,
-              height: 40.h,
-              padding: EdgeInsets.all(8.h),
-              decoration: BoxDecoration(
-                color: AppColors.brownLight,
-                borderRadius: BorderRadius.circular(12.r),
-              ),
-              child: Image.asset(
-                Assets.iconsRequestsRequestItem,
-                width: 20.h,
-                height: 20.h,
-                color: AppColors.primaryColor,
-              ),
-            ),
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
+    return Hero(
+      tag: "${serviceName}_${id.toString()}",
+      child: Material(
+        type: MaterialType.transparency,
+        child: SingleChildScrollView(
+          physics: const NeverScrollableScrollPhysics(),
+          child: Column(
+            mainAxisSize: MainAxisSize.min,
+            children: [
+              Row(
+                spacing: 8.h,
                 children: [
-                  Text(serviceName ?? "", style: AppTextStyles.font12w600Black),
-                  Text(
-                    "#${id ?? ""}",
-                    style: AppTextStyles.font12w500RequestStatusGrayLight,
+                  Container(
+                    width: 40.h,
+                    height: 40.h,
+                    padding: EdgeInsets.all(8.h),
+                    decoration: BoxDecoration(
+                      color: AppColors.brownLight,
+                      borderRadius: BorderRadius.circular(12.r),
+                    ),
+                    child: Image.asset(
+                      Assets.iconsRequestsRequestItem,
+                      width: 20.h,
+                      height: 20.h,
+                      color: AppColors.primaryColor,
+                    ),
+                  ),
+                  Expanded(
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          serviceName ?? "",
+                          style: AppTextStyles.font12w600Black,
+                        ),
+                        Text(
+                          "#${id ?? ""}",
+                          style: AppTextStyles.font12w500RequestStatusGrayLight,
+                        ),
+                      ],
+                    ),
+                  ),
+                  Container(
+                    // width: 40.h,
+                    // height: 40.h,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 8.h,
+                      vertical: 4.h,
+                    ),
+                    decoration: BoxDecoration(
+                      color: AppColors.requestStatusBg,
+                      borderRadius: BorderRadius.circular(4.r),
+                    ),
+                    child: Text(
+                      status ?? "",
+                      style: AppTextStyles.font10w700RequestStatusText,
+                    ),
                   ),
                 ],
               ),
-            ),
-            Container(
-              // width: 40.h,
-              // height: 40.h,
-              padding: EdgeInsets.symmetric(horizontal: 8.h, vertical: 4.h),
-              decoration: BoxDecoration(
-                color: AppColors.requestStatusBg,
-                borderRadius: BorderRadius.circular(4.r),
+              14.h.gapH,
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    child: RequestItemViewImgText(
+                      imgPath: Assets.iconsRequestsTime,
+                      text: convertTime(createdAt) ?? "",
+                    ),
+                  ),
+                  Expanded(
+                    child: RequestItemViewImgText(
+                      color: payDone == true || isFree ? null : AppColors.red,
+                      imgPath: payDone == true || isFree
+                          ? Assets.iconsRequestsCheck
+                          : Assets.iconsRequestsNotPay,
+                      text: paidStatus ?? "",
+                      // payDone == true
+                      //     ? LocaleKeys.feesPaid.tr()
+                      //     : LocaleKeys.feesNotPaid.tr(),
+                    ),
+                  ),
+                ],
               ),
-              child: Text(
-                status ?? "",
-                style: AppTextStyles.font10w700RequestStatusText,
-              ),
-            ),
-          ],
+            ],
+          ),
         ),
-        14.h.gapH,
-        Row(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Expanded(
-              child: RequestItemViewImgText(
-                imgPath: Assets.iconsRequestsTime,
-                text: convertTime(createdAt) ?? "",
-              ),
-            ),
-            Expanded(
-              child: RequestItemViewImgText(
-                color: payDone == true || isFree ? null : AppColors.red,
-                imgPath: payDone == true || isFree
-                    ? Assets.iconsRequestsCheck
-                    : Assets.iconsRequestsNotPay,
-                text: paidStatus ?? "",
-                // payDone == true
-                //     ? LocaleKeys.feesPaid.tr()
-                //     : LocaleKeys.feesNotPaid.tr(),
-              ),
-            ),
-          ],
-        ),
-      ],
+      ),
     );
   }
 }
