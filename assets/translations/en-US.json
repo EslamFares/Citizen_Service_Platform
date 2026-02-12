@@ -155,5 +155,7 @@
   "confirmNewPassword": "Confirm New Password",
   "relatedTo": "Related to",
   "codeVerifiedSuccessfully": "Code verified successfully",
-  "successfully": " Successfully"
+  "successfully": " Successfully",
+  "requestAttachments": "Request Attachments",
+  "requestData": "Request Data"
 }

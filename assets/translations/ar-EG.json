@@ -155,5 +155,7 @@
   "confirmNewPassword": "تأكيد كلمة المرور الجديدة",
   "relatedTo": "الخاص ب",
   "codeVerifiedSuccessfully": "تم التحقق من الرمز بنجاح",
-  "successfully": "تم بنجاح "
+  "successfully": "تم بنجاح ",
+  "requestAttachments": "مرفقات الطلب",
+  "requestData": "بيانات الطلب"
 }

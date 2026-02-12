@@ -160,5 +160,7 @@ abstract class  LocaleKeys {
   static const relatedTo = 'relatedTo';
   static const codeVerifiedSuccessfully = 'codeVerifiedSuccessfully';
   static const successfully = 'successfully';
+  static const requestAttachments = 'requestAttachments';
+  static const requestData = 'requestData';
 
 }

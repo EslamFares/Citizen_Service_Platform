@@ -11,6 +11,8 @@ import 'package:citizen_service_platform/features/main_bottom_nav/cubit/main_bot
 import 'package:citizen_service_platform/features/main_bottom_nav/data/repo/main_bottom_nav_repo.dart';
 import 'package:citizen_service_platform/features/menu/cubit/menu_cubit.dart';
 import 'package:citizen_service_platform/features/menu/data/repo/menu_repo.dart';
+import 'package:citizen_service_platform/features/my_request_details/cubit/my_request_details_cubit.dart';
+import 'package:citizen_service_platform/features/my_request_details/data/repo/my_request_details_repo.dart';
 import 'package:citizen_service_platform/features/my_requests/cubit/my_requests_cubit.dart';
 import 'package:citizen_service_platform/features/my_requests/data/repo/my_requests_repo.dart';
 import 'package:citizen_service_platform/features/send_service/cubit/send_service_cubit.dart';
@@ -54,6 +56,9 @@ Future<void> setupGetIt() async {
   getIt.registerSingleton<ForgetPasswordRepo>(
     ForgetPasswordRepo(getIt<ApiService>()),
   );
+  getIt.registerSingleton<MyRequestDetailsRepo>(
+    MyRequestDetailsRepo(getIt<ApiService>()),
+  );
 
   //^----------------- Cubits ---------------------------------
   getIt.registerFactory<LoginCubit>(() => LoginCubit(getIt<LoginRepo>()));
@@ -81,6 +86,9 @@ Future<void> setupGetIt() async {
   );
   getIt.registerFactory<ForgetPasswordCubit>(
     () => ForgetPasswordCubit(getIt<ForgetPasswordRepo>()),
+  );
+  getIt.registerFactory<MyRequestDetailsCubit>(
+    () => MyRequestDetailsCubit(getIt<MyRequestDetailsRepo>()),
   );
   //=========home=============================================
   //registerFactory ==> for more than once use

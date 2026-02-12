@@ -1,15 +1,18 @@
 import 'package:citizen_service_platform/const/locale_keys.g.dart';
+import 'package:citizen_service_platform/core/router/app_routers_name.dart';
 import 'package:citizen_service_platform/core/shared_widgets/app_loader.dart';
 import 'package:citizen_service_platform/core/shared_widgets/pagination_mixin.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_sizes.dart';
 import 'package:citizen_service_platform/core/utils/app_utils/app_text_style.dart';
 import 'package:citizen_service_platform/core/utils/extentions/spacing_extensions.dart';
+import 'package:citizen_service_platform/features/my_request_details/presentation/screens/my_request_details_screen.dart';
 import 'package:citizen_service_platform/features/my_requests/data/model/my_requests_model.dart';
 import 'package:citizen_service_platform/features/my_requests/presentation/widgets/request_item_view.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../cubit/my_requests_cubit.dart';
 
@@ -63,9 +66,18 @@ class _MyRequestsListViewState extends State<MyRequestsListView>
                         code: requestsList[i].id,
                         status: requestsList[i].status,
                         time: requestsList[i].createdAt,
-                        payDone: requestsList[i].paidStatus == "مدفوع",
-                        isFree: requestsList[i].paidStatus == "مجاني",
                         paidStatus: requestsList[i].paidStatus,
+                        onPressed: () {
+                          if (requestsList[i].id != null) {
+                            context.push(
+                              AppRoutersName.myRequestDetailsScreen,
+                              extra: MyRequestDetailsScreenArgs(
+                                requestId: requestsList[i].id!,
+                                model: requestsList[i],
+                              ),
+                            );
+                          }
+                        },
                       ),
                     ),
                   10.h.gapH,

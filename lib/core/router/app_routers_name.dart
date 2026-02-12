@@ -17,4 +17,5 @@ abstract class AppRoutersName {
   static const String verifyOtpScreen = '/VerifyOtpScreen';
   static const String isHaveAccountScreen = '/IsHaveAccountScreen';
   static const String forgetPasswordScreen = '/ForgetPasswordScreen';
+  static const String myRequestDetailsScreen = '/MyRequestDetailsScreen';
 }
