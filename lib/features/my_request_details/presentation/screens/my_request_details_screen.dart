@@ -28,31 +28,35 @@ class MyRequestDetailsScreen extends StatelessWidget {
           MyRequestDetailsCubit(getIt<MyRequestDetailsRepo>())
             ..init(requestId: args.requestId, modelDirect: args.model),
       child: ScaffoldBg(
-        bg: Assets.imgServiceTopBottomNotEmptyCenterNotEmptyBg,
-
+        bg: Assets.imgServiceTopNotEmptyBottomEmptyCenterNotEmptyBg,
+        safeAreaBottomScreen: true,
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             BlurAppBar(LocaleKeys.requestData.tr(), isBack: true),
-            BlocConsumer<MyRequestDetailsCubit, MyRequestDetailsState>(
-              listenWhen: (previous, current) =>
-                  previous.getMyRequestDetails != current.getMyRequestDetails,
-              listener: (context, state) {},
-              buildWhen: (previous, current) =>
-                  previous.getMyRequestDetails != current.getMyRequestDetails,
-              builder: (context, state) {
-                // ignore: unused_local_variable
-                final cubit = MyRequestDetailsCubit.get(context);
-                if (state.getMyRequestDetails.isLoading) {
-                  return AppLoader();
-                } else if (state.getMyRequestDetails.isError) {
-                  return AppError(text: state.getMyRequestDetails.errorMessage);
-                } else if (state.getMyRequestDetails.isSuccess) {
-                  return MyRequestDetailsScreenBody();
-                } else {
-                  return AppLoader();
-                }
-              },
+            Expanded(
+              child: BlocConsumer<MyRequestDetailsCubit, MyRequestDetailsState>(
+                listenWhen: (previous, current) =>
+                    previous.getMyRequestDetails != current.getMyRequestDetails,
+                listener: (context, state) {},
+                buildWhen: (previous, current) =>
+                    previous.getMyRequestDetails != current.getMyRequestDetails,
+                builder: (context, state) {
+                  // ignore: unused_local_variable
+                  final cubit = MyRequestDetailsCubit.get(context);
+                  if (state.getMyRequestDetails.isLoading) {
+                    return AppLoader();
+                  } else if (state.getMyRequestDetails.isError) {
+                    return AppError(
+                      text: state.getMyRequestDetails.errorMessage,
+                    );
+                  } else if (state.getMyRequestDetails.isSuccess) {
+                    return MyRequestDetailsScreenBody();
+                  } else {
+                    return AppLoader();
+                  }
+                },
+              ),
             ),
           ],
         ),

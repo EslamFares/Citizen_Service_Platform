@@ -75,23 +75,11 @@ class ServicePayOrLaterScreen extends StatelessWidget {
                     /*------------------ paymentDetails -----------------*/
                     8.h.gapH,
                     InvoiceDetailsTitle(title: LocaleKeys.paymentDetails.tr()),
-                    InvoiceDetailsItem(
-                      title: LocaleKeys.serviceValue.tr(),
-                      serviceAmount: moneyOrFree(serviceAmount),
-                    ),
-                    InvoiceDetailsItem(
-                      title: LocaleKeys.fees.tr(),
-                      serviceAmount: moneyOrEmpty(serviceFee),
-                    ),
-                    InvoiceDetailsItem(
-                      title: LocaleKeys.tax.tr(),
-                      serviceAmount: moneyOrEmpty(tax),
-                    ),
-                    InvoiceDetailsItem(
-                      title: LocaleKeys.total.tr(),
-                      serviceAmount: moneyOrFree(total),
-                      showDivider: false,
-                      style: AppTextStyles.font14w700,
+                    PaymentDetailsReset(
+                      serviceAmount: serviceAmount,
+                      serviceFee: serviceFee,
+                      tax: tax,
+                      total: total,
                     ),
 
                     /*------------------ gap -----------------*/
@@ -105,6 +93,51 @@ class ServicePayOrLaterScreen extends StatelessWidget {
           PayOrLaterSection(),
         ],
       ),
+    );
+  }
+}
+
+class PaymentDetailsReset extends StatelessWidget {
+  const PaymentDetailsReset({
+    super.key,
+    required this.serviceAmount,
+    required this.serviceFee,
+    required this.tax,
+    required this.total,
+  });
+
+  final num? serviceAmount;
+  final num? serviceFee;
+  final num? tax;
+  final num? total;
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        if (serviceAmount != 0)
+          InvoiceDetailsItem(
+            title: LocaleKeys.serviceValue.tr(),
+            serviceAmount: moneyOrFree(serviceAmount),
+          ),
+        if (serviceAmount != 0)
+          InvoiceDetailsItem(
+            title: LocaleKeys.fees.tr(),
+            serviceAmount: moneyOrEmpty(serviceFee),
+          ),
+        if (serviceAmount != 0)
+          InvoiceDetailsItem(
+            title: LocaleKeys.tax.tr(),
+            serviceAmount: moneyOrEmpty(tax),
+          ),
+        InvoiceDetailsItem(
+          title: LocaleKeys.total.tr(),
+          serviceAmount: moneyOrFree(total),
+          showDivider: false,
+          style: AppTextStyles.font14w700,
+        ),
+      ],
     );
   }
 }

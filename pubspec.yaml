@@ -95,7 +95,6 @@ flutter:
   assets:
     - assets/translations/
     - assets/img/
-    - assets/img/services/
     - assets/icons/
     - assets/icons/home/
     - assets/icons/requests/

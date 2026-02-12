@@ -50,6 +50,10 @@ class Assets {
   /// assets/icons/requests/check.png
   static const String iconsRequestsCheck = "assets/icons/requests/check.png";
 
+  /// Assets for iconsRequestsFileAttachment
+  /// assets/icons/requests/file_attachment.png
+  static const String iconsRequestsFileAttachment = "assets/icons/requests/file_attachment.png";
+
   /// Assets for iconsRequestsNotPay
   /// assets/icons/requests/not_pay.png
   static const String iconsRequestsNotPay = "assets/icons/requests/not_pay.png";
@@ -89,50 +93,6 @@ class Assets {
   /// Assets for imgServiceTopNotEmptyBottomEmptyCenterNotEmptyBg
   /// assets/img/service_top_notEmpty_bottom_empty_center_notEmpty_bg.png
   static const String imgServiceTopNotEmptyBottomEmptyCenterNotEmptyBg = "assets/img/service_top_notEmpty_bottom_empty_center_notEmpty_bg.png";
-
-  /// Assets for imgServices1
-  /// assets/img/services/1.png
-  static const String imgServices1 = "assets/img/services/1.png";
-
-  /// Assets for imgServices10
-  /// assets/img/services/10.png
-  static const String imgServices10 = "assets/img/services/10.png";
-
-  /// Assets for imgServices11
-  /// assets/img/services/11.png
-  static const String imgServices11 = "assets/img/services/11.png";
-
-  /// Assets for imgServices2
-  /// assets/img/services/2.png
-  static const String imgServices2 = "assets/img/services/2.png";
-
-  /// Assets for imgServices3
-  /// assets/img/services/3.png
-  static const String imgServices3 = "assets/img/services/3.png";
-
-  /// Assets for imgServices4
-  /// assets/img/services/4.png
-  static const String imgServices4 = "assets/img/services/4.png";
-
-  /// Assets for imgServices5
-  /// assets/img/services/5.png
-  static const String imgServices5 = "assets/img/services/5.png";
-
-  /// Assets for imgServices6
-  /// assets/img/services/6.png
-  static const String imgServices6 = "assets/img/services/6.png";
-
-  /// Assets for imgServices7
-  /// assets/img/services/7.png
-  static const String imgServices7 = "assets/img/services/7.png";
-
-  /// Assets for imgServices8
-  /// assets/img/services/8.png
-  static const String imgServices8 = "assets/img/services/8.png";
-
-  /// Assets for imgServices9
-  /// assets/img/services/9.png
-  static const String imgServices9 = "assets/img/services/9.png";
 
   /// Assets for imgSplashBg
   /// assets/img/splash_bg.png
