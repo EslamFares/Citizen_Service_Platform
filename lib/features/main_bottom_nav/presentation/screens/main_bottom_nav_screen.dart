@@ -1,3 +1,4 @@
+import 'package:citizen_service_platform/core/shared_widgets/status_bar_bottom_nav_system.dart';
 import 'package:citizen_service_platform/features/home/presentation/screens/home_screen.dart';
 import 'package:citizen_service_platform/features/main_bottom_nav/presentation/widgets/my_main_bottom_navigation_bar/my_main_bottom_navigation_bar.dart';
 import 'package:citizen_service_platform/features/menu/presentation/screens/menu_screen.dart';
@@ -16,17 +17,21 @@ class MainBottomNavScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => MainBottomNavCubit(getIt<MainBottomNavRepo>()),
-      child: SafeArea(
-        top: false,
-        bottom: false,
-        child: Scaffold(
-          extendBody: true,
-          bottomNavigationBar: MyMainBottomNavigationBar(),
-          body: BlocBuilder<MainBottomNavCubit, MainBottomNavState>(
-            builder: (context, state) {
-              final cubit = MainBottomNavCubit.get(context);
-              return screens[cubit.selectedIndex];
-            },
+      child: StatusBarBottomNavSystem(
+        systemNavigationBarColor: Colors.white,
+        systemNavigationBarIconBrightness: Brightness.dark,
+        child: SafeArea(
+          top: false,
+          bottom: true,
+          child: Scaffold(
+            extendBody: true,
+            bottomNavigationBar: MyMainBottomNavigationBar(),
+            body: BlocBuilder<MainBottomNavCubit, MainBottomNavState>(
+              builder: (context, state) {
+                final cubit = MainBottomNavCubit.get(context);
+                return screens[cubit.selectedIndex];
+              },
+            ),
           ),
         ),
       ),
