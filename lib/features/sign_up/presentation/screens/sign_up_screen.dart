@@ -25,7 +25,7 @@ class SignUpScreen extends StatelessWidget {
     return BlocProvider(
       create: (context) => SignUpCubit(getIt<SignUpRepo>())..init(),
       child: ScaffoldBg(
-        safeAreaTop: true,
+        safeAreaTopBody: true,
         body: SingleChildScrollView(
           child: Padding(
             padding: EdgeInsets.all(16.w),

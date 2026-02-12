@@ -24,6 +24,7 @@ class SendServiceUploadFilesScreen extends StatelessWidget {
     SendServiceCubit cubit = SendServiceCubit.get(context);
 
     return ScaffoldBg(
+      safeAreaBottomScreen: true,
       bg: Assets.imgServiceTopBottomNotEmptyCenterNotEmptyBg,
       appBar: appBarTrans("${cubit.serviceCategoryName}"),
       body: Column(

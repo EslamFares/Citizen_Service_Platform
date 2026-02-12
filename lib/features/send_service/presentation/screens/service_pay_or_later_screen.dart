@@ -30,6 +30,7 @@ class ServicePayOrLaterScreen extends StatelessWidget {
     num tax = cubit.serviceRequirementModel?.data?.tax ?? 0;
     num total = serviceAmount + serviceFee + tax;
     return ScaffoldBg(
+      safeAreaBottomScreen: true,
       bg: Assets.imgServiceTopBottomNotEmptyCenterEmptyBg,
       appBar: appBarTrans("${LocaleKeys.pay.tr()} $serviceName"),
       body: Column(

@@ -22,7 +22,7 @@ class SignUpPasswordScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ScaffoldBg(
-      safeAreaTop: true,
+      safeAreaTopBody: true,
       body: SingleChildScrollView(
         child: Padding(
           padding: EdgeInsets.all(16.w),

@@ -27,6 +27,7 @@ class SendServiceScreen extends StatelessWidget {
           serviceCategoryName: args.serviceCategoryName,
         ),
       child: ScaffoldBg(
+        safeAreaBottomScreen: true,
         bg: Assets.imgServiceTopBottomNotEmptyCenterNotEmptyBg,
         appBar: appBarTrans("${args.serviceCategoryName}"),
         body: BlocConsumer<SendServiceCubit, SendServiceState>(
